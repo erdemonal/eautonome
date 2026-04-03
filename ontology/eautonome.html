@@ -264,10 +264,265 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
 </section>
 <section id="overview">
     <h2>Overview</h2>
-    <div class="figure">
-        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
-        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
-    </div>
+    <p>The Eautonome architecture consists of physical water infrastructure and monitoring devices that together form an IoT observation system. These components produce data on domestic water usage and water quality.</p>
+    <p>This ontology describes the greywater recycling infrastructure, the sensor network, and the observations produced by these systems. It is intended to support the identification of domestic water usage events, the assessment of sensor status, and the optimization of greywater reuse processes.</p>
+    <h3>Competency Questions</h3>
+    <h4>Queries</h4>
+    <table>
+    <thead>
+     <tr>
+      <th>
+       ID
+      </th>
+      <th>
+       Natural language question
+      </th>
+      <th>
+       Example
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       Q1
+      </td>
+      <td>
+       Which sensor made the observation?
+      </td>
+      <td>
+       The physical device that generated the data. For example, the observation
+       <code>
+        &lt;eau:obsFlowHeaterOutput20230715T0730&gt;
+       </code>
+       is made by
+       <code>
+        &lt;eau:flowmeterHeaterOutput&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q2
+      </td>
+      <td>
+       What physical property is measured?
+      </td>
+      <td>
+        The water quality or flow parameter targeted by the sensor. For example, the property is
+       <code>
+        &lt;s4watr:FlowRate&gt;
+       </code>
+       or
+       <code>
+        &lt;s4watr:Conductivity&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q3
+      </td>
+      <td>
+       Where is the measurement point located and which asset does it measure?
+      </td>
+      <td>
+       The room and water asset targeted by the measurement. For example,
+       <code>
+        &lt;eau:mpBathroomHot&gt;
+       </code>
+       is located in
+       <code>
+        &lt;eau:roomBathroom&gt;
+       </code>
+       and measures
+       <code>
+        &lt;eau:pipeBathroomHot&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q4
+      </td>
+      <td>
+       What is the result of the observation?
+      </td>
+      <td>
+       A numeric value combined with a standardized unit. For example, the result is
+       <code>
+        4.85
+       </code>
+       in
+       <code>
+        &lt;unit:L-PER-MIN&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q5
+      </td>
+      <td>
+       What is the timestamp of the observation?
+      </td>
+      <td>
+       The exact moment the observation was produced. For example, recorded at
+       <code>
+        "2023-07-15T07:30:00+02:00"^^xsd:dateTime
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q6
+      </td>
+      <td>
+       What is the operational status of each device?
+      </td>
+      <td>
+        The current operational state of a hardware component. For example,
+       <code>
+        &lt;eau:flowmeterBathroomCold&gt;
+       </code>
+       is inactive.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q7
+      </td>
+      <td>
+       Which consumption event is linked to an observation collection?
+      </td>
+      <td>
+       The human activity tied to a group of observations. For example,
+       <code>
+        &lt;eau:obsColMorning20230715&gt;
+       </code>
+       belongs to
+       <code>
+        &lt;eau:eventMorningShower&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q8
+      </td>
+      <td>
+       Which procedure is used to acquire the observation?
+      </td>
+      <td>
+       The automated routine executed by the hardware. For example, the system applies
+       <code>
+        &lt;eau:eautonomeObservingProcedure&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       Q9
+      </td>
+      <td>
+       What are the calibration parameters of the sensor?
+      </td>
+      <td>
+       The mathematical coefficients used to convert raw signals. For example,
+       <code>
+        &lt;eau:flowmeterHeaterOutput&gt;
+       </code>
+       uses a slope of
+       <code>
+        0.957
+       </code>
+       .
+      </td>
+     </tr>
+    </tbody>
+    </table>
+    <h4>Inference</h4>
+    <table>
+    <thead>
+     <tr>
+      <th>
+       ID
+      </th>
+      <th>
+       Natural language question
+      </th>
+      <th>
+       Example
+      </th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td>
+       R1
+      </td>
+      <td>
+       Which sensors are attached to the pilot system?
+      </td>
+      <td>
+       Sensors are inferred from the hosting relations within the system. For example, the flowmeter is hosted by
+       <code>
+        &lt;eau:eautonomeSystem&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       R2
+      </td>
+      <td>
+       Which room is concerned by an observation?
+      </td>
+      <td>
+       The room is inferred from the location of the measurement point. For example, the observation targets
+       <code>
+        &lt;eau:roomBathroom&gt;
+       </code>
+       .
+      </td>
+     </tr>
+     <tr>
+      <td>
+       R3
+      </td>
+      <td>
+       Which measurement points are at operational risk?
+      </td>
+      <td>
+       Points are inferred to be at risk based on the operational status of their associated sensors. For example,
+       <code>
+        &lt;eau:mpBasementCold&gt;
+       </code>
+       is at risk because its sensor is inactive.
+      </td>
+     </tr>
+     <tr>
+      <td>
+       R4
+      </td>
+      <td>
+       Which observations belong to the same usage event?
+      </td>
+      <td>
+       Observations share the same consumption event when they belong to the same collection.
+      </td>
+     </tr>
+    </tbody>
+    </table>
+    <h3>SPARQL Examples</h3>
 </section>
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>

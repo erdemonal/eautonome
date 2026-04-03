@@ -25,8 +25,8 @@
 <https://w3id.org/eautonome/> rdf:type owl:Ontology ;
     dcterms:title "Projet maison Eautonome"@en ;
     dcterms:title "Projet maison Eautonome"@fr ;
-    dcterms:description "This ontology provides the OWL representation of the Projet Maison Eautonome. The main objective of this research is to reflect on domestic water uses, associated minimum qualities, and possible optimization cycles, in order to reduce the water footprint of metropolitan cities. The Eautonome project aims to reduce the water needs of individual housing through the intelligent reuse of greywater."@en ;
-    dcterms:description "Cette ontologie fournit la représentation OWL du système de suivi du Projet Maison Eautonome. L’objectif principal de cette recherche est une réflexion sur les usages domestiques de l’eau, les qualités minimales associées et les cycles d’optimisation possibles, afin de réduire l’empreinte eau des villes métropolitaines. Le projet Eautonome vise à réduire les besoins en eau de l’habitat individuel par le biais d’une réutilisation intelligente des eaux grises."@fr ;
+    dcterms:description "This ontology aims to describe the monitoring and observations of the Eautonome greywater recycling system."@en ;
+    dcterms:description "Cette ontologie vise à décrire le suivi et les observations du système de recyclage des eaux grises Eautonome."@fr ;
     dcterms:contributor <https://orcid.org/0009-0006-6580-3711> ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     owl:versionInfo "1.0.0" ;
@@ -47,21 +47,20 @@
 #
 # Classes
 #
-
 eau:GreywaterRecyclingSystem a owl:Class ;
     rdfs:subClassOf s4watr:WaterInfrastructure , sosa:Platform ;
     rdfs:label "Greywater recycling system"@en , "Système de recyclage des eaux grises"@fr ;
-    rdfs:comment "A system designed to collect, treat, and redistribute domestic greywater."@en .
+    rdfs:comment "A system that collects, treats, and redistributes domestic greywater."@en .
 
 eau:DomesticRoom a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest ;
     rdfs:label "Domestic room"@en , "Pièce domestique"@fr ;
-    rdfs:comment "An indoor residential space where water consumption or collection occurs."@en .
+    rdfs:comment "A room in a dwelling where water consumption or collection takes place."@en .
 
 eau:MeasurementPoint a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest , s4watr:WaterAsset ;
     rdfs:label "Measurement point"@en , "Point de mesure"@fr ;
-    rdfs:comment "A specific location within the water infrastructure where observations are made."@en .
+    rdfs:comment "A location within the water infrastructure where observations are made."@en .
 
 eau:VortexFlowmeter a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterMeter ;
@@ -81,12 +80,12 @@ eau:ADConverter a owl:Class ;
 eau:EautonomeObservingProcedure a owl:Class ;
     rdfs:subClassOf sosa:ObservingProcedure ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "The standard routine employed by the system to acquire and log sensor data."@en .
+    rdfs:comment "The procedure used to acquire and record sensor data."@en .
 
 eau:ConsumptionEvent a owl:Class ;
     rdfs:subClassOf schema:Event ;
     rdfs:label "Consumption event"@en , "Événement de consommation"@fr ;
-    rdfs:comment "A distinct, time-bound context describing a domestic water use activity linked to observation collections."@en .
+    rdfs:comment "A temporal context representing a domestic water use activity linked to observation collections."@en .
 
 #
 # Properties
@@ -164,23 +163,23 @@ eau:DomesticReuse a owl:NamedIndividual , s4watr:WaterUse ;
 
 eau:roomBathroom a eau:DomesticRoom ;
     rdfs:label "Bathroom"@en , "Salle de bain"@fr ;
-    rdfs:comment "Domestic room containing showers, sinks, the hot water heater, and the sensor system."@en .
+    rdfs:comment "A domestic room primarily used for bathing, sink use, and laundry water consumption."@en .
 
 eau:roomKitchen a eau:DomesticRoom ;
     rdfs:label "Kitchen"@en , "Cuisine"@fr ;
-    rdfs:comment "Domestic room primarily used for cooking and dishwashing."@en .
+    rdfs:comment "A domestic room primarily used for cooking and dishwashing."@en .
 
 eau:roomBasement a eau:DomesticRoom ;
     rdfs:label "Basement"@en , "Cave"@fr ;
-    rdfs:comment "Domestic room holding the connection to the cold water supply."@en .
+    rdfs:comment "A domestic room holding the connection to the cold water supply."@en .
 
 eau:roomToilet a eau:DomesticRoom ;
     rdfs:label "Toilet"@en , "Toilettes"@fr ;
-    rdfs:comment "Domestic room containing the toilet cistern, serving as the primary target for treated greywater reuse."@en .
+    rdfs:comment "A domestic room where treated greywater is reused."@en .
 
 eau:roomGarden a eau:DomesticRoom ;
     rdfs:label "Garden"@en , "Jardin"@fr ;
-    rdfs:comment "Potential endpoint for treated greywater irrigation."@en .
+    rdfs:comment "An outdoor domestic area that can receive treated greywater for irrigation."@en .
 
 eau:pipeColdWaterEntry a s4watr:Pipe ;
     rdfs:label "Cold water main entry"@en , "Arrivée d'eau froide"@fr ;
@@ -212,7 +211,7 @@ eau:pipeToiletCold a s4watr:Pipe ;
 
 eau:eautonomeSystem a eau:GreywaterRecyclingSystem ;
     rdfs:label "Eautonome pilot system"@en , "Système pilote Eautonome"@fr ;
-    rdfs:comment "The physical greywater recycling pilot installation located in a residential house in Noisiel."@en ;
+    rdfs:comment "A greywater recycling pilot installation located in a residential house in Noisiel."@en ;
     eau:hasOperationalStatus "active" ;
     s4watr:isDesignedFor eau:Greywater , eau:TreatedGreywater ;
     s4watr:isIntendedFor eau:DomesticReuse , s4watr:Domestic ;
@@ -248,7 +247,7 @@ eau:adcCard2 a eau:ADConverter ;
 #
 eau:flowmeterHeaterOutput a eau:VortexFlowmeter ;
     rdfs:label "Heater output flowmeter"@en , "Débitmètre de la sortie chaudière"@fr ;
-    rdfs:comment "Reference flowmeter that triggers data recording when the flow rate reaches or exceeds 0.05 liters per minute."@en ;
+    rdfs:comment "Reference flowmeter for data acquisition."@en ;
     eau:hasOperationalStatus "active" ;
     eau:hasFlowEquation "Q = 0.938 * (I - 4)" ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
@@ -319,19 +318,20 @@ eau:flowmeterToiletCold a eau:VortexFlowmeter ;
 #
 eau:conductivitySensorHot a eau:ConductivityTemperatureSensor ;
     rdfs:label "Hot water conductivity sensor"@en , "Capteur de conductivité d'eau chaude"@fr ;
-    rdfs:comment "Calibrated sensor for measuring hot water conductivity and temperature."@en ;
+    rdfs:comment "A sensor measuring water conductivity and temperature."@en ;
     eau:hasOperationalStatus "active" ;
     eau:hasCalibrationSlope "0.9968"^^xsd:decimal ; 
     eau:hasCalibrationIntercept "-1.122"^^xsd:decimal ;
     eau:hasCalibrationR2 "0.9998"^^xsd:decimal ;
-    eau:hasAnalogInput "AN4, AN5" ;
+    eau:hasAnalogInput "AN4" ;
+    eau:hasAnalogInput "AN5" ;
     sosa:observes s4watr:Conductivity , s4watr:FlowTemperature ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
 eau:conductivitySensorCold a eau:ConductivityTemperatureSensor ;
     rdfs:label "Cold water conductivity sensor"@en , "Capteur de conductivité d'eau froide"@fr ;
-    rdfs:comment "Planned sensor for cold water entry at the basement."@en ;
+    rdfs:comment "A planned sensor for cold water entry."@en ;
     eau:hasOperationalStatus "planned" ;
     sosa:observes s4watr:Conductivity , s4watr:FlowTemperature .
 
@@ -340,7 +340,7 @@ eau:conductivitySensorCold a eau:ConductivityTemperatureSensor ;
 #
 eau:mpHeaterOutput a eau:MeasurementPoint ;
     rdfs:label "Heater output measurement point"@en , "Point de mesure de la sortie chaudière"@fr ;
-    rdfs:comment "Reference measurement point for the entire system."@en ;
+    rdfs:comment "A reference measurement point."@en ;
     eau:measuresWaterKind s4watr:DrinkingWater ; 
     eau:locatedIn eau:roomBathroom ;
     eau:measuresOnAsset eau:pipeHeaterOutput ;
@@ -392,7 +392,7 @@ eau:mpToiletCold a eau:MeasurementPoint ;
 #
 eau:eautonomeDeployment a sosa:Deployment ;
     rdfs:label "Eautonome deployment"@en , "Déploiement Eautonome"@fr ;
-    rdfs:comment "The physical configuration and installation of sensors and platforms within the system."@en ;
+    rdfs:comment "The configuration of sensors and platforms within the system."@en ;
     sosa:deployedOnPlatform eau:raspberryPi4 ;
     sosa:deployedSystem eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
         eau:flowmeterBathroomCold , eau:flowmeterWashingMachine , eau:flowmeterBasementCold ,
@@ -405,7 +405,7 @@ eau:eautonomeDeployment a sosa:Deployment ;
 #
 eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "Automated procedure responsible for acquiring, logging, and transmitting sensor data at defined intervals."@en ;
+    rdfs:comment "The procedure used to acquire and record sensor data."@en ;
     eau:hasTriggerThreshold "0.05"^^xsd:decimal ;
     eau:hasSamplingPeriod "2"^^xsd:decimal ;
     eau:hasTransmissionInterval "360"^^xsd:decimal .
@@ -415,7 +415,7 @@ eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure ;
 #
 eau:domesticGreywater a s4watr:Water ;
     rdfs:label "Domestic greywater"@en , "Eaux grises domestiques"@fr ;
-    rdfs:comment "The physical greywater entity within the pilot house, serving as the primary feature of interest for observations."@en ;
+    rdfs:comment "Greywater within the system, used as the feature of interest for observations."@en ;
     sosa:hasProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature , s4watr:Conductivity , s4watr:Temperature .
 
 # 
@@ -423,19 +423,19 @@ eau:domesticGreywater a s4watr:Water ;
 #
 eau:eventMorningShower a eau:ConsumptionEvent ;
     rdfs:label "Morning shower event"@en , "Événement de douche matinale"@fr ;
-    rdfs:comment "A typical morning water consumption event, generally characterized by high flow rates."@en ;
+    rdfs:comment "A morning water consumption event."@en ;
     time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ] ;
     time:hasEnd [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:45:00+02:00"^^xsd:dateTime ] .
 
 eau:eventMiddayDishwashing a eau:ConsumptionEvent ;
     rdfs:label "Midday dishwashing event"@en , "Événement de vaisselle de midi"@fr ;
-    rdfs:comment "A typical midday water consumption event associated with dishwashing activities."@en ;
+    rdfs:comment "A midday water consumption event."@en ;
     time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T12:30:00+02:00"^^xsd:dateTime ] ;
     time:hasEnd [ a time:Instant ; time:inXSDDateTime "2023-07-15T12:45:00+02:00"^^xsd:dateTime ] .
 
 eau:eventEveningShower a eau:ConsumptionEvent ;
     rdfs:label "Evening shower event"@en , "Événement de douche du soir"@fr ;
-    rdfs:comment "A typical evening water consumption event."@en ;
+    rdfs:comment "An evening water consumption event."@en ;
     time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T23:15:00+02:00"^^xsd:dateTime ] ;
     time:hasEnd [ a time:Instant ; time:inXSDDateTime "2023-07-15T23:45:00+02:00"^^xsd:dateTime ] .
 
@@ -490,7 +490,7 @@ eau:obsColMultiProperty20230715T0730 a sosa:ObservationCollection ;
 
 eau:obsColAugust2023 a sosa:ObservationCollection ;
     rdfs:label "August 2023 observations"@en , "Observations août 2023"@fr ;
-    rdfs:comment "Monthly sample collection."@en ;
+    rdfs:comment "A collection of observations from August 2023."@en ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:hasMember eau:obsFlowHeaterOutput20230801T0815 .
