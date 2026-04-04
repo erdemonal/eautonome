@@ -148,6 +148,12 @@ eau:locatedIn a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:ran
 eau:measuresOnAsset a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range s4watr:WaterAsset ;
     rdfs:label "measures on asset"@en .
 
+eau:monitors a owl:ObjectProperty ;
+    rdfs:domain sosa:Sensor ;
+    rdfs:range eau:MeasurementPoint ;
+    rdfs:label "monitors"@en , "surveille"@fr ;
+    rdfs:comment "Static topology link from a sensor to the measurement point it monitors, independent of any observation."@en .
+
 #
 # Individuals 
 #
@@ -253,6 +259,7 @@ eau:flowmeterHeaterOutput a eau:VortexFlowmeter ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
     eau:hasCalibrationR2 "0.9988"^^xsd:decimal ;
     eau:hasAnalogInput "AN0" ;
+    eau:monitors eau:mpHeaterOutput ;
     sosa:observes s4watr:FlowRate , s4watr:FlowTemperature ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -264,6 +271,7 @@ eau:flowmeterBathroomHot a eau:VortexFlowmeter ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
     eau:hasCalibrationR2 "0.9988"^^xsd:decimal ;
     eau:hasAnalogInput "AN1" ;
+    eau:monitors eau:mpBathroomHot ;
     sosa:observes s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -275,6 +283,7 @@ eau:flowmeterBathroomCold a eau:VortexFlowmeter ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
     eau:hasCalibrationR2 "0.9988"^^xsd:decimal ;
     eau:hasAnalogInput "AN2" ;
+    eau:monitors eau:mpBathroomCold ;
     sosa:observes s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -286,6 +295,7 @@ eau:flowmeterWashingMachine a eau:VortexFlowmeter ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
     eau:hasCalibrationR2 "0.9988"^^xsd:decimal ;
     eau:hasAnalogInput "AN3" ;
+    eau:monitors eau:mpWashingMachine ;
     sosa:observes s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -298,6 +308,7 @@ eau:flowmeterBasementCold a eau:VortexFlowmeter ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
     eau:hasCalibrationR2 "0.9988"^^xsd:decimal ;
     eau:hasAnalogInput "AN6" ;
+    eau:monitors eau:mpBasementCold ;
     sosa:observes s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -309,6 +320,7 @@ eau:flowmeterToiletCold a eau:VortexFlowmeter ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
     eau:hasCalibrationR2 "0.9988"^^xsd:decimal ;
     eau:hasAnalogInput "AN7" ;
+    eau:monitors eau:mpToiletCold ;
     sosa:observes s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -325,6 +337,7 @@ eau:conductivitySensorHot a eau:ConductivityTemperatureSensor ;
     eau:hasCalibrationR2 "0.9998"^^xsd:decimal ;
     eau:hasAnalogInput "AN4" ;
     eau:hasAnalogInput "AN5" ;
+    eau:monitors eau:mpHeaterOutput ;
     sosa:observes s4watr:Conductivity , s4watr:FlowTemperature ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
@@ -333,6 +346,7 @@ eau:conductivitySensorCold a eau:ConductivityTemperatureSensor ;
     rdfs:label "Cold water conductivity sensor"@en , "Capteur de conductivité d'eau froide"@fr ;
     rdfs:comment "A planned sensor for cold water entry."@en ;
     eau:hasOperationalStatus "planned" ;
+    eau:monitors eau:mpBasementCold ;
     sosa:observes s4watr:Conductivity , s4watr:FlowTemperature .
 
 # 

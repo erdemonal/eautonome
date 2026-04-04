@@ -469,7 +469,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
        R1
       </td>
       <td>
-       Which sensors are attached to the pilot system?
+       Which sensors are attached to the system?
       </td>
       <td>
        Sensors are inferred from the hosting relations within the system. For example, the flowmeter is hosted by
@@ -523,6 +523,73 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
     </tbody>
     </table>
     <h3>SPARQL Examples</h3>
+    <p>
+        Below is a set of SPARQL queries that implement a subset of the aforementioned competency questions. 
+        All queries use the following common prefixes. Each query is followed by its corresponding result.
+    </p>
+        
+    <pre><code>PREFIX eau: &lt;https://w3id.org/eautonome/&gt;
+PREFIX sosa: &lt;http://www.w3.org/ns/sosa/&gt;
+PREFIX s4watr: &lt;https://saref.etsi.org/saref4watr/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
+    <h4>Q3</h4>
+    <pre><code>SELECT ?mp ?room ?asset WHERE {
+  ?mp a eau:MeasurementPoint ;
+      eau:locatedIn ?room ;
+      eau:measuresOnAsset ?asset .
+} ORDER BY ?mp</code></pre>
+    <hr>
+    <pre><code>&lt;https://w3id.org/eautonome/mpBasementCold&gt; &lt;https://w3id.org/eautonome/roomBasement&gt; &lt;https://w3id.org/eautonome/pipeBasementCold&gt; .
+&lt;https://w3id.org/eautonome/mpBathroomCold&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeBathroomCold&gt; .
+&lt;https://w3id.org/eautonome/mpBathroomHot&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeBathroomHot&gt; .
+&lt;https://w3id.org/eautonome/mpHeaterOutput&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeHeaterOutput&gt; .
+&lt;https://w3id.org/eautonome/mpToiletCold&gt; &lt;https://w3id.org/eautonome/roomToilet&gt; &lt;https://w3id.org/eautonome/pipeToiletCold&gt; .
+&lt;https://w3id.org/eautonome/mpWashingMachine&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeWashingMachine&gt; .</code></pre>
+    <hr>
+    <h4>Q9</h4>
+    <pre><code>SELECT ?sensor ?slope ?intercept ?r2 WHERE {
+  ?sensor a/rdfs:subClassOf* sosa:Sensor .
+  OPTIONAL { ?sensor eau:hasCalibrationSlope ?slope . }
+  OPTIONAL { ?sensor eau:hasCalibrationIntercept ?intercept . }
+  OPTIONAL { ?sensor eau:hasCalibrationR2 ?r2 . }
+} ORDER BY ?sensor</code></pre>
+    <hr>
+    <pre><code>&lt;https://w3id.org/eautonome/conductivitySensorCold&gt; UNDEF UNDEF UNDEF .
+&lt;https://w3id.org/eautonome/conductivitySensorHot&gt; 0.9968 -1.122 0.9998 .
+&lt;https://w3id.org/eautonome/flowmeterBasementCold&gt; 0.957 UNDEF 0.9988 .
+&lt;https://w3id.org/eautonome/flowmeterBathroomCold&gt; 0.957 UNDEF 0.9988 .
+&lt;https://w3id.org/eautonome/flowmeterBathroomHot&gt; 0.957 UNDEF 0.9988 .
+&lt;https://w3id.org/eautonome/flowmeterHeaterOutput&gt; 0.957 UNDEF 0.9988 .
+&lt;https://w3id.org/eautonome/flowmeterToiletCold&gt; 0.957 UNDEF 0.9988 .
+&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt; 0.957 UNDEF 0.9988 .</code></pre>
+    <hr>
+    <h4>R1</h4>
+    <pre><code>SELECT DISTINCT ?sensor WHERE {
+  eau:eautonomeSystem sosa:hosts/sosa:hosts/sosa:hosts ?sensor .
+  ?sensor a/rdfs:subClassOf* sosa:Sensor .
+} ORDER BY ?sensor</code></pre>
+    <hr>
+    <pre><code>&lt;https://w3id.org/eautonome/conductivitySensorHot&gt;
+&lt;https://w3id.org/eautonome/flowmeterBasementCold&gt;
+&lt;https://w3id.org/eautonome/flowmeterBathroomCold&gt;
+&lt;https://w3id.org/eautonome/flowmeterBathroomHot&gt;
+&lt;https://w3id.org/eautonome/flowmeterHeaterOutput&gt;
+&lt;https://w3id.org/eautonome/flowmeterToiletCold&gt;
+&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt;</code></pre>
+    <hr>
+    <h4>R3</h4>
+    <pre><code>SELECT ?sensor ?mp ?status WHERE {
+  ?sensor eau:monitors ?mp ;
+          eau:hasOperationalStatus ?status .
+  FILTER(?status IN ("inactive", "planned"))
+} ORDER BY ?sensor</code></pre>
+    <hr>
+    <pre><code>&lt;https://w3id.org/eautonome/conductivitySensorCold&gt; &lt;https://w3id.org/eautonome/mpBasementCold&gt; "planned" .
+&lt;https://w3id.org/eautonome/flowmeterBasementCold&gt; &lt;https://w3id.org/eautonome/mpBasementCold&gt; "inactive" .
+&lt;https://w3id.org/eautonome/flowmeterBathroomCold&gt; &lt;https://w3id.org/eautonome/mpBathroomCold&gt; "inactive" .
+&lt;https://w3id.org/eautonome/flowmeterToiletCold&gt; &lt;https://w3id.org/eautonome/mpToiletCold&gt; "inactive" .
+&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt; &lt;https://w3id.org/eautonome/mpWashingMachine&gt; "inactive" .</code></pre>
+    <hr>
 </section>
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
@@ -600,8 +667,8 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Members</th>
                 <td>
-                    <a href="https://w3id.org/eautonome/conductivitySensorHot">eau:conductivitySensorHot</a><br/>
                     <a href="https://w3id.org/eautonome/conductivitySensorCold">eau:conductivitySensorCold</a><br/>
+                    <a href="https://w3id.org/eautonome/conductivitySensorHot">eau:conductivitySensorHot</a><br/>
                 </td>
             </tr>
         </table>
@@ -619,13 +686,13 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A distinct, time-bound context describing a domestic water use activity linked to observation collections.</p>
+                    <p>A temporal context representing a domestic water use activity linked to observation collections.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="http://schema.org/Event">schema:Event</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="http://schema.org/Event">schema1:Event</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -637,9 +704,9 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Members</th>
                 <td>
+                    <a href="https://w3id.org/eautonome/eventMorningShower">eau:eventMorningShower</a><br/>
                     <a href="https://w3id.org/eautonome/eventEveningShower">eau:eventEveningShower</a><br/>
                     <a href="https://w3id.org/eautonome/eventMiddayDishwashing">eau:eventMiddayDishwashing</a><br/>
-                    <a href="https://w3id.org/eautonome/eventMorningShower">eau:eventMorningShower</a><br/>
                 </td>
             </tr>
         </table>
@@ -657,7 +724,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>An indoor residential space where water consumption or collection occurs.</p>
+                    <p>A room in a dwelling where water consumption or collection takes place.</p>
                 </td>
             </tr>
             <tr>
@@ -669,18 +736,18 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="#locatedin">located in</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#servesendpoint">serves endpoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#locatedin">located in</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Members</th>
                 <td>
-                    <a href="https://w3id.org/eautonome/roomToilet">eau:roomToilet</a><br/>
-                    <a href="https://w3id.org/eautonome/roomBathroom">eau:roomBathroom</a><br/>
-                    <a href="https://w3id.org/eautonome/roomBasement">eau:roomBasement</a><br/>
                     <a href="https://w3id.org/eautonome/roomKitchen">eau:roomKitchen</a><br/>
+                    <a href="https://w3id.org/eautonome/roomBasement">eau:roomBasement</a><br/>
                     <a href="https://w3id.org/eautonome/roomGarden">eau:roomGarden</a><br/>
+                    <a href="https://w3id.org/eautonome/roomBathroom">eau:roomBathroom</a><br/>
+                    <a href="https://w3id.org/eautonome/roomToilet">eau:roomToilet</a><br/>
                 </td>
             </tr>
         </table>
@@ -698,7 +765,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>The standard routine employed by the system to acquire and log sensor data.</p>
+                    <p>The procedure used to acquire and record sensor data.</p>
                 </td>
             </tr>
             <tr>
@@ -710,9 +777,9 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="#hassamplingperiod">has sampling period</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#hastransmissioninterval">has transmission interval</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="#hastriggerthreshold">has trigger threshold</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="#hassamplingperiod">has sampling period</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -736,7 +803,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A system designed to collect, treat, and redistribute domestic greywater.</p>
+                    <p>A system that collects, treats, and redistributes domestic greywater.</p>
                 </td>
             </tr>
             <tr>
@@ -767,7 +834,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A specific location within the water infrastructure where observations are made.</p>
+                    <p>A location within the water infrastructure where observations are made.</p>
                 </td>
             </tr>
             <tr>
@@ -780,21 +847,27 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="#measuresonasset">measures on asset</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#servesendpoint">serves endpoint</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="#measureswaterkind">measures water kind</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="#locatedin">located in</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#measureswaterkind">measures water kind</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#servesendpoint">serves endpoint</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#measuresonasset">measures on asset</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#monitors">monitors</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Members</th>
                 <td>
                     <a href="https://w3id.org/eautonome/mpToiletCold">eau:mpToiletCold</a><br/>
-                    <a href="https://w3id.org/eautonome/mpBasementCold">eau:mpBasementCold</a><br/>
+                    <a href="https://w3id.org/eautonome/mpBathroomHot">eau:mpBathroomHot</a><br/>
                     <a href="https://w3id.org/eautonome/mpWashingMachine">eau:mpWashingMachine</a><br/>
+                    <a href="https://w3id.org/eautonome/mpBasementCold">eau:mpBasementCold</a><br/>
                     <a href="https://w3id.org/eautonome/mpHeaterOutput">eau:mpHeaterOutput</a><br/>
                     <a href="https://w3id.org/eautonome/mpBathroomCold">eau:mpBathroomCold</a><br/>
-                    <a href="https://w3id.org/eautonome/mpBathroomHot">eau:mpBathroomHot</a><br/>
                 </td>
             </tr>
         </table>
@@ -831,12 +904,12 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             <tr>
                 <th>Members</th>
                 <td>
-                    <a href="https://w3id.org/eautonome/flowmeterHeaterOutput">eau:flowmeterHeaterOutput</a><br/>
-                    <a href="https://w3id.org/eautonome/flowmeterBasementCold">eau:flowmeterBasementCold</a><br/>
+                    <a href="https://w3id.org/eautonome/flowmeterToiletCold">eau:flowmeterToiletCold</a><br/>
                     <a href="https://w3id.org/eautonome/flowmeterBathroomCold">eau:flowmeterBathroomCold</a><br/>
                     <a href="https://w3id.org/eautonome/flowmeterWashingMachine">eau:flowmeterWashingMachine</a><br/>
-                    <a href="https://w3id.org/eautonome/flowmeterToiletCold">eau:flowmeterToiletCold</a><br/>
                     <a href="https://w3id.org/eautonome/flowmeterBathroomHot">eau:flowmeterBathroomHot</a><br/>
+                    <a href="https://w3id.org/eautonome/flowmeterHeaterOutput">eau:flowmeterHeaterOutput</a><br/>
+                    <a href="https://w3id.org/eautonome/flowmeterBasementCold">eau:flowmeterBasementCold</a><br/>
                 </td>
             </tr>
         </table>
@@ -849,6 +922,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         <li><a href="#locatedin">located in</a></li>
         <li><a href="#measuresonasset">measures on asset</a></li>
         <li><a href="#measureswaterkind">measures water kind</a></li>
+        <li><a href="#monitors">monitors</a></li>
         <li><a href="#servesendpoint">serves endpoint</a></li>
     </ul>
     <div class="entity property" id="hasconsumptionevent">
@@ -943,6 +1017,35 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
             </tr>
         </table>
     </div>
+    <div class="entity property" id="monitors">
+        <h3>monitors<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#monitors" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/eautonome/monitors</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Static topology link from a sensor to the measurement point it monitors, independent of any observation.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
     <div class="entity property" id="servesendpoint">
         <h3>serves endpoint<sup title="object property" class="sup-op">op</sup><span style="float:right; margin-right:10px; font-size:smaller;">
             <a href="#servesendpoint" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties" title="Object Properties Index">OPs</a></span>
@@ -977,6 +1080,7 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         <li><a href="#hascalibrationslope">has calibration slope</a></li>
         <li><a href="#hasflowequation">has flow equation</a></li>
         <li><a href="#hasI2Caddress">has I2C address</a></li>
+        <li><a href="#hasoperationalstatus">has operational status</a></li>
         <li><a href="#hassamplingperiod">has sampling period</a></li>
         <li><a href="#hastransmissioninterval">has transmission interval</a></li>
         <li><a href="#hastriggerthreshold">has trigger threshold</a></li>
@@ -1103,6 +1207,29 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
                 <th>Domain(s)</th>
                 <td>
                     <a href="#Analogtodigitalconverter">Analog to digital converter</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasoperationalstatus">
+        <h3>has operational status<sup title="datatype property" class="sup-dp">dp</sup><span style="float:right; margin-right:10px; font-size:smaller;">
+            <a href="#hasoperationalstatus" title="fragment link to here">#</a>&nbsp;<a href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+        </h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/eautonome/hasOperationalStatus</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://www.w3.org/ns/sosa/System">sosa:System</a><sup class="sup-c" title="class">c</sup>
                 </td>
             </tr>
             <tr>
@@ -1253,7 +1380,6 @@ EAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ
         </table>
     </div>
     </section>
-
   <section id="namespaces">
     <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <dl>
