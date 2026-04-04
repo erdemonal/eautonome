@@ -95,10 +95,12 @@ s4watr:WaterDevice rdfs:subClassOf sosa:System .
 s4watr:WaterMeter rdfs:subClassOf sosa:System .
 
 eau:hasFlowEquation a owl:DatatypeProperty ; rdfs:domain eau:VortexFlowmeter ; rdfs:range xsd:string ;
-    rdfs:label "has flow equation"@en .
+    rdfs:label "has flow equation"@en ;
+    rdfs:comment "Equation relating sensor current to measured flow rate."@en .
 
 eau:hasCalibrationSlope a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:decimal ;
-    rdfs:label "has calibration slope"@en .
+    rdfs:label "has calibration slope"@en ;
+    rdfs:comment "Numeric slope used to convert sensor readings to flow values."@en .
 
 eau:hasCalibrationR2 a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ;
     rdfs:range [ a rdfs:Datatype ;
@@ -108,45 +110,58 @@ eau:hasCalibrationR2 a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ;
             [ xsd:maxInclusive "1.0"^^xsd:decimal ]
         )
     ] ;
-    rdfs:label "has calibration R2"@en .
+    rdfs:label "has calibration R2"@en ;
+    rdfs:comment "Coefficient of determination for the calibration."@en .
 
 eau:hasCalibrationIntercept a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:decimal ;
-    rdfs:label "has calibration intercept"@en .
+    rdfs:label "has calibration intercept"@en ;
+    rdfs:comment "Intercept for converting sensor readings to flow values."@en .
 
 eau:hasTriggerThreshold a owl:DatatypeProperty ; rdfs:domain eau:EautonomeObservingProcedure ; rdfs:range xsd:decimal ;
-    rdfs:label "has trigger threshold"@en .
+    rdfs:label "has trigger threshold"@en ;
+    rdfs:comment "Minimum change in the measured quantity that triggers an observation."@en .
 
 eau:hasSamplingPeriod a owl:DatatypeProperty ; rdfs:domain eau:EautonomeObservingProcedure ; rdfs:range xsd:decimal ;
-    rdfs:label "has sampling period"@en .
+    rdfs:label "has sampling period"@en ;
+    rdfs:comment "Interval between sensor samples, in seconds."@en .
 
 eau:hasTransmissionInterval a owl:DatatypeProperty ; rdfs:domain eau:EautonomeObservingProcedure ; rdfs:range xsd:decimal ;
-    rdfs:label "has transmission interval"@en .
+    rdfs:label "has transmission interval"@en ;
+    rdfs:comment "Time interval between consecutive observation recordings, in seconds."@en .
 
 eau:hasI2CAddress a owl:DatatypeProperty ; rdfs:domain eau:ADConverter ; rdfs:range xsd:string ;
-    rdfs:label "has I2C address"@en .
+    rdfs:label "has I2C address"@en ;
+    rdfs:comment "I2C bus address of the ADC device."@en .
 
 eau:hasAnalogInput a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:string ;
-    rdfs:label "has analog input"@en .
+    rdfs:label "has analog input"@en ;
+    rdfs:comment "Identifier of the analog input channel used on the ADC."@en .
 
 eau:hasOperationalStatus a owl:DatatypeProperty ;
     rdfs:domain sosa:System ;
     rdfs:range xsd:string ;
-    rdfs:label "has operational status"@en .
+    rdfs:label "has operational status"@en ;
+    rdfs:comment "Current status of the system, can be active, inactive, or planned."@en .
 
 eau:servesEndpoint a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range eau:DomesticRoom ;
-    rdfs:label "serves endpoint"@en .
+    rdfs:label "serves endpoint"@en ;
+    rdfs:comment "Connects a measurement point to the room where the water is used."@en .
 
 eau:measuresWaterKind a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range s4watr:WaterKind ;
-    rdfs:label "measures water kind"@en .
+    rdfs:label "measures water kind"@en ;
+    rdfs:comment "Specifies the type of water measured."@en .
 
 eau:hasConsumptionEvent a owl:ObjectProperty ; rdfs:domain sosa:ObservationCollection ; rdfs:range eau:ConsumptionEvent ;
-    rdfs:label "has consumption event"@en .
+    rdfs:label "has consumption event"@en ;
+    rdfs:comment "Associates a collection of observations with a domestic water usage event."@en .
 
 eau:locatedIn a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range eau:DomesticRoom ;
-    rdfs:label "located in"@en .
+    rdfs:label "located in"@en ;
+    rdfs:comment "The room where the measurement point is located."@en .
 
 eau:measuresOnAsset a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range s4watr:WaterAsset ;
-    rdfs:label "measures on asset"@en .
+    rdfs:label "measures on asset"@en ;
+    rdfs:comment "The pipe or water asset instrumented at this measurement point."@en .
 
 eau:monitors a owl:ObjectProperty ;
     rdfs:domain sosa:Sensor ;
@@ -158,64 +173,89 @@ eau:monitors a owl:ObjectProperty ;
 # Individuals 
 #
 eau:Greywater a owl:NamedIndividual , s4watr:WaterKind ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Greywater"@en , "Eaux grises"@fr ;
     rdfs:comment "Domestic wastewater excluding blackwater."@en .
 
 eau:TreatedGreywater a owl:NamedIndividual , s4watr:WaterKind ;
-    rdfs:label "Treated greywater"@en , "Eaux grises traitées"@fr .
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:label "Treated greywater"@en , "Eaux grises traitées"@fr ;
+    rdfs:comment "Greywater after treatment."@en .
 
 eau:DomesticReuse a owl:NamedIndividual , s4watr:WaterUse ;
-    rdfs:label "Domestic reuse"@en , "Réutilisation domestique"@fr .
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:label "Domestic reuse"@en , "Réutilisation domestique"@fr ;
+    rdfs:comment "Water reused in the household."@en .
 
-eau:roomBathroom a eau:DomesticRoom ;
+eau:roomBathroom a eau:DomesticRoom , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom"@en , "Salle de bain"@fr ;
     rdfs:comment "A domestic room primarily used for bathing, sink use, and laundry water consumption."@en .
 
-eau:roomKitchen a eau:DomesticRoom ;
+eau:roomKitchen a eau:DomesticRoom , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Kitchen"@en , "Cuisine"@fr ;
     rdfs:comment "A domestic room primarily used for cooking and dishwashing."@en .
 
-eau:roomBasement a eau:DomesticRoom ;
+eau:roomBasement a eau:DomesticRoom , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Basement"@en , "Cave"@fr ;
     rdfs:comment "A domestic room holding the connection to the cold water supply."@en .
 
-eau:roomToilet a eau:DomesticRoom ;
+eau:roomToilet a eau:DomesticRoom , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Toilet"@en , "Toilettes"@fr ;
     rdfs:comment "A domestic room where treated greywater is reused."@en .
 
-eau:roomGarden a eau:DomesticRoom ;
+eau:roomGarden a eau:DomesticRoom , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Garden"@en , "Jardin"@fr ;
     rdfs:comment "An outdoor domestic area that can receive treated greywater for irrigation."@en .
 
-eau:pipeColdWaterEntry a s4watr:Pipe ;
+eau:pipeColdWaterEntry a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Cold water main entry"@en , "Arrivée d'eau froide"@fr ;
+    rdfs:comment "Entry pipe for cold water."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:pipeHeaterOutput a s4watr:Pipe ;
+eau:pipeHeaterOutput a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Hot water heater output pipe"@en , "Sortie d'eau chaude de la chaudière"@fr ;
+    rdfs:comment "Pipe delivering hot water from the heater."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:pipeBathroomHot a s4watr:Pipe ;
+eau:pipeBathroomHot a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom hot water pipe"@en , "Tuyauterie SDB eau chaude"@fr ;
+    rdfs:comment "Hot water pipe for the bathroom."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:pipeBathroomCold a s4watr:Pipe ;
+eau:pipeBathroomCold a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom cold water pipe"@en , "Tuyauterie SDB eau froide"@fr ;
+    rdfs:comment "Cold water pipe for the bathroom."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:pipeWashingMachine a s4watr:Pipe ;
+eau:pipeWashingMachine a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Washing machine pipe"@en , "Tuyauterie de la machine à laver"@fr ;
+    rdfs:comment "Water pipe supplying the washing machine."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:pipeBasementCold a s4watr:Pipe ;
+eau:pipeBasementCold a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Basement pipe"@en , "Tuyauterie de la cave"@fr ;
+    rdfs:comment "Cold water pipe in the basement."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:pipeToiletCold a s4watr:Pipe ;
+eau:pipeToiletCold a s4watr:Pipe , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Toilet pipe"@en , "Tuyauterie des toilettes"@fr ;
+    rdfs:comment "Pipe supplying cold water to the toilet."@en ;
     s4watr:isDesignedFor s4watr:DrinkingWater .
 
-eau:eautonomeSystem a eau:GreywaterRecyclingSystem ;
+eau:eautonomeSystem a eau:GreywaterRecyclingSystem , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Eautonome pilot system"@en , "Système pilote Eautonome"@fr ;
     rdfs:comment "A greywater recycling pilot installation located in a residential house in Noisiel."@en ;
     eau:hasOperationalStatus "active" ;
@@ -223,7 +263,8 @@ eau:eautonomeSystem a eau:GreywaterRecyclingSystem ;
     s4watr:isIntendedFor eau:DomesticReuse , s4watr:Domestic ;
     sosa:hosts eau:raspberryPi4 .
 
-eau:raspberryPi4 a sosa:Platform ;
+eau:raspberryPi4 a sosa:Platform , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Raspberry Pi 4"@en , "Raspberry Pi 4"@fr ;
     rdfs:comment "The computing platform responsible for executing the observing procedure and hosting the analog to digital converters."@en ;
     eau:hasOperationalStatus "active" ;
@@ -233,16 +274,20 @@ eau:raspberryPi4 a sosa:Platform ;
 # 
 # Adc cards
 #
-eau:adcCard1 a eau:ADConverter ;
+eau:adcCard1 a eau:ADConverter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "ADC card 1"@en , "Carte ADC 1"@fr ;
+    rdfs:comment "Analog to digital converter card for bathroom flowmeters."@en ;
     eau:hasI2CAddress "0x48" ;
     eau:hasOperationalStatus "active" ;
     sosa:isHostedBy eau:raspberryPi4 ;
     sosa:hosts eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot , 
                eau:flowmeterBathroomCold , eau:flowmeterWashingMachine .
 
-eau:adcCard2 a eau:ADConverter ;
+eau:adcCard2 a eau:ADConverter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "ADC card 2"@en , "Carte ADC 2"@fr ;
+    rdfs:comment "Analog to digital converter card for basement and toilet flowmeters and hot conductivity sensor."@en ;
     eau:hasI2CAddress "0x49" ;
     eau:hasOperationalStatus "active" ;
     sosa:isHostedBy eau:raspberryPi4 ;
@@ -251,7 +296,8 @@ eau:adcCard2 a eau:ADConverter ;
 # 
 # Flowmeters, Autosen AS006
 #
-eau:flowmeterHeaterOutput a eau:VortexFlowmeter ;
+eau:flowmeterHeaterOutput a eau:VortexFlowmeter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Heater output flowmeter"@en , "Débitmètre de la sortie chaudière"@fr ;
     rdfs:comment "Reference flowmeter for data acquisition."@en ;
     eau:hasOperationalStatus "active" ;
@@ -264,8 +310,10 @@ eau:flowmeterHeaterOutput a eau:VortexFlowmeter ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
-eau:flowmeterBathroomHot a eau:VortexFlowmeter ;
+eau:flowmeterBathroomHot a eau:VortexFlowmeter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom hot water flowmeter"@en , "Débitmètre d'eau chaude de la salle de bain"@fr ;
+    rdfs:comment "Measures hot water flow to the bathroom circuit."@en ;
     eau:hasOperationalStatus "active" ;
     eau:hasFlowEquation "Q = 0.938 * (I - 4)" ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
@@ -276,8 +324,10 @@ eau:flowmeterBathroomHot a eau:VortexFlowmeter ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
-eau:flowmeterBathroomCold a eau:VortexFlowmeter ;
+eau:flowmeterBathroomCold a eau:VortexFlowmeter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom cold water flowmeter"@en , "Débitmètre d'eau froide de la salle de bain"@fr ;
+    rdfs:comment "Measures cold water flow to the bathroom circuit."@en ;
     eau:hasOperationalStatus "inactive" ;
     eau:hasFlowEquation "Q = 0.938 * (I - 4)" ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
@@ -288,8 +338,10 @@ eau:flowmeterBathroomCold a eau:VortexFlowmeter ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
-eau:flowmeterWashingMachine a eau:VortexFlowmeter ;
+eau:flowmeterWashingMachine a eau:VortexFlowmeter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Washing machine flowmeter"@en , "Débitmètre de la machine à laver"@fr ;
+    rdfs:comment "Measures water supply to the washing machine."@en ;
     eau:hasOperationalStatus "inactive" ;
     eau:hasFlowEquation "Q = 0.938 * (I - 4)" ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
@@ -300,7 +352,8 @@ eau:flowmeterWashingMachine a eau:VortexFlowmeter ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
-eau:flowmeterBasementCold a eau:VortexFlowmeter ;
+eau:flowmeterBasementCold a eau:VortexFlowmeter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Basement flowmeter"@en , "Débitmètre de la cave"@fr ;
     rdfs:comment "Flowmeter connected to the main cold water supply via an extended cable."@en ;
     eau:hasOperationalStatus "inactive" ;
@@ -313,8 +366,10 @@ eau:flowmeterBasementCold a eau:VortexFlowmeter ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
-eau:flowmeterToiletCold a eau:VortexFlowmeter ;
+eau:flowmeterToiletCold a eau:VortexFlowmeter , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Toilet flowmeter"@en , "Débitmètre des toilettes"@fr ;
+    rdfs:comment "Measures flow to the toilet."@en ;
     eau:hasOperationalStatus "inactive" ;
     eau:hasFlowEquation "Q = 0.938 * (I - 4)" ;
     eau:hasCalibrationSlope "0.957"^^xsd:decimal ; 
@@ -328,7 +383,8 @@ eau:flowmeterToiletCold a eau:VortexFlowmeter ;
 # 
 # Conductivity and Temperature Sensors
 #
-eau:conductivitySensorHot a eau:ConductivityTemperatureSensor ;
+eau:conductivitySensorHot a eau:ConductivityTemperatureSensor , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Hot water conductivity sensor"@en , "Capteur de conductivité d'eau chaude"@fr ;
     rdfs:comment "A sensor measuring water conductivity and temperature."@en ;
     eau:hasOperationalStatus "active" ;
@@ -342,7 +398,8 @@ eau:conductivitySensorHot a eau:ConductivityTemperatureSensor ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
-eau:conductivitySensorCold a eau:ConductivityTemperatureSensor ;
+eau:conductivitySensorCold a eau:ConductivityTemperatureSensor , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Cold water conductivity sensor"@en , "Capteur de conductivité d'eau froide"@fr ;
     rdfs:comment "A planned sensor for cold water entry."@en ;
     eau:hasOperationalStatus "planned" ;
@@ -352,7 +409,8 @@ eau:conductivitySensorCold a eau:ConductivityTemperatureSensor ;
 # 
 # Measurement points
 #
-eau:mpHeaterOutput a eau:MeasurementPoint ;
+eau:mpHeaterOutput a eau:MeasurementPoint , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Heater output measurement point"@en , "Point de mesure de la sortie chaudière"@fr ;
     rdfs:comment "A reference measurement point."@en ;
     eau:measuresWaterKind s4watr:DrinkingWater ; 
@@ -360,39 +418,48 @@ eau:mpHeaterOutput a eau:MeasurementPoint ;
     eau:measuresOnAsset eau:pipeHeaterOutput ;
     sosa:hasProperty s4watr:FlowRate , s4watr:FlowTemperature , s4watr:FlowVolume , s4watr:Conductivity , s4watr:Temperature .
 
-eau:mpBathroomHot a eau:MeasurementPoint ;
+eau:mpBathroomHot a eau:MeasurementPoint , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom hot water measurement point"@en , "Point de mesure d'eau chaude de la salle de bain"@fr ;
+    rdfs:comment "Measurement point on the bathroom hot water circuit."@en ;
     eau:measuresWaterKind s4watr:DrinkingWater ; 
     eau:locatedIn eau:roomBathroom ;
     eau:measuresOnAsset eau:pipeBathroomHot ;
     eau:servesEndpoint eau:roomBathroom ; 
     sosa:hasProperty s4watr:FlowRate .
 
-eau:mpBathroomCold a eau:MeasurementPoint ;
+eau:mpBathroomCold a eau:MeasurementPoint , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Bathroom cold water measurement point"@en , "Point de mesure d'eau froide de la salle de bain"@fr ;
+    rdfs:comment "Measurement point on the bathroom cold water circuit."@en ;
     eau:measuresWaterKind s4watr:DrinkingWater ; 
     eau:locatedIn eau:roomBathroom ;
     eau:measuresOnAsset eau:pipeBathroomCold ;
     eau:servesEndpoint eau:roomBathroom ; 
     sosa:hasProperty s4watr:FlowRate .
 
-eau:mpWashingMachine a eau:MeasurementPoint ;
+eau:mpWashingMachine a eau:MeasurementPoint , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Washing machine measurement point"@en , "Point de mesure de la machine à laver"@fr ;
+    rdfs:comment "Measurement point for water to the washing machine."@en ;
     eau:measuresWaterKind s4watr:DrinkingWater ; 
     eau:locatedIn eau:roomBathroom ;
     eau:measuresOnAsset eau:pipeWashingMachine ;
     eau:servesEndpoint eau:roomBathroom ; 
     sosa:hasProperty s4watr:FlowRate .
 
-eau:mpBasementCold a eau:MeasurementPoint ;
+eau:mpBasementCold a eau:MeasurementPoint , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Basement measurement point"@en , "Point de mesure de la cave"@fr ;
+    rdfs:comment "Measurement point on the basement cold water supply."@en ;
     eau:measuresWaterKind s4watr:DrinkingWater ; 
     eau:locatedIn eau:roomBasement ;
     eau:measuresOnAsset eau:pipeBasementCold ;
     eau:servesEndpoint eau:roomBasement ; 
     sosa:hasProperty s4watr:FlowRate .
 
-eau:mpToiletCold a eau:MeasurementPoint ;
+eau:mpToiletCold a eau:MeasurementPoint , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Toilet measurement point"@en , "Point de mesure des toilettes"@fr ;
     rdfs:comment "Measurement point for treated greywater reuse."@en ;
     eau:measuresWaterKind eau:TreatedGreywater ; 
@@ -404,7 +471,8 @@ eau:mpToiletCold a eau:MeasurementPoint ;
 # 
 # Deployment
 #
-eau:eautonomeDeployment a sosa:Deployment ;
+eau:eautonomeDeployment a sosa:Deployment , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Eautonome deployment"@en , "Déploiement Eautonome"@fr ;
     rdfs:comment "The configuration of sensors and platforms within the system."@en ;
     sosa:deployedOnPlatform eau:raspberryPi4 ;
@@ -417,7 +485,8 @@ eau:eautonomeDeployment a sosa:Deployment ;
 # 
 # Observing procedure
 #
-eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure ;
+eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
     rdfs:comment "The procedure used to acquire and record sensor data."@en ;
     eau:hasTriggerThreshold "0.05"^^xsd:decimal ;
@@ -427,7 +496,8 @@ eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure ;
 # 
 # Greywater FOI
 #
-eau:domesticGreywater a s4watr:Water ;
+eau:domesticGreywater a s4watr:Water , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Domestic greywater"@en , "Eaux grises domestiques"@fr ;
     rdfs:comment "Greywater within the system, used as the feature of interest for observations."@en ;
     sosa:hasProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature , s4watr:Conductivity , s4watr:Temperature .
@@ -435,19 +505,22 @@ eau:domesticGreywater a s4watr:Water ;
 # 
 # Consumption events
 #
-eau:eventMorningShower a eau:ConsumptionEvent ;
+eau:eventMorningShower a eau:ConsumptionEvent , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Morning shower event"@en , "Événement de douche matinale"@fr ;
     rdfs:comment "A morning water consumption event."@en ;
     time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ] ;
     time:hasEnd [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:45:00+02:00"^^xsd:dateTime ] .
 
-eau:eventMiddayDishwashing a eau:ConsumptionEvent ;
+eau:eventMiddayDishwashing a eau:ConsumptionEvent , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Midday dishwashing event"@en , "Événement de vaisselle de midi"@fr ;
     rdfs:comment "A midday water consumption event."@en ;
     time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T12:30:00+02:00"^^xsd:dateTime ] ;
     time:hasEnd [ a time:Instant ; time:inXSDDateTime "2023-07-15T12:45:00+02:00"^^xsd:dateTime ] .
 
-eau:eventEveningShower a eau:ConsumptionEvent ;
+eau:eventEveningShower a eau:ConsumptionEvent , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Evening shower event"@en , "Événement de douche du soir"@fr ;
     rdfs:comment "An evening water consumption event."@en ;
     time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T23:15:00+02:00"^^xsd:dateTime ] ;
@@ -456,7 +529,9 @@ eau:eventEveningShower a eau:ConsumptionEvent ;
 # 
 # Observations
 #
-eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation ;
+eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:comment "Flow rate measured at the heater output."@en ;    
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -464,7 +539,9 @@ eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation ;
     sosa:hasSimpleResult "4.85"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "4.85"^^xsd:decimal ; qudt:unit unit:L-PER-MIN ] .
 
-eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation ;
+eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:comment "Conductivity measured at the heater output."@en ;    
     sosa:madeBySensor eau:conductivitySensorHot ; sosa:observedProperty s4watr:Conductivity ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -472,7 +549,9 @@ eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation ;
     sosa:hasSimpleResult "542.0"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "542.0"^^xsd:decimal ; qudt:unit unit:MicroS-PER-CentiM ] .
 
-eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation ;
+eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:comment "Water temperature measured at the heater output."@en ;    
     sosa:madeBySensor eau:conductivitySensorHot ; sosa:observedProperty s4watr:FlowTemperature ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -480,7 +559,9 @@ eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation ;
     sosa:hasSimpleResult "38.5"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "38.5"^^xsd:decimal ; qudt:unit unit:DEG_C ] .
 
-eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation ;
+eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:comment "Flow rate measured at the heater output."@en ;    
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -488,21 +569,25 @@ eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation ;
     sosa:hasSimpleResult "3.40"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "3.40"^^xsd:decimal ; qudt:unit unit:L-PER-MIN ] .
 
-eau:obsColMorning20230715 a sosa:ObservationCollection ;
+eau:obsColMorning20230715 a sosa:ObservationCollection , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Morning observations"@en ;
+    rdfs:comment "Observations for the morning shower event."@en ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     eau:hasConsumptionEvent eau:eventMorningShower ;
     sosa:hasMember eau:obsFlowHeaterOutput20230715T0730 .
 
-eau:obsColMultiProperty20230715T0730 a sosa:ObservationCollection ;
+eau:obsColMultiProperty20230715T0730 a sosa:ObservationCollection , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Concurrent heater output observations at 07:30"@en , "Observations simultanées de la sortie chaudière à 07:30"@fr ;
     rdfs:comment "Concurrent flow, conductivity, and temperature observations."@en ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; 
     sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:hasMember eau:obsFlowHeaterOutput20230715T0730 , eau:obsConductivityHeaterOutput20230715T0730 , eau:obsTemperatureHeaterOutput20230715T0730 .
 
-eau:obsColAugust2023 a sosa:ObservationCollection ;
+eau:obsColAugust2023 a sosa:ObservationCollection , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "August 2023 observations"@en , "Observations août 2023"@fr ;
     rdfs:comment "A collection of observations from August 2023."@en ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
