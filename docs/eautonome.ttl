@@ -27,7 +27,7 @@
     dcterms:title "Projet maison Eautonome"@fr ;
     dcterms:description "This ontology aims to describe the monitoring and observations of the Eautonome greywater recycling system."@en ;
     dcterms:description "Cette ontologie vise à décrire le suivi et les observations du système de recyclage des eaux grises Eautonome."@fr ;
-    dcterms:contributor <https://orcid.org/0009-0006-6580-3711> ;
+    dcterms:creator erdemonal:me ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     owl:versionInfo "1.0.0" ;
     owl:versionIRI <https://w3id.org/eautonome/1.0.0/> ;
@@ -37,13 +37,7 @@
     rdfs:seeAlso <https://www.leesu.fr/projet-eautonome> ;
     owl:imports <http://www.w3.org/ns/sosa/> ,
                 <https://saref.etsi.org/saref4watr/v2.1.1/> .
-
-<https://orcid.org/0009-0006-6580-3711> a schema:Person ;
-    schema:givenName "Erdem" ; 
-    schema:familyName "Önal" ;
-    schema:affiliation <https://www.mines-stetienne.fr/> , <https://www.univ-st-etienne.fr/> ; 
-    schema:url <https://w3id.org/people/erdemonal/me> . 
-
+                
 #
 # Classes
 #
