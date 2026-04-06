@@ -25,13 +25,12 @@
 <https://w3id.org/eautonome/> rdf:type owl:Ontology ;
     dcterms:title "Projet maison Eautonome"@en ;
     dcterms:title "Projet maison Eautonome"@fr ;
-    dcterms:description "This ontology aims to describe the monitoring and observations of the Eautonome greywater recycling system."@en ;
-    dcterms:description "Cette ontologie vise à décrire le suivi et les observations du système de recyclage des eaux grises Eautonome."@fr ;
+    dcterms:description "This ontology provides an OWL representation of the Projet Maison Eautonome. It models domestic water uses, quality levels, and greywater reuse processes, specifically describing the monitoring and observations of the system to reduce water consumption."@en ;
+    dcterms:description "Cette ontologie fournit une représentation OWL du Projet Maison Eautonome. Elle modélise les usages domestiques de l'eau, les niveaux de qualité et les processus de réutilisation des eaux grises, en décrivant spécifiquement le suivi et les observations du système pour réduire la consommation d'eau."@fr ;
     dcterms:creator erdemonal:me ;
-    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     owl:versionInfo "1.0.0" ;
     owl:versionIRI <https://w3id.org/eautonome/1.0.0/> ;
-    dcterms:created "2026-04-03"^^xsd:date ;
+    dcterms:created "2026-04-07"^^xsd:date ;
     vann:preferredNamespacePrefix "eau" ;
     vann:preferredNamespaceUri "https://w3id.org/eautonome/" ;
     rdfs:seeAlso <https://www.leesu.fr/projet-eautonome> ;
@@ -44,42 +43,42 @@
 eau:GreywaterRecyclingSystem a owl:Class ;
     rdfs:subClassOf s4watr:WaterInfrastructure , sosa:Platform ;
     rdfs:label "Greywater recycling system"@en , "Système de recyclage des eaux grises"@fr ;
-    rdfs:comment "A system that collects, treats, and redistributes domestic greywater."@en .
+    rdfs:comment "A system for collecting, treating, and redistributing domestic greywater."@en .
 
 eau:DomesticRoom a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest ;
     rdfs:label "Domestic room"@en , "Pièce domestique"@fr ;
-    rdfs:comment "A room in a dwelling where water consumption or collection takes place."@en .
+    rdfs:comment "A room in a dwelling in which water consumption or collection occurs."@en .
 
 eau:MeasurementPoint a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest , s4watr:WaterAsset ;
     rdfs:label "Measurement point"@en , "Point de mesure"@fr ;
-    rdfs:comment "A location within the water infrastructure where observations are made."@en .
+    rdfs:comment "A location within the water infrastructure at which observations are made."@en .
 
 eau:VortexFlowmeter a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterMeter ;
     rdfs:label "Vortex flowmeter"@en , "Débitmètre à effet vortex"@fr ;
-    rdfs:comment "A sensor that measures water flow rate."@en .
+    rdfs:comment "A sensor measuring water flow rate."@en .
 
 eau:ConductivityTemperatureSensor a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterDevice ;
     rdfs:label "Conductivity and temperature sensor"@en , "Capteur de conductivité et de température"@fr ;
-    rdfs:comment "A device that measures both the electrical conductivity and temperature of water."@en .
+    rdfs:comment "A sensor measuring both the electrical conductivity and temperature of water."@en .
 
 eau:ADConverter a owl:Class ;
     rdfs:subClassOf sosa:System , sosa:Platform ;
     rdfs:label "Analog to digital converter"@en , "Carte ADC"@fr ;
-    rdfs:comment "A component that converts analog signals from sensors into digital data."@en .
+    rdfs:comment "A component for converting analog sensor signals into digital data."@en .
 
 eau:EautonomeObservingProcedure a owl:Class ;
     rdfs:subClassOf sosa:ObservingProcedure ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "The procedure used to acquire and record sensor data."@en .
+    rdfs:comment "A procedure for acquiring and recording sensor data."@en .
 
 eau:ConsumptionEvent a owl:Class ;
     rdfs:subClassOf schema:Event ;
     rdfs:label "Consumption event"@en , "Événement de consommation"@fr ;
-    rdfs:comment "A temporal context representing a domestic water use activity linked to observation collections."@en .
+    rdfs:comment "A temporal entity representing a domestic water use activity linked to observation collections."@en .
 
 #
 # Properties
@@ -260,7 +259,7 @@ eau:eautonomeSystem a eau:GreywaterRecyclingSystem , owl:NamedIndividual ;
 eau:raspberryPi4 a sosa:Platform , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Raspberry Pi 4"@en , "Raspberry Pi 4"@fr ;
-    rdfs:comment "The computing platform responsible for executing the observing procedure and hosting the analog to digital converters."@en ;
+    rdfs:comment "The computing platform executing the observing procedure and hosting the analog-to-digital converters."@en ;
     eau:hasOperationalStatus "active" ;
     sosa:isHostedBy eau:eautonomeSystem ;
     sosa:hosts eau:adcCard1 , eau:adcCard2 .
@@ -482,7 +481,7 @@ eau:eautonomeDeployment a sosa:Deployment , owl:NamedIndividual ;
 eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "The procedure used to acquire and record sensor data."@en ;
+    rdfs:comment "A procedure for acquiring and recording sensor data."@en ;
     eau:hasTriggerThreshold "0.05"^^xsd:decimal ;
     eau:hasSamplingPeriod "2"^^xsd:decimal ;
     eau:hasTransmissionInterval "360"^^xsd:decimal .
@@ -525,7 +524,7 @@ eau:eventEveningShower a eau:ConsumptionEvent , owl:NamedIndividual ;
 #
 eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:comment "Flow rate measured at the heater output."@en ;    
+    rdfs:comment "Measurement of flow rate at the heater output."@en ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -535,7 +534,7 @@ eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
 
 eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:comment "Conductivity measured at the heater output."@en ;    
+    rdfs:comment "Measurement of conductivity at the heater output."@en ;
     sosa:madeBySensor eau:conductivitySensorHot ; sosa:observedProperty s4watr:Conductivity ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -545,7 +544,7 @@ eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndiv
 
 eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:comment "Water temperature measured at the heater output."@en ;    
+    rdfs:comment "Measurement of water temperature at the heater output."@en ;
     sosa:madeBySensor eau:conductivitySensorHot ; sosa:observedProperty s4watr:FlowTemperature ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
@@ -555,7 +554,7 @@ eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndivi
 
 eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:comment "Flow rate measured at the heater output."@en ;    
+    rdfs:comment "Measurement of flow rate at the heater output."@en ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
