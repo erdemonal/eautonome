@@ -28,7 +28,6 @@
     dcterms:description "This ontology provides an OWL representation of the Projet Maison Eautonome. It models domestic water uses, quality levels, and greywater reuse processes, specifically describing the monitoring and observations of the system to reduce water consumption."@en ;
     dcterms:description "Cette ontologie fournit une représentation OWL du Projet Maison Eautonome. Elle modélise les usages domestiques de l'eau, les niveaux de qualité et les processus de réutilisation des eaux grises, en décrivant spécifiquement le suivi et les observations du système pour réduire la consommation d'eau."@fr ;
     dcterms:creator erdemonal:me ;
-    dcterms:created "2026-04-07"^^xsd:date ;
     vann:preferredNamespacePrefix "eau" ;
     vann:preferredNamespaceUri "https://w3id.org/eautonome/" ;
     rdfs:seeAlso <https://www.leesu.fr/projet-eautonome> ;
