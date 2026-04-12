@@ -302,7 +302,7 @@
     <section id="overview">
         <h2>Overview</h2>
         <p>The Eautonome architecture consists of physical water infrastructure and monitoring devices forming an IoT
-            observation system. These components generate data on domestic water usage and water quality.</p>
+            observation system. These components generate observations related to domestic water usage and water quality.</p>
         <p>The ontology describes the greywater recycling infrastructure, the sensor network, and the resulting
             observations. It supports the identification of domestic water usage events, the assessment of sensor
             status, and the optimization of greywater reuse.</p>
@@ -337,9 +337,7 @@
                </code>
                is made by
                <code>
-                &lt;eau:flowmeterHeaterOutput&gt;
-               </code>
-               .
+                &lt;eau:flowmeterHeaterOutput&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -356,9 +354,7 @@
                </code>
                or
                <code>
-                &lt;s4watr:Conductivity&gt;
-               </code>
-               .
+                &lt;s4watr:Conductivity&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -379,9 +375,7 @@
                </code>
                and measures
                <code>
-                &lt;eau:pipeBathroomHot&gt;
-               </code>
-               .
+                &lt;eau:pipeBathroomHot&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -396,11 +390,9 @@
                <code>
                 4.85
                </code>
-               in
+               expressed in
                <code>
-                &lt;unit:L-PER-MIN&gt;
-               </code>
-               .
+                &lt;unit:L-PER-MIN&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -413,9 +405,7 @@
               <td>
                The exact moment the observation was produced. For example, recorded at
                <code>
-                "2023-07-15T07:30:00+02:00"^^xsd:dateTime
-               </code>
-               .
+                "2023-07-15T07:30:00+02:00"^^xsd:dateTime</code>.
               </td>
              </tr>
              <tr>
@@ -438,18 +428,31 @@
                Q7
               </td>
               <td>
-               Which consumption event is linked to an observation collection?
+               Which temporal extent and which usage activity characterise an observation collection?
               </td>
               <td>
-               The human activity tied to a group of observations. For example,
+                The temporal extent is described using
                <code>
-                &lt;eau:obsColMorning20230715&gt;
+                sosa:phenomenonTime
                </code>
-               belongs to
+               with OWL-Time, either as an interval or as an instant. The associated activity is specified using
                <code>
-                &lt;eau:eventMorningShower&gt;
+                eau:hasConsumptionEvent
                </code>
-               .
+               linking to an
+               <code>
+                eau:ConsumptionEvent</code>.
+                For example,
+               <code>
+                &lt;eau:obsColMorningShower20230715&gt;
+               </code>
+               has a
+               <code>
+                time:Interval
+               </code>
+               from 07:30 to 07:45 and                links to
+               <code>
+                &lt;eau:eventMorningShower&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -462,9 +465,7 @@
               <td>
                The automated routine executed by the hardware. For example, the system applies
                <code>
-                &lt;eau:eautonomeObservingProcedure&gt;
-               </code>
-               .
+                &lt;eau:eautonomeObservingProcedure&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -481,9 +482,7 @@
                </code>
                uses a slope of
                <code>
-                0.957
-               </code>
-               .
+                0.957</code>.
               </td>
              </tr>
             </tbody>
@@ -512,11 +511,9 @@
                Which sensors are attached to the system?
               </td>
               <td>
-               Sensors are inferred from the hosting relations within the system. For example, the flowmeter is hosted by
+                Sensors are inferred from their hosting relations within the system. For example, the flowmeter is hosted by
                <code>
-                &lt;eau:eautonomeSystem&gt;
-               </code>
-               .
+                &lt;eau:eautonomeSystem&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -529,9 +526,7 @@
               <td>
                The room is inferred from the location of the measurement point. For example, the observation targets
                <code>
-                &lt;eau:roomBathroom&gt;
-               </code>
-               .
+                &lt;eau:roomBathroom&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -542,7 +537,7 @@
                Which measurement points are at operational risk?
               </td>
               <td>
-               Points are inferred to be at risk based on the operational status of their associated sensors. For example,
+                Measurement points are inferred to be at risk based on the operational status of their associated sensors. For example,
                <code>
                 &lt;eau:mpBasementCold&gt;
                </code>
@@ -554,10 +549,21 @@
                R4
               </td>
               <td>
-               Which observations belong to the same usage event?
+               Which observations belong to the same usage period or activity type?
               </td>
               <td>
-               Observations share the same consumption event when they belong to the same collection.
+                Observations within the same collection have a common
+               <code>
+                sosa:phenomenonTime</code>.
+               Collections linked to the same
+               <code>
+                eau:ConsumptionEvent
+               </code>
+               via
+               <code>
+                eau:hasConsumptionEvent
+               </code>
+               correspond to the same type of domestic water use, such as a shower.
               </td>
              </tr>
             </tbody>
@@ -735,8 +741,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>A temporal entity representing a domestic water use activity linked to observation
-                            collections.</p>
+                        <p>A domestic water use activity. It complements sosa:phenomenonTime on observation collections.</p>
                     </td>
                 </tr>
                 <tr>
@@ -1015,7 +1020,8 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>Associates a collection of observations with a domestic water usage event.</p>
+                        <p>Links an observation collection to the domestic usage activity it characterises (queryable
+                            activity type). Use together with sosa:phenomenonTime for the temporal extent.</p>
                     </td>
                 </tr>
                 <tr>
@@ -1572,7 +1578,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#Hotwaterheateroutputpipe">Hot water heater output pipe</a></li>
             <li><a href="#Kitchen">Kitchen</a></li>
             <li><a href="#Middaydishwashingevent">Midday dishwashing event</a></li>
-            <li><a href="#Morningobservations">Morning observations</a></li>
+            <li><a href="#Morningshowerconsumption">Morning shower consumption</a></li>
             <li><a href="#Morningshowerevent">Morning shower event</a></li>
             <li><a href="#RaspberryPi4">Raspberry Pi 4</a></li>
             <li><a href="#Toilet">Toilet</a></li>
@@ -2401,14 +2407,14 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 </tr>
             </table>
         </div>
-        <div class="entity named_individual" id="Morningobservations">
-            <h3>Morning observations<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <div class="entity named_individual" id="Morningshowerconsumption">
+            <h3>Morning shower consumption<sup title="named individual" class="sup-ni">ni</sup></h3>
             <table>
                 <tr>
                     <th>URI</th>
                     <td>
                         <code>
-                      https://w3id.org/eautonome/obsColMorning20230715
+                      https://w3id.org/eautonome/obsColMorningShower20230715
                   
                   </code>
                     </td>
@@ -2426,7 +2432,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        Observations for the morning shower event.
+                        Flow observations during the morning shower period.
                     </td>
                 </tr>
             </table>

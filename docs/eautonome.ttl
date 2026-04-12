@@ -76,8 +76,7 @@ eau:EautonomeObservingProcedure a owl:Class ;
 eau:ConsumptionEvent a owl:Class ;
     rdfs:subClassOf schema:Event ;
     rdfs:label "Consumption event"@en , "Événement de consommation"@fr ;
-    rdfs:comment "A temporal entity representing a domestic water use activity linked to observation collections."@en .
-
+    rdfs:comment "A domestic water use activity. It complements sosa:phenomenonTime on observation collections."@en .
 #
 # Properties
 #
@@ -144,7 +143,7 @@ eau:measuresWaterKind a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; 
 
 eau:hasConsumptionEvent a owl:ObjectProperty ; rdfs:domain sosa:ObservationCollection ; rdfs:range eau:ConsumptionEvent ;
     rdfs:label "has consumption event"@en ;
-    rdfs:comment "Associates a collection of observations with a domestic water usage event."@en .
+    rdfs:comment "Links an observation collection to the domestic usage activity it characterises (queryable activity type). Use together with sosa:phenomenonTime for the temporal extent."@en .
 
 eau:locatedIn a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range eau:DomesticRoom ;
     rdfs:label "located in"@en ;
@@ -528,7 +527,7 @@ eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
     sosa:resultTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "4.85"^^xsd:decimal ;
-    sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "4.85"^^xsd:decimal ; qudt:unit unit:L-PER-MIN ] .
+    sosa:hasResult [ a qudt:QuantityValue ; qudt:value "4.85"^^xsd:decimal ; qudt:hasUnit unit:L-PER-MIN ] .
 
 eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
@@ -538,7 +537,7 @@ eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndiv
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
     sosa:resultTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "542.0"^^xsd:decimal ;
-    sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "542.0"^^xsd:decimal ; qudt:unit unit:MicroS-PER-CentiM ] .
+    sosa:hasResult [ a qudt:QuantityValue ; qudt:value "542.0"^^xsd:decimal ; qudt:hasUnit unit:MicroS-PER-CentiM ] .
 
 eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
@@ -548,7 +547,7 @@ eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndivi
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
     sosa:resultTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "38.5"^^xsd:decimal ;
-    sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "38.5"^^xsd:decimal ; qudt:unit unit:DEG_C ] .
+    sosa:hasResult [ a qudt:QuantityValue ; qudt:value "38.5"^^xsd:decimal ; qudt:hasUnit unit:DEG_C ] .
 
 eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
@@ -558,14 +557,19 @@ eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation , owl:NamedIndividual ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
     sosa:resultTime "2023-08-01T08:15:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "3.40"^^xsd:decimal ;
-    sosa:hasResult [ a qudt:QuantityValue ; qudt:numericValue "3.40"^^xsd:decimal ; qudt:unit unit:L-PER-MIN ] .
+    sosa:hasResult [ a qudt:QuantityValue ; qudt:value "3.40"^^xsd:decimal ; qudt:hasUnit unit:L-PER-MIN ] .
 
-eau:obsColMorning20230715 a sosa:ObservationCollection , owl:NamedIndividual ;
+eau:obsColMorningShower20230715 a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:label "Morning observations"@en ;
-    rdfs:comment "Observations for the morning shower event."@en ;
+    rdfs:label "Morning shower consumption"@en , "Consommation douche du matin"@fr ;
+    rdfs:comment "Flow observations during the morning shower period."@en ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
+    sosa:phenomenonTime [
+        a time:Interval ;
+        time:hasBeginning [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ] ;
+        time:hasEnd [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:45:00+02:00"^^xsd:dateTime ]
+    ] ;
     eau:hasConsumptionEvent eau:eventMorningShower ;
     sosa:hasMember eau:obsFlowHeaterOutput20230715T0730 .
 
@@ -573,8 +577,10 @@ eau:obsColMultiProperty20230715T0730 a sosa:ObservationCollection , owl:NamedInd
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Concurrent heater output observations at 07:30"@en , "Observations simultanées de la sortie chaudière à 07:30"@fr ;
     rdfs:comment "Concurrent flow, conductivity, and temperature observations."@en ;
-    sosa:hasFeatureOfInterest eau:mpHeaterOutput ; 
+    sosa:hasFeatureOfInterest eau:mpHeaterOutput ;
     sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
+    sosa:phenomenonTime [ a time:Instant ; time:inXSDDateTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ] ;
+    eau:hasConsumptionEvent eau:eventMorningShower ;
     sosa:hasMember eau:obsFlowHeaterOutput20230715T0730 , eau:obsConductivityHeaterOutput20230715T0730 , eau:obsTemperatureHeaterOutput20230715T0730 .
 
 eau:obsColAugust2023 a sosa:ObservationCollection , owl:NamedIndividual ;
