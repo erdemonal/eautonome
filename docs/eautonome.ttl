@@ -142,7 +142,7 @@ eau:measuresWaterKind a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; 
 
 eau:hasConsumptionEvent a owl:ObjectProperty ; rdfs:domain sosa:ObservationCollection ; rdfs:range eau:ConsumptionEvent ;
     rdfs:label "has consumption event"@en ;
-    rdfs:comment "Links an observation collection to the domestic usage activity it characterises (queryable activity type). Use together with sosa:phenomenonTime for the temporal extent."@en .
+    rdfs:comment "Links an observation collection to the domestic usage activity it represents. Used together with sosa:phenomenonTime."@en .
 
 eau:locatedIn a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range eau:DomesticRoom ;
     rdfs:label "located in"@en ;
