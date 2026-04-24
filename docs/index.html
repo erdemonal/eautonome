@@ -1084,14 +1084,58 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
     <section id="objectproperties">
         <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
         <ul class="hlist">
+            <li><a href="#forproperty">for property</a></li>
             <li><a href="#hasconsumptionevent">has consumption event</a></li>
+            <li><a href="#hasdeployment">has deployment</a></li>
+            <li><a href="#hasoperatingconditions">has operating conditions</a></li>
             <li><a href="#haspipeconfiguration">has pipe configuration</a></li>
+            <li><a href="#hassubsystem">has sub system</a></li>
+            <li><a href="#hassystemcapability">has system capability</a></li>
+            <li><a href="#implementedby">implemented by</a></li>
+            <li><a href="#indeployment">in deployment</a></li>
+            <li><a href="#isfeatureofinterestof">is feature of interest of</a></li>
+            <li><a href="#ismemberof">is member of</a></li>
+            <li><a href="#isobservedby">is observed by</a></li>
             <li><a href="#locatedin">located in</a></li>
+            <li><a href="#madeobservation">made observation</a></li>
             <li><a href="#measuresonasset">measures on asset</a></li>
             <li><a href="#measureswaterkind">measures water kind</a></li>
             <li><a href="#monitors">monitors</a></li>
             <li><a href="#servesendpoint">serves endpoint</a></li>
         </ul>
+        <div class="entity property" id="forproperty">
+            <h3>for property<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#forproperty" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/forProperty</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a deployment to the property or properties observed in that deployment.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/ns/sosa/Deployment">sosa:Deployment</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/ns/sosa/Property">sosa:Property</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="entity property" id="hasconsumptionevent">
             <h3>has consumption event<sup title="object property" class="sup-op">op</sup><span
                     style="float:right; margin-right:10px; font-size:smaller;">
@@ -1324,6 +1368,196 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 </tr>
             </table>
         </div>
+        <div class="entity property" id="madeobservation">
+            <h3>made observation<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#madeobservation" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/madeObservation</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Inverse link from a sensor to the observations it made.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="hassubsystem">
+            <h3>has sub system<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#hassubsystem" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/hasSubSystem</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a system to its sub-systems, such as ADC boards hosting sensors.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="hasdeployment">
+            <h3>has deployment<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#hasdeployment" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/hasDeployment</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Inverse link from a system to deployments in which it participates.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="indeployment">
+            <h3>in deployment<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#indeployment" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/inDeployment</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a system to the deployment in which it is deployed.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="implementedby">
+            <h3>implemented by<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#implementedby" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/implementedBy</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Inverse link from an observing procedure to sensors that implement it.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="isfeatureofinterestof">
+            <h3>is feature of interest of<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#isfeatureofinterestof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/isFeatureOfInterestOf</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Inverse link from a feature of interest to observations and collections about it.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="ismemberof">
+            <h3>is member of<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#ismemberof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/isMemberOf</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Inverse link from an observation to collections that include it.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="isobservedby">
+            <h3>is observed by<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#isobservedby" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/isObservedBy</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Inverse link from a property to sensors that observe it.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="hassystemcapability">
+            <h3>has system capability<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#hassystemcapability" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/hasSystemCapability</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a system to a system capability profile.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="hasoperatingconditions">
+            <h3>has operating conditions<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#hasoperatingconditions" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/hasOperatingConditions</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a system capability to operating conditions.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <section id="datatypeproperties">
@@ -1337,6 +1571,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#hasI2Caddress">has I2C address</a></li>
             <li><a href="#hasoperationalstatus">has operational status</a></li>
             <li><a href="#hassamplingperiod">has sampling period</a></li>
+            <li><a href="#starttime">start time</a></li>
             <li><a href="#hastransmissioninterval">has transmission interval</a></li>
             <li><a href="#hastriggerthreshold">has trigger threshold</a></li>
         </ul>
@@ -1662,6 +1897,39 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 </tr>
             </table>
         </div>
+        <div class="entity property" id="starttime">
+            <h3>start time<sup title="datatype property" class="sup-dp">dp</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#starttime" title="fragment link to here">#</a>&nbsp;<a
+                        href="#datatypeproperties" title="Datatype Properties Index">DPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>http://www.w3.org/ns/sosa/startTime</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Starting time of a deployment.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/ns/sosa/Deployment">sosa:Deployment</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </section>
 
 
@@ -1671,6 +1939,8 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#ADCcard1">ADC card 1</a></li>
             <li><a href="#ADCcard2">ADC card 2</a></li>
             <li><a href="#AmphiroB1">Amphiro B1</a></li>
+            <li><a href="#CapabilityprofileforAmphiroB1">Capability profile for Amphiro B1</a></li>
+            <li><a href="#Capabilityprofileforheateroutputflowmeter">Capability profile for heater output flowmeter</a></li>
             <li><a href="#August2023observations">August 2023 observations</a></li>
             <li><a href="#Basement">Basement</a></li>
             <li><a href="#Basementflowmeter">Basement flowmeter</a></li>
@@ -1718,6 +1988,8 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#obsFlowHeaterOutput20230715T0730">obsFlowHeaterOutput20230715T0730</a></li>
             <li><a href="#obsFlowHeaterOutput20230801T0815">obsFlowHeaterOutput20230801T0815</a></li>
             <li><a href="#obsTemperatureHeaterOutput20230715T0730">obsTemperatureHeaterOutput20230715T0730</a></li>
+            <li><a href="#OperatingconditionsforAmphiroB1">Operating conditions for Amphiro B1</a></li>
+            <li><a href="#Operatingconditionsforheateroutputflowmeter">Operating conditions for heater output flowmeter</a></li>
         </ul>
         <div class="entity named_individual" id="Curvedpipeconfiguration">
             <h3>Curved pipe configuration<sup title="named individual" class="sup-ni">ni</sup></h3>
@@ -1939,6 +2211,110 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         <a href="https://saref.etsi.org/saref4watr/FlowRate">s4watr:FlowRate</a>,
                         <a href="https://saref.etsi.org/saref4watr/FlowVolume">s4watr:FlowVolume</a>,
                         <a href="https://saref.etsi.org/saref4watr/FlowTemperature">s4watr:FlowTemperature</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity named_individual" id="Capabilityprofileforheateroutputflowmeter">
+            <h3>Capability profile for heater output flowmeter<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/capFlowmeterHeaterOutput
+                  
+                  </code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        System capability profile for the heater output flowmeter.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity named_individual" id="Operatingconditionsforheateroutputflowmeter">
+            <h3>Operating conditions for heater output flowmeter<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/condFlowmeterHeaterOutput
+                  
+                  </code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        Nominal operation with domestic hot water flow.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity named_individual" id="CapabilityprofileforAmphiroB1">
+            <h3>Capability profile for Amphiro B1<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/capAmphiroB1
+                  
+                  </code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        System capability profile for the Amphiro B1 shower sensor.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity named_individual" id="OperatingconditionsforAmphiroB1">
+            <h3>Operating conditions for Amphiro B1<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/condAmphiroB1
+                  
+                  </code>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        Nominal shower operation with BLE communication and domestic water flow.
                     </td>
                 </tr>
             </table>
