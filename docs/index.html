@@ -1094,7 +1094,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#implementedby">implemented by</a></li>
             <li><a href="#indeployment">in deployment</a></li>
             <li><a href="#isfeatureofinterestof">is feature of interest of</a></li>
-            <li><a href="#ismemberof">is member of</a></li>
+            <li><a href="#ismemberof">member of</a></li>
             <li><a href="#isobservedby">is observed by</a></li>
             <li><a href="#locatedin">located in</a></li>
             <li><a href="#madeobservation">made observation</a></li>
@@ -1117,13 +1117,15 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>Relates a deployment to the property or properties observed in that deployment.</p>
+                        <p>Relation from some procedure or system to a property it acts on or observes.</p>
                     </td>
                 </tr>
                 <tr>
                     <th>Domain(s)</th>
                     <td>
-                        <a href="http://www.w3.org/ns/sosa/Deployment">sosa:Deployment</a><sup class="sup-c"
+                        <a href="http://www.w3.org/ns/sosa/Procedure">sosa:Procedure</a><sup class="sup-c"
+                            title="class">c</sup>, <a
+                            href="http://www.w3.org/ns/sosa/System">sosa:System</a><sup class="sup-c"
                             title="class">c</sup>
                     </td>
                 </tr>
@@ -1439,7 +1441,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>Relates a system to the deployment in which it is deployed.</p>
+                        <p>Relation from a platform to a deployment.</p>
                     </td>
                 </tr>
             </table>
@@ -1483,7 +1485,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             </table>
         </div>
         <div class="entity property" id="ismemberof">
-            <h3>is member of<sup title="object property" class="sup-op">op</sup><span
+            <h3>member of<sup title="object property" class="sup-op">op</sup><span
                     style="float:right; margin-right:10px; font-size:smaller;">
                     <a href="#ismemberof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
                         title="Object Properties Index">OPs</a></span>
@@ -1491,12 +1493,12 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <table>
                 <tr>
                     <th>URI</th>
-                    <td><code>http://www.w3.org/ns/sosa/isMemberOf</code></td>
+                    <td><code>http://www.w3.org/ns/sosa/memberOf</code></td>
                 </tr>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>Inverse link from an observation to collections that include it.</p>
+                        <p>Link from an execution to a collection that it is part of.</p>
                     </td>
                 </tr>
             </table>
@@ -1534,7 +1536,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>Relates a system to a system capability profile.</p>
+                        <p>Relation between a system and an observation collection or observation that describes its capability.</p>
                     </td>
                 </tr>
             </table>
@@ -1553,7 +1555,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>Relates a system capability to operating conditions.</p>
+                        <p>Relation between a system and an observation collection or observation that describes its capability.</p>
                     </td>
                 </tr>
             </table>
@@ -2206,6 +2208,26 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                     </td>
                 </tr>
                 <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasSystemCapability">sosa:hasSystemCapability</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/capAmphiroB1">eau:capAmphiroB1</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasOperatingConditions">sosa:hasOperatingConditions</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/condAmphiroB1">eau:condAmphiroB1</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/forProperty">sosa:forProperty</a></th>
+                    <td>
+                        <a href="https://saref.etsi.org/saref4watr/FlowRate">s4watr:FlowRate</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowVolume">s4watr:FlowVolume</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowTemperature">s4watr:FlowTemperature</a>
+                    </td>
+                </tr>
+                <tr>
                     <th><a href="http://www.w3.org/ns/sosa/observes">sosa:observes</a></th>
                     <td>
                         <a href="https://saref.etsi.org/saref4watr/FlowRate">s4watr:FlowRate</a>,
@@ -2440,6 +2462,12 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                     </td>
                 </tr>
                 <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/startTime">sosa:startTime</a></th>
+                    <td>
+                        "2023-07-15T07:30:00+02:00"^^xsd:dateTime
+                    </td>
+                </tr>
+                <tr>
                     <th><a href="http://www.w3.org/ns/sosa/deployedOnPlatform">sosa:deployedOnPlatform</a></th>
                     <td>
                         <a href="https://w3id.org/eautonome/raspberryPi4">eau:raspberryPi4</a>
@@ -2500,6 +2528,27 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         A procedure for acquiring and recording sensor data.
                     </td>
                 </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/implementedBy">sosa:implementedBy</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/flowmeterHeaterOutput">eau:flowmeterHeaterOutput</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterBathroomHot">eau:flowmeterBathroomHot</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterBathroomCold">eau:flowmeterBathroomCold</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterWashingMachine">eau:flowmeterWashingMachine</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterBasementCold">eau:flowmeterBasementCold</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterToiletCold">eau:flowmeterToiletCold</a>,
+                        <a href="https://w3id.org/eautonome/conductivitySensorHot">eau:conductivitySensorHot</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/forProperty">sosa:forProperty</a></th>
+                    <td>
+                        <a href="https://saref.etsi.org/saref4watr/FlowRate">s4watr:FlowRate</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowTemperature">s4watr:FlowTemperature</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowVolume">s4watr:FlowVolume</a>,
+                        <a href="https://saref.etsi.org/saref4watr/Conductivity">s4watr:Conductivity</a>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="entity named_individual" id="Eautonomepilotsystem">
@@ -2528,6 +2577,12 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                     <th>Description</th>
                     <td>
                         A greywater recycling pilot installation located in a residential house in Noisiel.
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasDeployment">sosa:hasDeployment</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/eautonomeDeployment">eau:eautonomeDeployment</a>
                     </td>
                 </tr>
             </table>
@@ -2738,6 +2793,25 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                     <th>Description</th>
                     <td>
                         Reference flowmeter for data acquisition.
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasSystemCapability">sosa:hasSystemCapability</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/capFlowmeterHeaterOutput">eau:capFlowmeterHeaterOutput</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasOperatingConditions">sosa:hasOperatingConditions</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/condFlowmeterHeaterOutput">eau:condFlowmeterHeaterOutput</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/forProperty">sosa:forProperty</a></th>
+                    <td>
+                        <a href="https://saref.etsi.org/saref4watr/FlowRate">s4watr:FlowRate</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowTemperature">s4watr:FlowTemperature</a>
                     </td>
                 </tr>
             </table>
@@ -3429,6 +3503,25 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                     <td>
                         The computing platform executing the observing procedure and hosting the analog-to-digital
                         converters.
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasDeployment">sosa:hasDeployment</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/eautonomeDeployment">eau:eautonomeDeployment</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/inDeployment">sosa:inDeployment</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/eautonomeDeployment">eau:eautonomeDeployment</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasSubSystem">sosa:hasSubSystem</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/adcCard1">eau:adcCard1</a>,
+                        <a href="https://w3id.org/eautonome/adcCard2">eau:adcCard2</a>
                     </td>
                 </tr>
             </table>

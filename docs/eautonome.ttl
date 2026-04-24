@@ -208,30 +208,37 @@ eau:amphiroB1 a eau:ShowerSensor , owl:NamedIndividual ;
     rdfs:comment "An Amphiro B1 shower sensor communicating via BLE."@en ;
     eau:monitors eau:mpBathroomHot ;
     sosa:observes s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature ;
-    sosa:inDeployment eau:eautonomeDeployment ;
-    sosa:hasSystemCapability eau:capAmphiroB1 .
+    sosa:hasSystemCapability eau:capAmphiroB1 ;
+    sosa:hasOperatingConditions eau:condAmphiroB1 ;
+    sosa:forProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
 
-eau:capFlowmeterHeaterOutput a owl:NamedIndividual ;
+eau:capFlowmeterHeaterOutput a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Capability profile for heater output flowmeter"@en ;
     rdfs:comment "System capability profile for the heater output flowmeter."@en ;
-    sosa:hasOperatingConditions eau:condFlowmeterHeaterOutput .
+    sosa:hasFeatureOfInterest eau:flowmeterHeaterOutput ;
+    sosa:observedProperty s4watr:FlowRate .
 
-eau:condFlowmeterHeaterOutput a owl:NamedIndividual ;
+eau:condFlowmeterHeaterOutput a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Operating conditions for heater output flowmeter"@en ;
-    rdfs:comment "Nominal operation with domestic hot water flow"@en .
+    rdfs:comment "Nominal operation with domestic hot water flow."@en ;
+    sosa:hasFeatureOfInterest eau:flowmeterHeaterOutput ;
+    sosa:observedProperty s4watr:FlowTemperature .
 
-eau:capAmphiroB1 a owl:NamedIndividual ;
+eau:capAmphiroB1 a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Capability profile for Amphiro B1"@en ;
     rdfs:comment "System capability profile for the Amphiro B1 shower sensor."@en ;
-    sosa:hasOperatingConditions eau:condAmphiroB1 .
+    sosa:hasFeatureOfInterest eau:amphiroB1 ;
+    sosa:observedProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
 
-eau:condAmphiroB1 a owl:NamedIndividual ;
+eau:condAmphiroB1 a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Operating conditions for Amphiro B1"@en ;
-    rdfs:comment "Nominal shower operation with BLE communication and domestic water flow."@en .
+    rdfs:comment "Nominal shower operation with BLE communication and domestic water flow."@en ;
+    sosa:hasFeatureOfInterest eau:amphiroB1 ;
+    sosa:observedProperty s4watr:FlowRate .
 
 eau:roomBathroom a eau:DomesticRoom , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
@@ -315,6 +322,7 @@ eau:raspberryPi4 a sosa:Platform , owl:NamedIndividual ;
     rdfs:label "Raspberry Pi 4"@en , "Raspberry Pi 4"@fr ;
     rdfs:comment "The computing platform executing the observing procedure and hosting the analog-to-digital converters."@en ;
     eau:hasOperationalStatus "active" ;
+    sosa:hasDeployment eau:eautonomeDeployment ;
     sosa:hasSubSystem eau:adcCard1 , eau:adcCard2 ;
     sosa:inDeployment eau:eautonomeDeployment ;
     sosa:isHostedBy eau:eautonomeSystem ;
@@ -331,7 +339,6 @@ eau:adcCard1 a eau:ADConverter , owl:NamedIndividual ;
     eau:hasOperationalStatus "active" ;
     sosa:hasSubSystem eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
         eau:flowmeterBathroomCold , eau:flowmeterWashingMachine ;
-    sosa:inDeployment eau:eautonomeDeployment ;
     sosa:isHostedBy eau:raspberryPi4 ;
     sosa:hosts eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot , 
                eau:flowmeterBathroomCold , eau:flowmeterWashingMachine .
@@ -343,7 +350,6 @@ eau:adcCard2 a eau:ADConverter , owl:NamedIndividual ;
     eau:hasI2CAddress "0x49" ;
     eau:hasOperationalStatus "active" ;
     sosa:hasSubSystem eau:conductivitySensorHot , eau:flowmeterBasementCold , eau:flowmeterToiletCold ;
-    sosa:inDeployment eau:eautonomeDeployment ;
     sosa:isHostedBy eau:raspberryPi4 ;
     sosa:hosts eau:conductivitySensorHot , eau:flowmeterBasementCold , eau:flowmeterToiletCold .
 
@@ -363,7 +369,8 @@ eau:flowmeterHeaterOutput a eau:VortexFlowmeter , owl:NamedIndividual ;
     sosa:madeObservation eau:obsFlowHeaterOutput20230715T0730 , eau:obsFlowHeaterOutput20230801T0815 ;
     sosa:observes s4watr:FlowRate , s4watr:FlowTemperature ;
     sosa:hasSystemCapability eau:capFlowmeterHeaterOutput ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:hasOperatingConditions eau:condFlowmeterHeaterOutput ;
+    sosa:forProperty s4watr:FlowRate , s4watr:FlowTemperature ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -378,7 +385,7 @@ eau:flowmeterBathroomHot a eau:VortexFlowmeter , owl:NamedIndividual ;
     eau:hasAnalogInput "AN1" ;
     eau:monitors eau:mpBathroomHot ;
     sosa:observes s4watr:FlowRate ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:forProperty s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -393,7 +400,7 @@ eau:flowmeterBathroomCold a eau:VortexFlowmeter , owl:NamedIndividual ;
     eau:hasAnalogInput "AN2" ;
     eau:monitors eau:mpBathroomCold ;
     sosa:observes s4watr:FlowRate ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:forProperty s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -408,7 +415,7 @@ eau:flowmeterWashingMachine a eau:VortexFlowmeter , owl:NamedIndividual ;
     eau:hasAnalogInput "AN3" ;
     eau:monitors eau:mpWashingMachine ;
     sosa:observes s4watr:FlowRate ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:forProperty s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard1 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -423,7 +430,7 @@ eau:flowmeterBasementCold a eau:VortexFlowmeter , owl:NamedIndividual ;
     eau:hasAnalogInput "AN6" ;
     eau:monitors eau:mpBasementCold ;
     sosa:observes s4watr:FlowRate ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:forProperty s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -438,7 +445,7 @@ eau:flowmeterToiletCold a eau:VortexFlowmeter , owl:NamedIndividual ;
     eau:hasAnalogInput "AN7" ;
     eau:monitors eau:mpToiletCold ;
     sosa:observes s4watr:FlowRate ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:forProperty s4watr:FlowRate ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -458,7 +465,7 @@ eau:conductivitySensorHot a eau:ConductivityTemperatureSensor , owl:NamedIndivid
     eau:monitors eau:mpHeaterOutput ;
     sosa:madeObservation eau:obsConductivityHeaterOutput20230715T0730 , eau:obsTemperatureHeaterOutput20230715T0730 ;
     sosa:observes s4watr:Conductivity , s4watr:FlowTemperature ;
-    sosa:inDeployment eau:eautonomeDeployment ;
+    sosa:forProperty s4watr:Conductivity , s4watr:FlowTemperature ;
     sosa:isHostedBy eau:adcCard2 ; 
     sosa:implements eau:eautonomeObservingProcedure .
 
@@ -548,7 +555,6 @@ eau:eautonomeDeployment a sosa:Deployment , owl:NamedIndividual ;
     rdfs:comment "The configuration of sensors and platforms within the system."@en ;
     sosa:startTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:deployedOnPlatform eau:raspberryPi4 ;
-    sosa:forProperty s4watr:FlowRate , s4watr:FlowTemperature , s4watr:FlowVolume , s4watr:Conductivity ;
     sosa:deployedSystem eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
         eau:flowmeterBathroomCold , eau:flowmeterWashingMachine , eau:flowmeterBasementCold ,
         eau:flowmeterToiletCold , eau:conductivitySensorHot , eau:amphiroB1 ;
@@ -565,6 +571,7 @@ eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure , owl:NamedInd
     sosa:implementedBy eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot , eau:flowmeterBathroomCold ,
         eau:flowmeterWashingMachine , eau:flowmeterBasementCold , eau:flowmeterToiletCold ,
         eau:conductivitySensorHot ;
+    sosa:forProperty s4watr:FlowRate , s4watr:FlowTemperature , s4watr:FlowVolume , s4watr:Conductivity ;
     eau:hasTriggerThreshold "0.05"^^xsd:decimal ;
     eau:hasSamplingPeriod "2"^^xsd:decimal ;
     eau:hasTransmissionInterval "360"^^xsd:decimal .
@@ -611,7 +618,7 @@ eau:obsFlowHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndividual ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
-    sosa:isMemberOf eau:obsColMorningShower20230715 , eau:obsColMultiProperty20230715T0730 ;
+    sosa:memberOf eau:obsColMorningShower20230715 , eau:obsColMultiProperty20230715T0730 ;
     sosa:resultTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "4.85"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:value "4.85"^^xsd:decimal ; qudt:hasUnit unit:L-PER-MIN ] .
@@ -622,7 +629,7 @@ eau:obsConductivityHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndiv
     sosa:madeBySensor eau:conductivitySensorHot ; sosa:observedProperty s4watr:Conductivity ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
-    sosa:isMemberOf eau:obsColMultiProperty20230715T0730 ;
+    sosa:memberOf eau:obsColMultiProperty20230715T0730 ;
     sosa:resultTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "542.0"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:value "542.0"^^xsd:decimal ; qudt:hasUnit unit:MicroS-PER-CentiM ] .
@@ -633,7 +640,7 @@ eau:obsTemperatureHeaterOutput20230715T0730 a sosa:Observation , owl:NamedIndivi
     sosa:madeBySensor eau:conductivitySensorHot ; sosa:observedProperty s4watr:FlowTemperature ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
-    sosa:isMemberOf eau:obsColMultiProperty20230715T0730 ;
+    sosa:memberOf eau:obsColMultiProperty20230715T0730 ;
     sosa:resultTime "2023-07-15T07:30:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "38.5"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:value "38.5"^^xsd:decimal ; qudt:hasUnit unit:DEG_C ] .
@@ -644,7 +651,7 @@ eau:obsFlowHeaterOutput20230801T0815 a sosa:Observation , owl:NamedIndividual ;
     sosa:madeBySensor eau:flowmeterHeaterOutput ; sosa:observedProperty s4watr:FlowRate ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:usedProcedure eau:eautonomeObservingProcedure ;
-    sosa:isMemberOf eau:obsColAugust2023 ;
+    sosa:memberOf eau:obsColAugust2023 ;
     sosa:resultTime "2023-08-01T08:15:00+02:00"^^xsd:dateTime ;
     sosa:hasSimpleResult "3.40"^^xsd:decimal ;
     sosa:hasResult [ a qudt:QuantityValue ; qudt:value "3.40"^^xsd:decimal ; qudt:hasUnit unit:L-PER-MIN ] .
