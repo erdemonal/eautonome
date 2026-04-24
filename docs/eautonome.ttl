@@ -169,10 +169,10 @@ eau:monitors a owl:ObjectProperty ;
     rdfs:comment "Static topology link from a sensor to the measurement point it monitors, independent of any observation."@en .
 
 eau:hasPipeConfiguration a owl:ObjectProperty ;
-    rdfs:domain [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure ) ] ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure sosa:ObservationCollection ) ] ;
     rdfs:range eau:PipeConfiguration ;
     rdfs:label "has pipe configuration"@en , "a pour configuration de tuyauterie"@fr ;
-    rdfs:comment "Relates a deployment or observing procedure to the pipe configuration."@en .
+    rdfs:comment "Relates a deployment, observing procedure, or observation collection to the pipe configuration."@en .
 
 #
 # Individuals 
