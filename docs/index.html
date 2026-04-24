@@ -235,7 +235,7 @@
             <dt>URI</dt>
             <dd><code>https://w3id.org/eautonome/</code></dd>
             <dt><a class="proplink"
-                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/contributor">Contributor</a>(s)
+                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>
             </dt>
             <dd>
                 <a href="https://orcid.org/0009-0006-6580-3711">Erdem Önal</a>
@@ -273,6 +273,10 @@
             <dd>
                 <a href="http://www.w3.org/ns/sosa/">http://www.w3.org/ns/sosa/</a><br />
                 <a href="https://saref.etsi.org/saref4watr/v2.1.1/">https://saref.etsi.org/saref4watr/v2.1.1/</a><br />
+            </dd>
+            <dt>See also</dt>
+            <dd>
+                <a href="https://www.leesu.fr/projet-eautonome">Projet Eautonome</a>
             </dd>
             <dt>Ontology RDF</dt>
             <dd><a href="eautonome.ttl">RDF (turtle)</a></dd>
@@ -507,9 +511,15 @@
                Which sensors are attached to the system?
               </td>
               <td>
-                Sensors are inferred from their hosting relations within the system. For example, the flowmeter is hosted by
+                Sensors are inferred from their hosting relations within the system. For example,
                <code>
-                &lt;eau:eautonomeSystem&gt;</code>.
+                &lt;eau:flowmeterHeaterOutput&gt;
+               </code>
+               is hosted by
+               <code>
+                &lt;eau:adcCard1&gt;</code>, which is hosted by
+               <code>
+                &lt;eau:raspberryPi4&gt;</code>.
               </td>
              </tr>
              <tr>
@@ -637,12 +647,14 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
         <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
         <ul class="hlist">
             <li><a href="#Analogtodigitalconverter">Analog to digital converter</a></li>
+            <li><a href="#Showersensor">Shower sensor</a></li>
             <li><a href="#Conductivityandtemperaturesensor">Conductivity and temperature sensor</a></li>
             <li><a href="#Consumptionevent">Consumption event</a></li>
             <li><a href="#Domesticroom">Domestic room</a></li>
             <li><a href="#Eautonomeobservingprocedure">Eautonome observing procedure</a></li>
             <li><a href="#Greywaterrecyclingsystem">Greywater recycling system</a></li>
             <li><a href="#Measurementpoint">Measurement point</a></li>
+            <li><a href="#Pipeconfiguration">Pipe configuration</a></li>
             <li><a href="#Vortexflowmeter">Vortex flowmeter</a></li>
         </ul>
         <div class="entity class" id="Analogtodigitalconverter">
@@ -659,7 +671,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>A component that converts analog signals from sensors into digital data.</p>
+                        <p>A component for converting analog sensor signals into digital data.</p>
                     </td>
                 </tr>
                 <tr>
@@ -687,6 +699,40 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 </tr>
             </table>
         </div>
+        <div class="entity class" id="Showersensor">
+            <h3>
+                Shower sensor<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Showersensor"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/eautonome/ShowerSensor</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>A sensor attached to a shower head that measures flow rate, volume, temperature, and duration.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-classes</th>
+                    <td>
+                        <a href="https://saref.etsi.org/saref4watr/WaterDevice">s4watr:WaterDevice</a><sup class="sup-c"
+                            title="class">c</sup><br />
+                        <a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a><sup class="sup-c"
+                            title="class">c</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/amphiroB1">eau:amphiroB1</a><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="entity class" id="Conductivityandtemperaturesensor">
             <h3>
                 Conductivity and temperature sensor<sup title="class" class="sup-c">c</sup>
@@ -702,7 +748,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>A device that measures both the electrical conductivity and temperature of water.</p>
+                        <p>A sensor measuring both the electrical conductivity and temperature of water.</p>
                     </td>
                 </tr>
                 <tr>
@@ -822,7 +868,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>The procedure used to acquire and record sensor data.</p>
+                        <p>A procedure for acquiring and recording sensor data.</p>
                     </td>
                 </tr>
                 <tr>
@@ -835,6 +881,8 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>In domain of</th>
                     <td>
+                        <a href="#haspipeconfiguration">has pipe configuration</a><sup class="sup-op"
+                            title="object property">op</sup><br />
                         <a href="#hassamplingperiod">has sampling period</a><sup class="sup-dp"
                             title="datatype property">dp</sup><br />
                         <a href="#hastransmissioninterval">has transmission interval</a><sup class="sup-dp"
@@ -866,7 +914,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>A system that collects, treats, and redistributes domestic greywater.</p>
+                        <p>A system for collecting, treating, and redistributing domestic greywater.</p>
                     </td>
                 </tr>
                 <tr>
@@ -901,7 +949,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>A location within the water infrastructure where observations are made.</p>
+                        <p>A location within the water infrastructure at which observations are made.</p>
                     </td>
                 </tr>
                 <tr>
@@ -944,6 +992,47 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 </tr>
             </table>
         </div>
+        <div class="entity class" id="Pipeconfiguration">
+            <h3>
+                Pipe configuration<sup title="class" class="sup-c">c</sup>
+                <span style="float:right; margin-right:10px; font-size:smaller;"><a href="#Pipeconfiguration"
+                        title="fragment link to here">#</a> <a href="#classes" title="Classes Index">Classes</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/eautonome/PipeConfiguration</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>A pipe layout configuration, such as a straight run or a curved run with an elbow, where
+                            geometry affects flow measurements.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Super-classes</th>
+                    <td>
+                        <a href="http://www.w3.org/ns/sosa/FeatureOfInterest">sosa:FeatureOfInterest</a><sup
+                            class="sup-c" title="class">c</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>In range of</th>
+                    <td>
+                        <a href="#haspipeconfiguration">has pipe configuration</a><sup class="sup-op"
+                            title="object property">op</sup><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Members</th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/pipeConfigurationCurved">eau:pipeConfigurationCurved</a><br />
+                        <a href="https://w3id.org/eautonome/pipeConfigurationStraight">eau:pipeConfigurationStraight</a><br />
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="entity class" id="Vortexflowmeter">
             <h3>
                 Vortex flowmeter<sup title="class" class="sup-c">c</sup>
@@ -958,7 +1047,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        <p>A sensor that measures water flow rate.</p>
+                        <p>A sensor measuring water flow rate.</p>
                     </td>
                 </tr>
                 <tr>
@@ -996,6 +1085,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
         <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
         <ul class="hlist">
             <li><a href="#hasconsumptionevent">has consumption event</a></li>
+            <li><a href="#haspipeconfiguration">has pipe configuration</a></li>
             <li><a href="#locatedin">located in</a></li>
             <li><a href="#measuresonasset">measures on asset</a></li>
             <li><a href="#measureswaterkind">measures water kind</a></li>
@@ -1030,6 +1120,41 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                     <th>Range(s)</th>
                     <td>
                         <a href="https://w3id.org/eautonome/ConsumptionEvent">eau:ConsumptionEvent</a><sup class="sup-c"
+                            title="class">c</sup>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity property" id="haspipeconfiguration">
+            <h3>has pipe configuration<sup title="object property" class="sup-op">op</sup><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#haspipeconfiguration" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="Object Properties Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td><code>https://w3id.org/eautonome/hasPipeConfiguration</code></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <p>Relates a deployment or observing procedure to the pipe configuration.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Domain(s)</th>
+                    <td>
+                        <a href="http://www.w3.org/ns/sosa/Deployment">sosa:Deployment</a><sup class="sup-c"
+                            title="class">c</sup>, <a
+                            href="http://www.w3.org/ns/sosa/ObservingProcedure">sosa:ObservingProcedure</a><sup
+                            class="sup-c" title="class">c</sup>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Range(s)</th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/PipeConfiguration">eau:PipeConfiguration</a><sup class="sup-c"
                             title="class">c</sup>
                     </td>
                 </tr>
@@ -1543,6 +1668,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
         <ul class="hlist">
             <li><a href="#ADCcard1">ADC card 1</a></li>
             <li><a href="#ADCcard2">ADC card 2</a></li>
+            <li><a href="#AmphiroB1">Amphiro B1</a></li>
             <li><a href="#August2023observations">August 2023 observations</a></li>
             <li><a href="#Basement">Basement</a></li>
             <li><a href="#Basementflowmeter">Basement flowmeter</a></li>
@@ -1559,6 +1685,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#Coldwatermainentry">Cold water main entry</a></li>
             <li><a href="#Concurrentheateroutputobservationsat07:30">Concurrent heater output observations at 07:30</a>
             </li>
+            <li><a href="#Curvedpipeconfiguration">Curved pipe configuration</a></li>
             <li><a href="#Domesticgreywater">Domestic greywater</a></li>
             <li><a href="#Domesticreuse">Domestic reuse</a></li>
             <li><a href="#Eautonomedeployment">Eautonome deployment</a></li>
@@ -1576,6 +1703,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#Morningshowerconsumption">Morning shower consumption</a></li>
             <li><a href="#Morningshowerevent">Morning shower event</a></li>
             <li><a href="#RaspberryPi4">Raspberry Pi 4</a></li>
+            <li><a href="#Straightpipeconfiguration">Straight pipe configuration</a></li>
             <li><a href="#Toilet">Toilet</a></li>
             <li><a href="#Toiletflowmeter">Toilet flowmeter</a></li>
             <li><a href="#Toiletmeasurementpoint">Toilet measurement point</a></li>
@@ -1589,6 +1717,36 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             <li><a href="#obsFlowHeaterOutput20230801T0815">obsFlowHeaterOutput20230801T0815</a></li>
             <li><a href="#obsTemperatureHeaterOutput20230715T0730">obsTemperatureHeaterOutput20230715T0730</a></li>
         </ul>
+        <div class="entity named_individual" id="Curvedpipeconfiguration">
+            <h3>Curved pipe configuration<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/pipeConfigurationCurved
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a href="https://w3id.org/eautonome/PipeConfiguration">eau:PipeConfiguration</a><br />
+                </dd>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        A pipe configuration that includes a bend or elbow.
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="entity named_individual" id="Domesticreuse">
             <h3>Domestic reuse<sup title="named individual" class="sup-ni">ni</sup></h3>
             <table>
@@ -1739,6 +1897,50 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 </tr>
             </table>
         </div>
+        <div class="entity named_individual" id="AmphiroB1">
+            <h3>Amphiro B1<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/amphiroB1
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a href="https://w3id.org/eautonome/ShowerSensor">eau:ShowerSensor</a><br />
+                </dd>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        An Amphiro B1 shower sensor communicating via BLE.
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="https://w3id.org/eautonome/monitors">eau:monitors</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/mpBathroomHot">eau:mpBathroomHot</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/observes">sosa:observes</a></th>
+                    <td>
+                        <a href="https://saref.etsi.org/saref4watr/FlowRate">s4watr:FlowRate</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowVolume">s4watr:FlowVolume</a>,
+                        <a href="https://saref.etsi.org/saref4watr/FlowTemperature">s4watr:FlowTemperature</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="entity named_individual" id="Coldwaterconductivitysensor">
             <h3>Cold water conductivity sensor<sup title="named individual" class="sup-ni">ni</sup></h3>
             <table>
@@ -1859,6 +2061,36 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         The configuration of sensors and platforms within the system.
                     </td>
                 </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/deployedOnPlatform">sosa:deployedOnPlatform</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/raspberryPi4">eau:raspberryPi4</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/deployedSystem">sosa:deployedSystem</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/flowmeterHeaterOutput">eau:flowmeterHeaterOutput</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterBathroomHot">eau:flowmeterBathroomHot</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterBathroomCold">eau:flowmeterBathroomCold</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterWashingMachine">eau:flowmeterWashingMachine</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterBasementCold">eau:flowmeterBasementCold</a>,
+                        <a href="https://w3id.org/eautonome/flowmeterToiletCold">eau:flowmeterToiletCold</a>,
+                        <a href="https://w3id.org/eautonome/conductivitySensorHot">eau:conductivitySensorHot</a>,
+                        <a href="https://w3id.org/eautonome/amphiroB1">eau:amphiroB1</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th><a href="http://www.w3.org/ns/sosa/hasFeatureOfInterest">sosa:hasFeatureOfInterest</a></th>
+                    <td>
+                        <a href="https://w3id.org/eautonome/mpHeaterOutput">eau:mpHeaterOutput</a>,
+                        <a href="https://w3id.org/eautonome/mpBathroomHot">eau:mpBathroomHot</a>,
+                        <a href="https://w3id.org/eautonome/mpBathroomCold">eau:mpBathroomCold</a>,
+                        <a href="https://w3id.org/eautonome/mpWashingMachine">eau:mpWashingMachine</a>,
+                        <a href="https://w3id.org/eautonome/mpBasementCold">eau:mpBasementCold</a>,
+                        <a href="https://w3id.org/eautonome/mpToiletCold">eau:mpToiletCold</a>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="entity named_individual" id="eautonomeObservingProcedure">
@@ -1887,7 +2119,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        The procedure used to acquire and record sensor data.
+                        A procedure for acquiring and recording sensor data.
                     </td>
                 </tr>
             </table>
@@ -2817,8 +3049,38 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                 <tr>
                     <th>Description</th>
                     <td>
-                        The computing platform responsible for executing the observing procedure and hosting the analog
-                        to digital converters.
+                        The computing platform executing the observing procedure and hosting the analog-to-digital
+                        converters.
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="entity named_individual" id="Straightpipeconfiguration">
+            <h3>Straight pipe configuration<sup title="named individual" class="sup-ni">ni</sup></h3>
+            <table>
+                <tr>
+                    <th>URI</th>
+                    <td>
+                        <code>
+                      https://w3id.org/eautonome/pipeConfigurationStraight
+                  
+                  </code>
+                    </td>
+                </tr>
+                <dt>Class(es)</dt>
+                <dd>
+                    <a href="https://w3id.org/eautonome/PipeConfiguration">eau:PipeConfiguration</a><br />
+                </dd>
+                <tr>
+                    <th>Is Defined By</th>
+                    <td>
+                        https://w3id.org/eautonome/
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        A pipe configuration with a straight section and no bends.
                     </td>
                 </tr>
             </table>

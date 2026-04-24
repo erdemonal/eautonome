@@ -72,6 +72,16 @@ eau:EautonomeObservingProcedure a owl:Class ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
     rdfs:comment "A procedure for acquiring and recording sensor data."@en .
 
+eau:ShowerSensor a owl:Class ;
+    rdfs:subClassOf sosa:Sensor , s4watr:WaterDevice ;
+    rdfs:label "Shower sensor"@en , "Capteur de douche"@fr ;
+    rdfs:comment "A sensor attached to a shower head that measures flow rate, volume, temperature, and duration."@en .
+
+eau:PipeConfiguration a owl:Class ;
+    rdfs:subClassOf sosa:FeatureOfInterest ;
+    rdfs:label "Pipe configuration"@en , "Configuration de tuyauterie"@fr ;
+    rdfs:comment "A pipe layout configuration, such as a straight run or a curved run with an elbow, where geometry affects flow measurements."@en .
+
 eau:ConsumptionEvent a owl:Class ;
     rdfs:subClassOf schema:Event ;
     rdfs:label "Consumption event"@en , "Événement de consommation"@fr ;
@@ -158,6 +168,12 @@ eau:monitors a owl:ObjectProperty ;
     rdfs:label "monitors"@en , "surveille"@fr ;
     rdfs:comment "Static topology link from a sensor to the measurement point it monitors, independent of any observation."@en .
 
+eau:hasPipeConfiguration a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure ) ] ;
+    rdfs:range eau:PipeConfiguration ;
+    rdfs:label "has pipe configuration"@en , "a pour configuration de tuyauterie"@fr ;
+    rdfs:comment "Relates a deployment or observing procedure to the pipe configuration."@en .
+
 #
 # Individuals 
 #
@@ -175,6 +191,23 @@ eau:DomesticReuse a owl:NamedIndividual , s4watr:WaterUse ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Domestic reuse"@en , "Réutilisation domestique"@fr ;
     rdfs:comment "Water reused in the household."@en .
+
+eau:pipeConfigurationStraight a eau:PipeConfiguration , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:label "Straight pipe configuration"@en , "Configuration tuyau droit"@fr ;
+    rdfs:comment "A pipe configuration with a straight section and no bends."@en .
+
+eau:pipeConfigurationCurved a eau:PipeConfiguration , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:label "Curved pipe configuration"@en , "Configuration tuyau coudé"@fr ;
+    rdfs:comment "A pipe configuration that includes a bend or elbow."@en .
+
+eau:amphiroB1 a eau:ShowerSensor , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:label "Amphiro B1"@en ;
+    rdfs:comment "An Amphiro B1 shower sensor communicating via BLE."@en ;
+    eau:monitors eau:mpBathroomHot ;
+    sosa:observes s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
 
 eau:roomBathroom a eau:DomesticRoom , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
@@ -467,7 +500,7 @@ eau:eautonomeDeployment a sosa:Deployment , owl:NamedIndividual ;
     sosa:deployedOnPlatform eau:raspberryPi4 ;
     sosa:deployedSystem eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
         eau:flowmeterBathroomCold , eau:flowmeterWashingMachine , eau:flowmeterBasementCold ,
-        eau:flowmeterToiletCold , eau:conductivitySensorHot ;
+        eau:flowmeterToiletCold , eau:conductivitySensorHot , eau:amphiroB1 ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput , eau:mpBathroomHot , eau:mpBathroomCold ,
         eau:mpWashingMachine , eau:mpBasementCold , eau:mpToiletCold .
 
