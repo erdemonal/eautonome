@@ -8,6 +8,39 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
         .cardinality {
             font-style: italic;
             color: #aa00aa;
@@ -15,13 +48,28 @@
 
         dt {
             font-weight: bold;
-            padding: 5px 0 5px 0;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
         }
 
         ul.hlist {
             list-style-type: none;
             border: 1px solid navy;
-            padding: 5px;
+            padding:5px;
             background-color: #F4FFFF;
         }
 
@@ -39,7 +87,7 @@
 
         .entity {
             border: 1px solid navy;
-            margin: 5px 0 5px 0;
+            margin:5px 0 5px 0;
             padding: 5px;
         }
 
@@ -61,51 +109,29 @@
             max-width: 1000px;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             text-align: left
         }
-
-        h1,
-        h2,
-        h3 {
-            color: #005A9C;
-            background: white
+        h1, h2, h3 {
+            color: #005A9C; background: white
         }
-
         h1 {
             font: 170% sans-serif;
             line-height: 110%;
         }
-
         h2 {
             font: 140% sans-serif;
-            margin-top: 40px;
+            margin-top:40px;
         }
-
         h3 {
             font: 120% sans-serif;
-            margin-top: 3px;
+            margin-top: 20px;
             padding-bottom: 5px;
             border-bottom: 1px solid navy;
         }
-
-        h4 {
-            font: bold 100% sans-serif
-        }
-
-        h5 {
-            font: italic 100% sans-serif
-        }
-
-        h6 {
-            font: small-caps 100% sans-serif
-        }
-
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
 
         body {
             padding: 2em 70px 2em 70px;
@@ -116,7 +142,7 @@
             background-position: top left;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            text-align: justify;
+            text-align: left;
         }
 
         section {
@@ -127,20 +153,9 @@
             margin-bottom: 20px;
         }
 
-        :link {
-            color: #00C;
-            background: transparent
-        }
-
-        :visited {
-            color: #609;
-            background: transparent
-        }
-
-        a:active {
-            color: #C00;
-            background: transparent
-        }
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
 
         .sup-c,
         .sup-op,
@@ -151,44 +166,44 @@
         .sup-ni,
         .sup-con,
         .sup-col {
-            cursor: help;
-            margin-left: 3px;
+    cursor: help;
+    margin-left: 3px;
         }
 
         .sup-c {
-            color: orange;
+            color:orange;
         }
 
         .sup-op {
-            color: navy;
+            color:navy;
         }
 
         .sup-fp {
-            color: lightskyblue;
+            color:lightskyblue;
         }
 
         .sup-dp {
-            color: green;
+            color:green;
         }
 
         .sup-ap {
-            color: darkred;
+            color:darkred;
         }
 
         .sup-p {
-            color: black;
+            color:black;
         }
 
         .sup-ni {
-            color: brown;
+            color:brown;
         }
 
         .sup-con {
-            color: orange;
+            color:orange;
         }
 
         .sup-col {
-            color: darkred;
+            color:darkred;
         }
 
         code {
@@ -196,12 +211,69 @@
             color: darkred;
         }
 
-        /* less prominent links for properties */
         .proplink {
             color: #336;
             text-decoration: none;
         }
-    </style>
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+.entity table {
+    table-layout: fixed;
+    width: 100%;
+}
+.entity td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+	</style>
 
     <script type="application/ld+json">
       [
@@ -228,60 +300,46 @@
 </head>
 
 <body>
+    <div id="content">
     <h1>Projet maison Eautonome</h1>
     <section id="metadata">
         <h2 style="display:none;">Metadata</h2>
         <dl>
-            <dt>URI</dt>
-            <dd><code>https://w3id.org/eautonome/</code></dd>
-            <dt><a class="proplink"
-                    href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>
-            </dt>
-            <dd>
-                <a href="https://orcid.org/0009-0006-6580-3711">Erdem Önal</a>
-                <a href="https://orcid.org/0009-0006-6580-3711" title="ORCID iD">
-                    <svg width="15px" height="15px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <title>Orcid logo</title>
-                        <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="hero" transform="translate(-924.000000, -72.000000)" fill-rule="nonzero">
-                                <g id="Group-4">
-                                    <g id="vector_iD_icon" transform="translate(924.000000, 72.000000)">
-                                        <path
-                                            d="M72,36 C72,55.884375 55.884375,72 36,72 C16.115625,72 0,55.884375 0,36 C0,16.115625 16.115625,0 36,0 C55.884375,0 72,16.115625 72,36 Z"
-                                            id="Path" fill="#A6CE39"></path>
-                                        <g id="Group" transform="translate(18.868966, 12.910345)" fill="#FFFFFF">
-                                            <polygon id="Path"
-                                                points="5.03734929 39.1250878 0.695429861 39.1250878 0.695429861 9.14431787 5.03734929 9.14431787 5.03734929 22.6930505 5.03734929 39.1250878">
-                                            </polygon>
-                                            <path
-                                                d="M11.409257,9.14431787 L23.1380784,9.14431787 C34.303014,9.14431787 39.2088191,17.0664074 39.2088191,24.1486995 C39.2088191,31.846843 33.1470485,39.1530811 23.1944669,39.1530811 L11.409257,39.1530811 L11.409257,9.14431787 Z M15.7511765,35.2620194 L22.6587756,35.2620194 C32.49858,35.2620194 34.7541226,27.8438084 34.7541226,24.1486995 C34.7541226,18.1301509 30.8915059,13.0353795 22.4332213,13.0353795 L15.7511765,13.0353795 L15.7511765,35.2620194 Z"
-                                                id="Shape"></path>
-                                            <path
-                                                d="M5.71401206,2.90182329 C5.71401206,4.441452 4.44526937,5.72914146 2.86638958,5.72914146 C1.28750978,5.72914146 0.0187670918,4.441452 0.0187670918,2.90182329 C0.0187670918,1.33420133 1.28750978,0.0745051096 2.86638958,0.0745051096 C4.44526937,0.0745051096 5.71401206,1.36219458 5.71401206,2.90182329 Z"
-                                                id="Path"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                    (<a href="https://w3id.org/people/erdemonal/me">https://w3id.org/people/erdemonal/me</a>)
-                </a><br />
-            </dd>
-            <dt>Imports</dt>
-            <dd>
-                <a href="http://www.w3.org/ns/sosa/">http://www.w3.org/ns/sosa/</a><br />
-                <a href="https://saref.etsi.org/saref4watr/v2.1.1/">https://saref.etsi.org/saref4watr/v2.1.1/</a><br />
-            </dd>
-            <dt>See also</dt>
-            <dd>
-                <a href="https://www.leesu.fr/projet-eautonome">Projet Eautonome</a>
-            </dd>
-            <dt>Ontology RDF</dt>
-            <dd><a href="eautonome.ttl">RDF (turtle)</a></dd>
-            <dt>Example data</dt>
-            <dd><a href="https://w3id.org/eautonome/hydrostatic-observations.jsonld">Hydrostatic observations</a></dd>
+            <div>
+                <dt><strong>IRI</strong></dt>
+                <dd><code>https://w3id.org/eautonome</code></dd>
+            </div>
+            <div>
+                <dt><a class="hover_property" href="http://purl.org/dc/terms/creator"
+                        title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+                </dt>
+                <dd>
+                    <span>Erdem Önal</span>
+                    <span>(<a href="https://w3id.org/people/erdemonal/me">https://w3id.org/people/erdemonal/me</a>)</span>
+                </dd>
+            </div>
+            <div>
+                <dt><a class="hover_property" href="http://www.w3.org/2002/07/owl#imports"
+                        title="The property that links an ontology to another ontology it imports. Defined in OWL 2">Imports</a></dt>
+                <dd>
+                    <a href="http://www.w3.org/ns/sosa/">http://www.w3.org/ns/sosa/</a><br />
+                    <a href="https://saref.etsi.org/saref4watr/v2.1.1/">https://saref.etsi.org/saref4watr/v2.1.1/</a>
+                </dd>
+            </div>
+            <div>
+                <dt><a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#seeAlso"
+                        title="Further information resources related to this resource. Defined in RDF Schema">See also</a></dt>
+                <dd><a href="https://www.leesu.fr/projet-eautonome">Projet Eautonome</a></dd>
+            </div>
+            <div>
+                <dt><a class="hover_property" href="http://www.w3.org/2002/07/owl#Ontology"
+                        title="The RDF representation of this ontology">Ontology RDF</a></dt>
+                <dd><a href="eautonome.ttl">RDF (turtle)</a></dd>
+            </div>
+            <div>
+                <dt>Example data</dt>
+                <dd><a href="https://w3id.org/eautonome/hydrostatic-observations.jsonld">Hydrostatic observations</a></dd>
+            </div>
         </dl>
         <h2>Description</h2>
         <div id="description">
@@ -290,17 +348,7 @@
                 to reduce water consumption in residential buildings.</p>
         </div>
     </section>
-    <section id="toc">
-        <h2>Table of Contents</h2>
-        <ol>
-            <li><a href="#classes">Classes</a></li>
-            <li><a href="#objectproperties">Object Properties</a></li>
-            <li><a href="#datatypeproperties">Datatype Properties</a></li>
-            <li><a href="#namedindividuals">Named Individuals</a></li>
-            <li><a href="#namespaces">Namespaces</a></li>
-            <li><a href="#legend">Legend</a></li>
-        </ol>
-    </section>
+    
     <section id="overview">
         <h2>Overview</h2>
         <p>The Eautonome architecture consists of physical water infrastructure and monitoring devices forming an IoT
@@ -3777,6 +3825,20 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
             </tr>
         </table>
     </section>
+    </div>
+    <div id="toc">
+        <h3>Table of Contents</h3>
+        <ul class="first">
+            <li><a href="#metadata">Metadata</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#objectproperties">Object Properties</a></li>
+            <li><a href="#datatypeproperties">Datatype Properties</a></li>
+            <li><a href="#namedindividuals">Named Individuals</a></li>
+            <li><a href="#namespaces">Namespaces</a></li>
+            <li><a href="#legend">Legend</a></li>
+        </ul>
+    </div>
 </body>
 
 </html>
