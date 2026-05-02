@@ -13,7 +13,7 @@
     {
       "@id": "eau:expColHydroStraight_s0",
       "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Hydrostatic experiment, straight pipe, session 0",
+      "rdfs:label": "Hydrostatic experiment",
       "sosa:madeBySensor": {
         "@id": "eau:flowmeterHeaterOutput"
       },
@@ -25,6 +25,9 @@
       },
       "sosa:hasUltimateFeatureOfInterest": {
         "@id": "eau:domesticGreywater"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:eautonomeObservingProcedure"
       },
       "eau:hasPipeConfiguration": {
         "@id": "eau:pipeConfigurationStraight"
@@ -163,7 +166,7 @@
     {
       "@id": "eau:expColHydroStraight_s1",
       "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Hydrostatic experiment, straight pipe, session 1",
+      "rdfs:label": "Hydrostatic experiment",
       "sosa:madeBySensor": {
         "@id": "eau:flowmeterHeaterOutput"
       },
@@ -175,6 +178,9 @@
       },
       "sosa:hasUltimateFeatureOfInterest": {
         "@id": "eau:domesticGreywater"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:eautonomeObservingProcedure"
       },
       "eau:hasPipeConfiguration": {
         "@id": "eau:pipeConfigurationStraight"
@@ -335,7 +341,7 @@
     {
       "@id": "eau:expColHydroCurved_s2",
       "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Hydrostatic experiment, curved pipe, session 2",
+      "rdfs:label": "Hydrostatic experiment",
       "sosa:madeBySensor": {
         "@id": "eau:flowmeterHeaterOutput"
       },
@@ -347,6 +353,9 @@
       },
       "sosa:hasUltimateFeatureOfInterest": {
         "@id": "eau:domesticGreywater"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:eautonomeObservingProcedure"
       },
       "eau:hasPipeConfiguration": {
         "@id": "eau:pipeConfigurationCurved"
@@ -507,7 +516,7 @@
     {
       "@id": "eau:expColHydroCurved_s3",
       "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Hydrostatic experiment, curved pipe, session 3",
+      "rdfs:label": "Hydrostatic experiment",
       "sosa:madeBySensor": {
         "@id": "eau:flowmeterHeaterOutput"
       },
@@ -519,6 +528,9 @@
       },
       "sosa:hasUltimateFeatureOfInterest": {
         "@id": "eau:domesticGreywater"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:eautonomeObservingProcedure"
       },
       "eau:hasPipeConfiguration": {
         "@id": "eau:pipeConfigurationCurved"
@@ -677,616 +689,10 @@
       }
     },
     {
-      "@id": "eau:expColShowerStraight_s4",
-      "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Shower experiment, straight pipe, session 4",
-      "sosa:madeBySensor": {
-        "@id": "eau:amphiroB1"
-      },
-      "sosa:observedProperty": {
-        "@id": "s4watr:FlowRate"
-      },
-      "sosa:hasFeatureOfInterest": {
-        "@id": "eau:mpBathroomHot"
-      },
-      "sosa:hasUltimateFeatureOfInterest": {
-        "@id": "eau:domesticGreywater"
-      },
-      "eau:hasPipeConfiguration": {
-        "@id": "eau:pipeConfigurationStraight"
-      },
-      "sosa:phenomenonTime": {
-        "@type": "time:Interval",
-        "time:hasBeginning": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T16:31:41+02:00",
-            "@type": "xsd:dateTime"
-          }
-        },
-        "time:hasEnd": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T16:31:54+02:00",
-            "@type": "xsd:dateTime"
-          }
-        }
-      },
-      "sosa:hasMember": [
-        {
-          "@id": "eau:obsExpShower_s4_t163141",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:31:41+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "3.87",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "3.87",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s4_t163144",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:31:44+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "3.88",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "3.88",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s4_t163147",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:31:47+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "3.87",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "3.87",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s4_t163150",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:31:50+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "3.88",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "3.88",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s4_t163154",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:31:54+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "3.83",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "3.83",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        }
-      ],
-      "eau:hasConsumptionEvent": {
-        "@id": "eau:eventShowerExperiment20260423"
-      }
-    },
-    {
-      "@id": "eau:expColShowerStraight_s5",
-      "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Shower experiment, straight pipe, session 5",
-      "sosa:madeBySensor": {
-        "@id": "eau:amphiroB1"
-      },
-      "sosa:observedProperty": {
-        "@id": "s4watr:FlowRate"
-      },
-      "sosa:hasFeatureOfInterest": {
-        "@id": "eau:mpBathroomHot"
-      },
-      "sosa:hasUltimateFeatureOfInterest": {
-        "@id": "eau:domesticGreywater"
-      },
-      "eau:hasPipeConfiguration": {
-        "@id": "eau:pipeConfigurationStraight"
-      },
-      "sosa:phenomenonTime": {
-        "@type": "time:Interval",
-        "time:hasBeginning": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T15:46:40+02:00",
-            "@type": "xsd:dateTime"
-          }
-        },
-        "time:hasEnd": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T15:47:08+02:00",
-            "@type": "xsd:dateTime"
-          }
-        }
-      },
-      "sosa:hasMember": [
-        {
-          "@id": "eau:obsExpShower_s5_t154640",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T15:46:40+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "4.95",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "4.95",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s5_t154643",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T15:46:43+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "4.99",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "4.99",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s5_t154701",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T15:47:01+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "4.97",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "4.97",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s5_t154704",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T15:47:04+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "4.98",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "4.98",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s5_t154708",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T15:47:08+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "4.98",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "4.98",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        }
-      ],
-      "eau:hasConsumptionEvent": {
-        "@id": "eau:eventShowerExperiment20260423"
-      }
-    },
-    {
-      "@id": "eau:expColShowerCurved_s6",
-      "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Shower experiment, curved pipe, session 6",
-      "sosa:madeBySensor": {
-        "@id": "eau:amphiroB1"
-      },
-      "sosa:observedProperty": {
-        "@id": "s4watr:FlowRate"
-      },
-      "sosa:hasFeatureOfInterest": {
-        "@id": "eau:mpBathroomHot"
-      },
-      "sosa:hasUltimateFeatureOfInterest": {
-        "@id": "eau:domesticGreywater"
-      },
-      "eau:hasPipeConfiguration": {
-        "@id": "eau:pipeConfigurationCurved"
-      },
-      "sosa:phenomenonTime": {
-        "@type": "time:Interval",
-        "time:hasBeginning": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T16:52:35+02:00",
-            "@type": "xsd:dateTime"
-          }
-        },
-        "time:hasEnd": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T16:53:00+02:00",
-            "@type": "xsd:dateTime"
-          }
-        }
-      },
-      "sosa:hasMember": [
-        {
-          "@id": "eau:obsExpShower_s6_t165235",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:52:35+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "5.40",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "5.40",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s6_t165251",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:52:51+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "5.53",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "5.53",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s6_t165254",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:52:54+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "5.55",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "5.55",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s6_t165257",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:52:57+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "5.60",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "5.60",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s6_t165300",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:53:00+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "5.62",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "5.62",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        }
-      ],
-      "eau:hasConsumptionEvent": {
-        "@id": "eau:eventShowerExperiment20260423"
-      }
-    },
-    {
-      "@id": "eau:expColShowerCurved_s7",
-      "@type": "sosa:ObservationCollection",
-      "rdfs:label": "Shower experiment, curved pipe, session 7",
-      "sosa:madeBySensor": {
-        "@id": "eau:amphiroB1"
-      },
-      "sosa:observedProperty": {
-        "@id": "s4watr:FlowRate"
-      },
-      "sosa:hasFeatureOfInterest": {
-        "@id": "eau:mpBathroomHot"
-      },
-      "sosa:hasUltimateFeatureOfInterest": {
-        "@id": "eau:domesticGreywater"
-      },
-      "eau:hasPipeConfiguration": {
-        "@id": "eau:pipeConfigurationCurved"
-      },
-      "sosa:phenomenonTime": {
-        "@type": "time:Interval",
-        "time:hasBeginning": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T16:56:21+02:00",
-            "@type": "xsd:dateTime"
-          }
-        },
-        "time:hasEnd": {
-          "time:inXSDDateTime": {
-            "@value": "2026-04-23T16:56:34+02:00",
-            "@type": "xsd:dateTime"
-          }
-        }
-      },
-      "sosa:hasMember": [
-        {
-          "@id": "eau:obsExpShower_s7_t165621",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:56:21+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "6.50",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "6.50",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s7_t165624",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:56:24+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "6.65",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "6.65",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s7_t165627",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:56:27+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "6.47",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "6.47",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s7_t165630",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:56:30+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "6.47",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "6.47",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        },
-        {
-          "@id": "eau:obsExpShower_s7_t165634",
-          "@type": "sosa:Observation",
-          "sosa:resultTime": {
-            "@value": "2026-04-23T16:56:34+02:00",
-            "@type": "xsd:dateTime"
-          },
-          "sosa:hasSimpleResult": {
-            "@value": "6.29",
-            "@type": "xsd:decimal"
-          },
-          "sosa:hasResult": {
-            "@type": "qudt:QuantityValue",
-            "qudt:value": {
-              "@value": "6.29",
-              "@type": "xsd:decimal"
-            },
-            "qudt:hasUnit": {
-              "@id": "unit:L-PER-MIN"
-            }
-          }
-        }
-      ],
-      "eau:hasConsumptionEvent": {
-        "@id": "eau:eventShowerExperiment20260423"
-      }
-    },
-    {
       "@id": "eau:eventHydrostaticExperiment20260423",
       "@type": "eau:ConsumptionEvent",
-      "rdfs:label": "Hydrostatic experiment event",
-      "rdfs:comment": "Hydrostatic flow experiment event for comparing straight and curved pipe configurations."
-    },
-    {
-      "@id": "eau:eventShowerExperiment20260423",
-      "@type": "eau:ConsumptionEvent",
-      "rdfs:label": "Shower experiment event",
-      "rdfs:comment": "Shower flow experiment event for comparing straight and curved pipe configurations."
+      "rdfs:label": "Hydrostatic flow experiment",
+      "rdfs:comment": "Experiment for comparing flow under straight and curved pipe configurations."
     }
   ]
 }

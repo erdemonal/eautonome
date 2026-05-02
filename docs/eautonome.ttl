@@ -128,6 +128,10 @@ eau:hasTransmissionInterval a owl:DatatypeProperty ; rdfs:domain eau:EautonomeOb
     rdfs:label "has transmission interval"@en ;
     rdfs:comment "Time interval between consecutive observation recordings, in seconds."@en .
 
+eau:hasDurationSeconds a owl:DatatypeProperty ; rdfs:domain sosa:Observation ; rdfs:range xsd:decimal ;
+    rdfs:label "has duration in seconds"@en ;
+    rdfs:comment "Duration of the observation in seconds."@en .
+
 eau:hasI2CAddress a owl:DatatypeProperty ; rdfs:domain eau:ADConverter ; rdfs:range xsd:string ;
     rdfs:label "has I2C address"@en ;
     rdfs:comment "I2C bus address of the ADC device."@en .
