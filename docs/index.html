@@ -700,11 +700,12 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
 &lt;https://w3id.org/eautonome/flowmeterBathroomHot&gt; 0.957 UNDEF 0.9988 .
 &lt;https://w3id.org/eautonome/flowmeterHeaterOutput&gt; 0.957 UNDEF 0.9988 .
 &lt;https://w3id.org/eautonome/flowmeterToiletCold&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt; 0.957 UNDEF 0.9988 .</code></pre>
+&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt; 0.957 UNDEF 0.9988 .
+&lt;https://w3id.org/eautonome/hansaActivejetDigital&gt; UNDEF UNDEF UNDEF .</code></pre>
         <hr>
         <h4>R1</h4>
         <pre><code>SELECT DISTINCT ?sensor WHERE {
-  eau:eautonomeSystem sosa:hosts/sosa:hosts/sosa:hosts ?sensor .
+  eau:eautonomeDeployment sosa:deployedSystem ?sensor .
   ?sensor a/rdfs:subClassOf* sosa:Sensor .
 } ORDER BY ?sensor</code></pre>
         <hr>
@@ -714,7 +715,8 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
 &lt;https://w3id.org/eautonome/flowmeterBathroomHot&gt;
 &lt;https://w3id.org/eautonome/flowmeterHeaterOutput&gt;
 &lt;https://w3id.org/eautonome/flowmeterToiletCold&gt;
-&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt;</code></pre>
+&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt;
+&lt;https://w3id.org/eautonome/hansaActivejetDigital&gt;</code></pre>
         <hr>
         <h4>R3</h4>
         <pre><code>SELECT ?sensor ?mp ?status WHERE {
