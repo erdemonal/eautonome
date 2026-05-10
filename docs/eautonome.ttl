@@ -206,14 +206,14 @@ eau:pipeConfigurationCurved a eau:PipeConfiguration , owl:NamedIndividual ;
     rdfs:label "Curved pipe configuration"@en , "Configuration tuyau coudé"@fr ;
     rdfs:comment "A pipe configuration that includes a bend or elbow."@en .
 
-eau:amphiroB1 a eau:ShowerSensor , owl:NamedIndividual ;
+eau:hansaActivejetDigital a eau:ShowerSensor , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:label "Amphiro B1"@en ;
-    rdfs:comment "An Amphiro B1 shower sensor communicating via BLE."@en ;
+    rdfs:label "HANSA ACTIVEJET Digital"@en ;
+    rdfs:comment "A HANSA ACTIVEJET Digital Bluetooth hand shower."@en ;
     eau:monitors eau:mpBathroomHot ;
     sosa:observes s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature ;
-    sosa:hasSystemCapability eau:capAmphiroB1 ;
-    sosa:hasOperatingConditions eau:condAmphiroB1 ;
+    sosa:hasSystemCapability eau:capHansaActivejetDigital ;
+    sosa:hasOperatingConditions eau:condHansaActivejetDigital ;
     sosa:forProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
 
 eau:capFlowmeterHeaterOutput a sosa:ObservationCollection , owl:NamedIndividual ;
@@ -230,18 +230,18 @@ eau:condFlowmeterHeaterOutput a sosa:ObservationCollection , owl:NamedIndividual
     sosa:hasFeatureOfInterest eau:flowmeterHeaterOutput ;
     sosa:observedProperty s4watr:FlowTemperature .
 
-eau:capAmphiroB1 a sosa:ObservationCollection , owl:NamedIndividual ;
+eau:capHansaActivejetDigital a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:label "Capability profile for Amphiro B1"@en ;
-    rdfs:comment "System capability profile for the Amphiro B1 shower sensor."@en ;
-    sosa:hasFeatureOfInterest eau:amphiroB1 ;
+    rdfs:label "Capability profile for HANSA ACTIVEJET Digital"@en ;
+    rdfs:comment "System capability profile for the HANSA ACTIVEJET Digital hand shower."@en ;
+    sosa:hasFeatureOfInterest eau:hansaActivejetDigital ;
     sosa:observedProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
 
-eau:condAmphiroB1 a sosa:ObservationCollection , owl:NamedIndividual ;
+eau:condHansaActivejetDigital a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:label "Operating conditions for Amphiro B1"@en ;
-    rdfs:comment "Nominal shower operation with BLE communication and domestic water flow."@en ;
-    sosa:hasFeatureOfInterest eau:amphiroB1 ;
+    rdfs:label "Operating conditions for HANSA ACTIVEJET Digital"@en ;
+    rdfs:comment "Nominal shower operation with Bluetooth communication and domestic water flow."@en ;
+    sosa:hasFeatureOfInterest eau:hansaActivejetDigital ;
     sosa:observedProperty s4watr:FlowRate .
 
 eau:roomBathroom a eau:DomesticRoom , owl:NamedIndividual ;
@@ -561,7 +561,7 @@ eau:eautonomeDeployment a sosa:Deployment , owl:NamedIndividual ;
     sosa:deployedOnPlatform eau:raspberryPi4 ;
     sosa:deployedSystem eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
         eau:flowmeterBathroomCold , eau:flowmeterWashingMachine , eau:flowmeterBasementCold ,
-        eau:flowmeterToiletCold , eau:conductivitySensorHot , eau:amphiroB1 ;
+        eau:flowmeterToiletCold , eau:conductivitySensorHot , eau:hansaActivejetDigital ;
     sosa:hasFeatureOfInterest eau:mpHeaterOutput , eau:mpBathroomHot , eau:mpBathroomCold ,
         eau:mpWashingMachine , eau:mpBasementCold , eau:mpToiletCold .
 
@@ -694,10 +694,10 @@ eau:obsColAugust2023 a sosa:ObservationCollection , owl:NamedIndividual ;
 
 s4watr:FlowRate sosa:isObservedBy eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
     eau:flowmeterBathroomCold , eau:flowmeterWashingMachine , eau:flowmeterBasementCold ,
-    eau:flowmeterToiletCold , eau:amphiroB1 .
+    eau:flowmeterToiletCold , eau:hansaActivejetDigital .
 
-s4watr:FlowTemperature sosa:isObservedBy eau:flowmeterHeaterOutput , eau:conductivitySensorHot , eau:amphiroB1 .
+s4watr:FlowTemperature sosa:isObservedBy eau:flowmeterHeaterOutput , eau:conductivitySensorHot , eau:hansaActivejetDigital .
 
-s4watr:FlowVolume sosa:isObservedBy eau:amphiroB1 .
+s4watr:FlowVolume sosa:isObservedBy eau:hansaActivejetDigital .
 
 s4watr:Conductivity sosa:isObservedBy eau:conductivitySensorHot .
