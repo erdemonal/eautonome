@@ -70,7 +70,12 @@ eau:ADConverter a owl:Class ;
 eau:EautonomeObservingProcedure a owl:Class ;
     rdfs:subClassOf sosa:ObservingProcedure ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "A procedure for acquiring and recording sensor data."@en .
+    rdfs:comment "Data acquisition via ADC on the Raspberry Pi."@en .
+
+eau:ShowerObservingProcedure a owl:Class ;
+    rdfs:subClassOf eau:EautonomeObservingProcedure ;
+    rdfs:label "Shower observing procedure"@en , "Procédure d'observation douche"@fr ;
+    rdfs:comment "Data acquisition for shower via Bluetooth."@en .
 
 eau:ShowerSensor a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterDevice ;
@@ -139,10 +144,6 @@ eau:hasTransmissionInterval a owl:DatatypeProperty ; rdfs:domain eau:EautonomeOb
 eau:hasDurationSeconds a owl:DatatypeProperty ; rdfs:domain sosa:Observation ; rdfs:range xsd:decimal ;
     rdfs:label "has duration in seconds"@en ;
     rdfs:comment "Duration of the observation in seconds."@en .
-
-eau:hasI2CAddress a owl:DatatypeProperty ; rdfs:domain eau:ADConverter ; rdfs:range xsd:string ;
-    rdfs:label "has I2C address"@en ;
-    rdfs:comment "I2C bus address of the ADC device."@en .
 
 eau:hasAnalogInput a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:string ;
     rdfs:label "has analog input"@en ;
@@ -218,11 +219,13 @@ eau:hansaActivejetDigital a eau:ShowerSensor , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "HANSA Activejet Digital"@en ;
     rdfs:comment "A HANSA Activejet Digital Bluetooth hand shower."@en ;
+    eau:hasOperationalStatus "active" ;
     eau:monitors eau:mpBathroomHot ;
     sosa:observes s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature ;
     sosa:hasSystemCapability eau:capHansaActivejetDigital ;
     sosa:hasOperatingConditions eau:condHansaActivejetDigital ;
-    sosa:forProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
+    sosa:forProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature ;
+    sosa:implements eau:showerObservingProcedure .
 
 eau:capFlowmeterHeaterOutput a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
@@ -247,7 +250,7 @@ eau:capHansaActivejetDigital a sosa:ObservationCollection , owl:NamedIndividual 
 
 eau:condHansaActivejetDigital a sosa:ObservationCollection , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
-    rdfs:label "Operating conditions for HANSA ACTIVEJET Digital"@en ;
+    rdfs:label "Operating conditions for HANSA Activejet Digital"@en ;
     rdfs:comment "Nominal shower operation with Bluetooth communication and domestic water flow."@en ;
     sosa:hasFeatureOfInterest eau:hansaActivejetDigital ;
     sosa:observedProperty s4watr:FlowRate .
@@ -364,8 +367,7 @@ eau:raspberryPi4 a sosa:Platform , owl:NamedIndividual ;
 eau:adcCard1 a eau:ADConverter , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "ADC card 1"@en , "Carte ADC 1"@fr ;
-    rdfs:comment "Analog to digital converter card for Hat1 sensors."@en ;
-    eau:hasI2CAddress "0x48" ;
+    rdfs:comment "MCC 128 ADC on SPI hat index 0."@en ;
     eau:hasOperationalStatus "active" ;
     sosa:hasSubSystem eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot ,
         eau:flowmeterBathroomCold , eau:flowmeterBasementCold , eau:flowmeterToiletCold ,
@@ -378,8 +380,7 @@ eau:adcCard1 a eau:ADConverter , owl:NamedIndividual ;
 eau:adcCard2 a eau:ADConverter , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "ADC card 2"@en , "Carte ADC 2"@fr ;
-    rdfs:comment "Analog to digital converter card for Hat2 sensors."@en ;
-    eau:hasI2CAddress "0x49" ;
+    rdfs:comment "MCC 128 ADC on SPI hat index 1."@en ;
     eau:hasOperationalStatus "active" ;
     sosa:hasSubSystem eau:jumoDigiLineBoiler , eau:jumoDigiLineShower , eau:flowmeterWashingMachine ,
         eau:flowmeterKitchenHot , eau:flowmeterMainInlet , eau:flowmeterToiletSink , eau:tempSensorMainInlet ;
@@ -525,7 +526,7 @@ eau:flowmeterToiletSink a eau:VortexFlowmeter , owl:NamedIndividual ;
 eau:flowmeterMainInlet a eau:VortexFlowmeter , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Main inlet flowmeter"@en , "Débitmètre entrée principale"@fr ;
-    rdfs:comment "ifm vortex flowmeter DN10 ."@en ;
+    rdfs:comment "ifm vortex flowmeter DN10."@en ;
     eau:hasOperationalStatus "active" ;
     eau:hasFlowEquation "Q = 2.0 * (I - 4)" ;
     eau:hasAnalogInput "AN3" ;
@@ -708,16 +709,23 @@ eau:eautonomeDeployment a sosa:Deployment , owl:NamedIndividual ;
 eau:eautonomeObservingProcedure a eau:EautonomeObservingProcedure , owl:NamedIndividual ;
     rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "A procedure for acquiring and recording sensor data."@en ;
+    rdfs:comment "Data acquisition via ADC on the Raspberry Pi."@en ;
     sosa:implementedBy eau:flowmeterHeaterOutput , eau:flowmeterBathroomHot , eau:flowmeterBathroomCold ,
         eau:flowmeterWashingMachine , eau:flowmeterBasementCold , eau:flowmeterToiletCold ,
         eau:flowmeterKitchenCold , eau:flowmeterKitchenHot , eau:flowmeterToiletSink ,
         eau:flowmeterMainInlet , eau:tempSensorMainInlet , eau:jumoDigiLineBoiler ,
         eau:jumoDigiLineShower ;
-    sosa:forProperty s4watr:FlowRate , s4watr:FlowTemperature , s4watr:FlowVolume , s4watr:Conductivity ;
+    sosa:forProperty s4watr:FlowRate , s4watr:FlowTemperature , s4watr:Conductivity ;
     eau:hasTriggerThreshold "0.05"^^xsd:decimal ;
     eau:hasSamplingPeriod "2"^^xsd:decimal ;
     eau:hasTransmissionInterval "360"^^xsd:decimal .
+
+eau:showerObservingProcedure a eau:ShowerObservingProcedure , owl:NamedIndividual ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> ;
+    rdfs:label "Shower observing procedure"@en , "Procédure d'observation douche"@fr ;
+    rdfs:comment "Shower data acquisition via Bluetooth."@en ;
+    sosa:implementedBy eau:hansaActivejetDigital ;
+    sosa:forProperty s4watr:FlowRate , s4watr:FlowVolume , s4watr:FlowTemperature .
 
 # 
 # Greywater FOI
@@ -773,6 +781,7 @@ eau:obsColEveningShower20260627 a sosa:ObservationCollection , owl:NamedIndividu
     rdfs:label "Evening shower consumption"@en , "Consommation douche du soir"@fr ;
     rdfs:comment "Flow observations during the evening shower period."@en ;
     sosa:madeBySensor eau:hansaActivejetDigital ; sosa:observedProperty s4watr:FlowRate ;
+    sosa:usedProcedure eau:showerObservingProcedure ;
     sosa:hasFeatureOfInterest eau:mpBathroomHot ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:phenomenonTime [
         a time:Interval ;
@@ -786,6 +795,7 @@ eau:obsColAfternoonShower20260628 a sosa:ObservationCollection , owl:NamedIndivi
     rdfs:label "Afternoon shower consumption"@en , "Consommation douche de l'après-midi"@fr ;
     rdfs:comment "Flow observations during the afternoon shower period."@en ;
     sosa:madeBySensor eau:hansaActivejetDigital ; sosa:observedProperty s4watr:FlowRate ;
+    sosa:usedProcedure eau:showerObservingProcedure ;
     sosa:hasFeatureOfInterest eau:mpBathroomHot ; sosa:hasUltimateFeatureOfInterest eau:domesticGreywater ;
     sosa:phenomenonTime [
         a time:Interval ;
