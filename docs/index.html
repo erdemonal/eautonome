@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <style>
-#profile {
+        #profile {
             font-style: italic;
             font-size: 1.25em;
             color: darkred!important;
@@ -725,11 +725,18 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
         <ul class="hlist">
             <li><a href="#hasconsumptionevent">has consumption event</a></li>
             <li><a href="#haspipeconfiguration">has pipe configuration</a></li>
+            <li><a href="#isconsumptioneventof">is consumption event of</a></li>
+            <li><a href="#islocationof">is location of</a></li>
+            <li><a href="#ismeasuredat">is measured at</a></li>
+            <li><a href="#ismonitoredby">is monitored by</a></li>
+            <li><a href="#ispipeconfigurationof">is pipe configuration of</a></li>
+            <li><a href="#isservedby">is served by</a></li>
             <li><a href="#locatedin">located in</a></li>
             <li><a href="#measuresonasset">measures on asset</a></li>
             <li><a href="#measureswaterkind">measures water kind</a></li>
             <li><a href="#monitors">monitors</a></li>
             <li><a href="#servesendpoint">serves endpoint</a></li>
+            <li><a href="#waterkindmeasuredat">water kind measured at</a></li>
         </ul>
         <div class="entity property" id="hasconsumptionevent">
             <h3>has consumption event<span class="entity-kind"> (Object property)</span><span
@@ -738,7 +745,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/hasConsumptionEvent</code></td></tr><tr><th>Description</th><td><p>Links an observation collection to the domestic usage activity it represents.</p></td></tr><tr><th>Domain(s)</th><td><a href="http://www.w3.org/ns/sosa/ObservationCollection">sosa:ObservationCollection</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/ConsumptionEvent">eau:ConsumptionEvent</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/hasConsumptionEvent</code></td></tr><tr><th>Description</th><td><p>Links an observation collection to the domestic usage activity it represents.</p></td></tr><tr><th>Domain(s)</th><td><a href="http://www.w3.org/ns/sosa/ObservationCollection">sosa:ObservationCollection</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/ConsumptionEvent">eau:ConsumptionEvent</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/isConsumptionEventOf">eau:isConsumptionEventOf</a></td></tr>
             </table>
         </div>
         <div class="entity property" id="haspipeconfiguration">
@@ -748,7 +755,67 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/hasPipeConfiguration</code></td></tr><tr><th>Description</th><td><p>Relates a deployment, observing procedure, or observation collection to the pipe configuration.</p></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/PipeConfiguration">eau:PipeConfiguration</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/hasPipeConfiguration</code></td></tr><tr><th>Description</th><td><p>Relates a deployment, observing procedure, or observation collection to the pipe configuration.</p></td></tr><tr><th>Domain(s)</th><td><a href="http://www.w3.org/ns/sosa/Deployment">sosa:Deployment</a> ∪ <a href="http://www.w3.org/ns/sosa/ObservingProcedure">sosa:ObservingProcedure</a> ∪ <a href="http://www.w3.org/ns/sosa/ObservationCollection">sosa:ObservationCollection</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/PipeConfiguration">eau:PipeConfiguration</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/isPipeConfigurationOf">eau:isPipeConfigurationOf</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="isconsumptioneventof">
+            <h3>is consumption event of<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#isconsumptioneventof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/isConsumptionEventOf</code></td></tr><tr><th>Description</th><td><p>Links a consumption event to the observation collection that represents it.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/ConsumptionEvent">eau:ConsumptionEvent</a></td></tr><tr><th>Range(s)</th><td><a href="http://www.w3.org/ns/sosa/ObservationCollection">sosa:ObservationCollection</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/hasConsumptionEvent">eau:hasConsumptionEvent</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="islocationof">
+            <h3>is location of<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#islocationof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/isLocationOf</code></td></tr><tr><th>Description</th><td><p>Links a domestic room to a measurement point located in that room.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/DomesticRoom">eau:DomesticRoom</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/locatedIn">eau:locatedIn</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="ismeasuredat">
+            <h3>is measured at<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#ismeasuredat" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/isMeasuredAt</code></td></tr><tr><th>Description</th><td><p>Links a water asset to the measurement point that instruments it.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://saref.etsi.org/saref4watr/WaterAsset">s4watr:WaterAsset</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/measuresOnAsset">eau:measuresOnAsset</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="ismonitoredby">
+            <h3>is monitored by<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#ismonitoredby" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/isMonitoredBy</code></td></tr><tr><th>Description</th><td><p>Static topology link from a measurement point to the sensor that monitors it, independent of any observation.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/monitors">eau:monitors</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="ispipeconfigurationof">
+            <h3>is pipe configuration of<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#ispipeconfigurationof" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/isPipeConfigurationOf</code></td></tr><tr><th>Description</th><td><p>Relates a pipe configuration to a deployment, observing procedure, or observation collection.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/PipeConfiguration">eau:PipeConfiguration</a></td></tr><tr><th>Range(s)</th><td><a href="http://www.w3.org/ns/sosa/Deployment">sosa:Deployment</a> ∪ <a href="http://www.w3.org/ns/sosa/ObservingProcedure">sosa:ObservingProcedure</a> ∪ <a href="http://www.w3.org/ns/sosa/ObservationCollection">sosa:ObservationCollection</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/hasPipeConfiguration">eau:hasPipeConfiguration</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="isservedby">
+            <h3>is served by<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#isservedby" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/isServedBy</code></td></tr><tr><th>Description</th><td><p>Links a domestic room to a measurement point that serves it as water-use endpoint.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/DomesticRoom">eau:DomesticRoom</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/servesEndpoint">eau:servesEndpoint</a></td></tr>
             </table>
         </div>
         <div class="entity property" id="locatedin">
@@ -758,7 +825,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/locatedIn</code></td></tr><tr><th>Description</th><td><p>The room where the measurement point is located.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/DomesticRoom">eau:DomesticRoom</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/locatedIn</code></td></tr><tr><th>Description</th><td><p>The room where the measurement point is located.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/DomesticRoom">eau:DomesticRoom</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/isLocationOf">eau:isLocationOf</a></td></tr>
             </table>
         </div>
         <div class="entity property" id="measuresonasset">
@@ -768,7 +835,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/measuresOnAsset</code></td></tr><tr><th>Description</th><td><p>The pipe or water asset instrumented at this measurement point.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://saref.etsi.org/saref4watr/WaterAsset">s4watr:WaterAsset</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/measuresOnAsset</code></td></tr><tr><th>Description</th><td><p>The pipe or water asset instrumented at this measurement point.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://saref.etsi.org/saref4watr/WaterAsset">s4watr:WaterAsset</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/isMeasuredAt">eau:isMeasuredAt</a></td></tr>
             </table>
         </div>
         <div class="entity property" id="measureswaterkind">
@@ -778,7 +845,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/measuresWaterKind</code></td></tr><tr><th>Description</th><td><p>Specifies the type of water measured.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://saref.etsi.org/saref4watr/WaterKind">s4watr:WaterKind</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/measuresWaterKind</code></td></tr><tr><th>Description</th><td><p>Specifies the type of water measured.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://saref.etsi.org/saref4watr/WaterKind">s4watr:WaterKind</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/waterKindMeasuredAt">eau:waterKindMeasuredAt</a></td></tr>
             </table>
         </div>
         <div class="entity property" id="monitors">
@@ -788,7 +855,7 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/monitors</code></td></tr><tr><th>Description</th><td><p>Static topology link from a sensor to the measurement point it monitors, independent of any observation.</p></td></tr><tr><th>Domain(s)</th><td><a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/monitors</code></td></tr><tr><th>Description</th><td><p>Static topology link from a sensor to the measurement point it monitors, independent of any observation.</p></td></tr><tr><th>Domain(s)</th><td><a href="http://www.w3.org/ns/sosa/Sensor">sosa:Sensor</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/isMonitoredBy">eau:isMonitoredBy</a></td></tr>
             </table>
         </div>
         <div class="entity property" id="servesendpoint">
@@ -798,7 +865,17 @@ PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
                         title="OPs Index">OPs</a></span>
             </h3>
             <table>
-                <tr><th>URI</th><td><code>https://w3id.org/eautonome/servesEndpoint</code></td></tr><tr><th>Description</th><td><p>Connects a measurement point to the room where the water is used.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/DomesticRoom">eau:DomesticRoom</a></td></tr>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/servesEndpoint</code></td></tr><tr><th>Description</th><td><p>Connects a measurement point to the room where the water is used.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/DomesticRoom">eau:DomesticRoom</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/isServedBy">eau:isServedBy</a></td></tr>
+            </table>
+        </div>
+        <div class="entity property" id="waterkindmeasuredat">
+            <h3>water kind measured at<span class="entity-kind"> (Object property)</span><span
+                    style="float:right; margin-right:10px; font-size:smaller;">
+                    <a href="#waterkindmeasuredat" title="fragment link to here">#</a>&nbsp;<a href="#objectproperties"
+                        title="OPs Index">OPs</a></span>
+            </h3>
+            <table>
+                <tr><th>URI</th><td><code>https://w3id.org/eautonome/waterKindMeasuredAt</code></td></tr><tr><th>Description</th><td><p>Links a water kind to a measurement point where that kind of water is measured.</p></td></tr><tr><th>Domain(s)</th><td><a href="https://saref.etsi.org/saref4watr/WaterKind">s4watr:WaterKind</a></td></tr><tr><th>Range(s)</th><td><a href="https://w3id.org/eautonome/MeasurementPoint">eau:MeasurementPoint</a></td></tr><tr><th>Inverse of</th><td><a href="https://w3id.org/eautonome/measuresWaterKind">eau:measuresWaterKind</a></td></tr>
             </table>
         </div>
     </section>

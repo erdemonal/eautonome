@@ -1,7 +1,6 @@
 #
 # Prefixes
 #
-@prefix : <https://w3id.org/eautonome/> .
 @prefix eau: <https://w3id.org/eautonome/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -100,13 +99,10 @@ eau:ConsumptionEvent a owl:Class ;
     rdfs:subClassOf schema:Event ;
     rdfs:label "Consumption event"@en , "Événement de consommation"@fr ;
     rdfs:comment "A domestic water use activity. It complements sosa:phenomenonTime on observation collections."@en .
+
 #
 # Properties
 #
-saref:Property rdfs:subClassOf sosa:Property .
-s4watr:WaterDevice rdfs:subClassOf sosa:System .
-s4watr:WaterMeter rdfs:subClassOf sosa:System .
-
 eau:hasFlowEquation a owl:DatatypeProperty ; rdfs:domain eau:VortexFlowmeter ; rdfs:range xsd:string ;
     rdfs:label "has flow equation"@en ;
     rdfs:comment "Equation relating sensor current to measured flow rate."@en .
@@ -164,37 +160,124 @@ eau:hasOperationalStatus a owl:DatatypeProperty ;
     rdfs:label "has operational status"@en ;
     rdfs:comment "Current status of the system, can be active, inactive, or planned."@en .
 
-eau:servesEndpoint a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range eau:DomesticRoom ;
+eau:servesEndpoint a owl:ObjectProperty ;
+    rdfs:domain eau:MeasurementPoint ;
+    rdfs:range eau:DomesticRoom ;
+    owl:inverseOf eau:isServedBy ;
     rdfs:label "serves endpoint"@en ;
     rdfs:comment "Connects a measurement point to the room where the water is used."@en .
 
-eau:measuresWaterKind a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range s4watr:WaterKind ;
+eau:isServedBy a owl:ObjectProperty ;
+    rdfs:domain eau:DomesticRoom ;
+    rdfs:range eau:MeasurementPoint ;
+    owl:inverseOf eau:servesEndpoint ;
+    rdfs:label "is served by"@en ;
+    rdfs:comment "Links a domestic room to a measurement point that serves it as water use endpoint."@en .
+
+eau:measuresWaterKind a owl:ObjectProperty ;
+    rdfs:domain eau:MeasurementPoint ;
+    rdfs:range s4watr:WaterKind ;
+    owl:inverseOf eau:waterKindMeasuredAt ;
     rdfs:label "measures water kind"@en ;
     rdfs:comment "Specifies the type of water measured."@en .
 
-eau:hasConsumptionEvent a owl:ObjectProperty ; rdfs:domain sosa:ObservationCollection ; rdfs:range eau:ConsumptionEvent ;
+eau:waterKindMeasuredAt a owl:ObjectProperty ;
+    rdfs:domain s4watr:WaterKind ;
+    rdfs:range eau:MeasurementPoint ;
+    owl:inverseOf eau:measuresWaterKind ;
+    rdfs:label "water kind measured at"@en ;
+    rdfs:comment "Links a water kind to a measurement point where that kind of water is measured."@en .
+
+eau:hasConsumptionEvent a owl:ObjectProperty ;
+    rdfs:domain sosa:ObservationCollection ;
+    rdfs:range eau:ConsumptionEvent ;
+    owl:inverseOf eau:isConsumptionEventOf ;
     rdfs:label "has consumption event"@en ;
     rdfs:comment "Links an observation collection to the domestic usage activity it represents."@en .
 
-eau:locatedIn a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range eau:DomesticRoom ;
+eau:isConsumptionEventOf a owl:ObjectProperty ;
+    rdfs:domain eau:ConsumptionEvent ;
+    rdfs:range sosa:ObservationCollection ;
+    owl:inverseOf eau:hasConsumptionEvent ;
+    rdfs:label "is consumption event of"@en ;
+    rdfs:comment "Links a consumption event to the observation collection that represents it."@en .
+
+eau:locatedIn a owl:ObjectProperty ;
+    rdfs:domain eau:MeasurementPoint ;
+    rdfs:range eau:DomesticRoom ;
+    owl:inverseOf eau:isLocationOf ;
     rdfs:label "located in"@en ;
     rdfs:comment "The room where the measurement point is located."@en .
 
-eau:measuresOnAsset a owl:ObjectProperty ; rdfs:domain eau:MeasurementPoint ; rdfs:range s4watr:WaterAsset ;
+eau:isLocationOf a owl:ObjectProperty ;
+    rdfs:domain eau:DomesticRoom ;
+    rdfs:range eau:MeasurementPoint ;
+    owl:inverseOf eau:locatedIn ;
+    rdfs:label "is location of"@en ;
+    rdfs:comment "Links a domestic room to a measurement point located in that room."@en .
+
+eau:measuresOnAsset a owl:ObjectProperty ;
+    rdfs:domain eau:MeasurementPoint ;
+    rdfs:range s4watr:WaterAsset ;
+    owl:inverseOf eau:isMeasuredAt ;
     rdfs:label "measures on asset"@en ;
     rdfs:comment "The pipe or water asset instrumented at this measurement point."@en .
+
+eau:isMeasuredAt a owl:ObjectProperty ;
+    rdfs:domain s4watr:WaterAsset ;
+    rdfs:range eau:MeasurementPoint ;
+    owl:inverseOf eau:measuresOnAsset ;
+    rdfs:label "is measured at"@en ;
+    rdfs:comment "Links a water asset to the measurement point that instruments it."@en .
 
 eau:monitors a owl:ObjectProperty ;
     rdfs:domain sosa:Sensor ;
     rdfs:range eau:MeasurementPoint ;
+    owl:inverseOf eau:isMonitoredBy ;
     rdfs:label "monitors"@en , "surveille"@fr ;
     rdfs:comment "Static topology link from a sensor to the measurement point it monitors, independent of any observation."@en .
+
+eau:isMonitoredBy a owl:ObjectProperty ;
+    rdfs:domain eau:MeasurementPoint ;
+    rdfs:range sosa:Sensor ;
+    owl:inverseOf eau:monitors ;
+    rdfs:label "is monitored by"@en , "est surveillé par"@fr ;
+    rdfs:comment "Static topology link from a measurement point to the sensor that monitors it, independent of any observation."@en .
 
 eau:hasPipeConfiguration a owl:ObjectProperty ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure sosa:ObservationCollection ) ] ;
     rdfs:range eau:PipeConfiguration ;
+    owl:inverseOf eau:isPipeConfigurationOf ;
     rdfs:label "has pipe configuration"@en , "a pour configuration de tuyauterie"@fr ;
     rdfs:comment "Relates a deployment, observing procedure, or observation collection to the pipe configuration."@en .
+
+eau:isPipeConfigurationOf a owl:ObjectProperty ;
+    rdfs:domain eau:PipeConfiguration ;
+    rdfs:range [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure sosa:ObservationCollection ) ] ;
+    owl:inverseOf eau:hasPipeConfiguration ;
+    rdfs:label "is pipe configuration of"@en , "est la configuration de tuyauterie de"@fr ;
+    rdfs:comment "Relates a pipe configuration to a deployment, observing procedure, or observation collection."@en .
+
+#
+# Axioms
+#
+saref:Property rdfs:subClassOf sosa:Property .
+s4watr:WaterDevice rdfs:subClassOf sosa:System .
+s4watr:WaterMeter rdfs:subClassOf sosa:System .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (
+        eau:DomesticRoom
+        eau:MeasurementPoint
+        eau:PipeConfiguration
+        eau:ConsumptionEvent
+        eau:GreywaterRecyclingSystem
+        eau:ADConverter
+        eau:EautonomeObservingProcedure
+        eau:VortexFlowmeter
+        eau:ConductivityTemperatureSensor
+        eau:ShowerSensor
+    ) .
 
 #
 # Individuals 
