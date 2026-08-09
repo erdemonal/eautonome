@@ -1,0 +1,64 @@
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix sosa:   <http://www.w3.org/ns/sosa/> .
+@prefix eau:    <https://w3id.org/eautonome/> .
+@prefix time:   <http://www.w3.org/2006/time#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+# SHACL shapes for the Eautonome ontology.
+
+# Observation
+eau:ObservationShape a sh:NodeShape ;
+    sh:targetClass sosa:Observation ;
+    sh:property [ sh:path sosa:madeBySensor ;     sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:observedProperty ; sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:hasSimpleResult ;  sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:resultTime ;       sh:minCount 1 ;
+                  sh:datatype xsd:dateTime ] .
+
+# Measurement point
+eau:MeasurementPointShape a sh:NodeShape ;
+    sh:targetClass eau:MeasurementPoint ;
+    sh:property [ sh:path eau:locatedIn ;         sh:minCount 1 ] ;
+    sh:property [ sh:path eau:measuresOnAsset ;   sh:minCount 1 ] ;
+    sh:property [ sh:path eau:measuresWaterKind ; sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:hasProperty ;      sh:minCount 1 ] .
+
+# Consumption event
+eau:ConsumptionEventShape a sh:NodeShape ;
+    sh:targetClass eau:ConsumptionEvent ;
+    sh:property [ sh:path time:hasBeginning ; sh:minCount 1 ] ;
+    sh:property [ sh:path time:hasEnd ;       sh:minCount 1 ] .
+
+# Observing procedure
+eau:ObservingProcedureShape a sh:NodeShape ;
+    sh:targetClass eau:EautonomeObservingProcedure ;
+    sh:property [ sh:path sosa:forProperty ;           sh:minCount 1 ] ;
+    sh:property [ sh:path eau:hasSamplingPeriod ;       sh:datatype xsd:decimal ] ;
+    sh:property [ sh:path eau:hasTriggerThreshold ;     sh:datatype xsd:decimal ] ;
+    sh:property [ sh:path eau:hasTransmissionInterval ; sh:datatype xsd:decimal ] .
+
+# Vortex flowmeter
+eau:VortexFlowmeterShape a sh:NodeShape ;
+    sh:targetClass eau:VortexFlowmeter ;
+    sh:property [ sh:path eau:monitors ;             sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:observes ;            sh:minCount 1 ] ;
+    sh:property [ sh:path eau:hasOperationalStatus ; sh:minCount 1 ;
+                  sh:in ( "active" "inactive" "planned" ) ] ;
+    sh:property [ sh:path eau:hasCalibrationR2 ;
+                  sh:minInclusive 0.0 ; sh:maxInclusive 1.0 ] .
+
+# Conductivity and temperature sensor
+eau:ConductivityTemperatureSensorShape a sh:NodeShape ;
+    sh:targetClass eau:ConductivityTemperatureSensor ;
+    sh:property [ sh:path eau:monitors ;             sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:observes ;            sh:minCount 1 ] ;
+    sh:property [ sh:path eau:hasOperationalStatus ; sh:minCount 1 ;
+                  sh:in ( "active" "inactive" "planned" ) ] .
+
+# Shower sensor
+eau:ShowerSensorShape a sh:NodeShape ;
+    sh:targetClass eau:ShowerSensor ;
+    sh:property [ sh:path eau:monitors ;             sh:minCount 1 ] ;
+    sh:property [ sh:path sosa:observes ;            sh:minCount 1 ] ;
+    sh:property [ sh:path eau:hasOperationalStatus ; sh:minCount 1 ;
+                  sh:in ( "active" "inactive" "planned" ) ] .
