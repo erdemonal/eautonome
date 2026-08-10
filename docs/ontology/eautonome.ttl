@@ -9,6 +9,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix schema: <http://schema.org/> .
+@prefix mod: <https://w3id.org/mod#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix saref: <https://saref.etsi.org/core/> .
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
@@ -31,8 +32,10 @@
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:created "2026-04-03"^^xsd:date ;
     dcterms:issued "2026-04-04"^^xsd:date ;
-    dcterms:modified "2026-08-09"^^xsd:date ;
+    dcterms:modified "2026-08-10"^^xsd:date ;
     dcterms:source <https://www.leesu.fr/eautonome> ;
+    schema:logo <https://erdemonal.github.io/eautonome/logo.svg> ;
+    mod:status "release" ;
     dcterms:bibliographicCitation "Önal, E. Projet maison Eautonome ontology. https://w3id.org/eautonome/"@en ;
     owl:versionInfo "1.0.0" ;
     owl:versionIRI <https://w3id.org/eautonome/1.0.0> ;
