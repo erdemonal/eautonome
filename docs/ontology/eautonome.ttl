@@ -10,6 +10,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix schema: <http://schema.org/> .
 @prefix mod: <https://w3id.org/mod#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix saref: <https://saref.etsi.org/core/> .
 @prefix s4watr: <https://saref.etsi.org/saref4watr/> .
@@ -34,7 +35,8 @@
     dcterms:issued "2026-04-04"^^xsd:date ;
     dcterms:modified "2026-08-11"^^xsd:date ;
     dcterms:source <https://www.leesu.fr/eautonome> ;
-    dcterms:identifier "10.5281/zenodo.21894601" ;
+    dcterms:identifier <https://doi.org/10.5281/zenodo.21894601> ;
+    bibo:doi "10.5281/zenodo.21894601" ;
     schema:logo <https://erdemonal.github.io/eautonome/logo.svg> ;
     mod:status "release" ;
     dcterms:bibliographicCitation "Önal, E. The Eautonome Ontology. https://doi.org/10.5281/zenodo.21894601"@en ;
