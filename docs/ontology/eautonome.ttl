@@ -23,10 +23,10 @@
 # Eautonome Ontology
 #
 <https://w3id.org/eautonome/> rdf:type owl:Ontology ;
-    dcterms:title "Projet maison Eautonome"@en ;
-    dcterms:title "Projet maison Eautonome"@fr ;
-    dcterms:description "This ontology provides an OWL representation of the Projet maison Eautonome. It models domestic water uses, quality levels, and greywater reuse processes, specifically describing the monitoring and observations of the system to reduce water consumption."@en ;
-    dcterms:description "Cette ontologie fournit une représentation OWL du Projet maison Eautonome. Elle modélise les usages domestiques de l'eau, les niveaux de qualité et les processus de réutilisation des eaux grises, en décrivant spécifiquement le suivi et les observations du système pour réduire la consommation d'eau."@fr ;
+    dcterms:title "The Eautonome Ontology"@en ;
+    dcterms:title "L'ontologie Eautonome"@fr ;
+    dcterms:description "The Eautonome Ontology provides an OWL representation of residential water end-use monitoring. It models domestic water uses, quality levels, and greywater reuse processes, specifically describing the monitoring and observations of the system to reduce water consumption."@en ;
+    dcterms:description "L'ontologie Eautonome fournit une représentation OWL du suivi des usages résidentiels de l'eau. Elle modélise les usages domestiques de l'eau, les niveaux de qualité et les processus de réutilisation des eaux grises, en décrivant spécifiquement le suivi et les observations du système pour réduire la consommation d'eau."@fr ;
     dcterms:creator erdemonal:me ;
     dcterms:publisher <https://www.leesu.fr/> ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
@@ -36,7 +36,7 @@
     dcterms:source <https://www.leesu.fr/eautonome> ;
     schema:logo <https://erdemonal.github.io/eautonome/logo.svg> ;
     mod:status "release" ;
-    dcterms:bibliographicCitation "Önal, E. Projet maison Eautonome ontology. https://w3id.org/eautonome/"@en ;
+    dcterms:bibliographicCitation "Önal, E. The Eautonome Ontology. https://w3id.org/eautonome/"@en ;
     owl:versionInfo "1.0.0" ;
     owl:versionIRI <https://w3id.org/eautonome/1.0.0> ;
     vann:preferredNamespacePrefix "eau" ;
