@@ -13,6 +13,7 @@ The ontology is published under the persistent `w3id.org` namespace with HTTP co
 * RDF/XML: https://w3id.org/eautonome/eautonome.rdf
 * JSON-LD: https://w3id.org/eautonome/eautonome.jsonld
 * N-Triples: https://w3id.org/eautonome/eautonome.nt
+* DOI (Zenodo): https://doi.org/10.5281/zenodo.21894601
 
 ## Contents
 
@@ -54,6 +55,7 @@ The ontology was also included in the implementation report associated with the 
 ## Citation
 
 Önal, E. (2026). *The Eautonome Ontology*, version 1.0.0.
+https://doi.org/10.5281/zenodo.21894601
 https://w3id.org/eautonome/
 
 ## License
