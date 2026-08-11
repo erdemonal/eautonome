@@ -4,8 +4,6 @@ The Eautonome Ontology is an OWL ontology for residential water end-use monitori
 
 The ontology reuses SOSA/SSN for the representation of observations and ETSI SAREF4WATR for water-domain terminology. It aligns the two vocabularies at the class level and extends them with concepts for household end-use attribution, including measurement points, rooms, pipe configurations, and consumption events.
 
-**Current version:** 1.0.0
-
 ## Persistent identifiers
 
 The ontology is published under the persistent `w3id.org` namespace with HTTP content negotiation.
