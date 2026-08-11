@@ -1,6 +1,6 @@
 # The Eautonome Ontology
 
-The Eautonome Ontology is an OWL ontology for residential water end-use monitoring. It was developed within the Eautonome greywater monitoring system of the OPUR programme at LEESU, École des Ponts ParisTech.
+The Eautonome Ontology is an OWL ontology for residential water end-use monitoring. It was developed within the Eautonome greywater monitoring system of the OPUR programme at LEESU, ENPC, Institut Polytechnique de Paris.
 
 The ontology reuses SOSA/SSN for the representation of observations and ETSI SAREF4WATR for water-domain terminology. It aligns the two vocabularies at the class level and extends them with concepts for household end-use attribution, including measurement points, rooms, pipe configurations, and consumption events.
 
@@ -15,7 +15,6 @@ The ontology is published under the persistent `w3id.org` namespace with HTTP co
 * RDF/XML: https://w3id.org/eautonome/eautonome.rdf
 * JSON-LD: https://w3id.org/eautonome/eautonome.jsonld
 * N-Triples: https://w3id.org/eautonome/eautonome.nt
-* Archived version (DOI): to be added following Zenodo deposit
 
 ## Contents
 
@@ -24,14 +23,13 @@ The repository contains:
 * The ontology schema (T-box) in Turtle, RDF/XML, JSON-LD, and N-Triples
 * Two example observation datasets (A-box) in JSON-LD, covering a shower experiment and a hydrodynamic experiment
 * SHACL shapes for data validation (`eautonome-shapes.ttl`)
-* Human-readable HTML documentation
 
 ## Reused vocabularies
 
 The ontology reuses or references the following vocabularies:
 
 * W3C SOSA/SSN
-* ETSI SAREF4WATR v2.1.1
+* ETSI SAREF4WATR 
 * OWL-Time
 * QUDT
 * schema.org
@@ -67,5 +65,5 @@ This ontology is released under the Creative Commons Attribution 4.0 Internation
 ## Contact
 
 Erdem Önal
-LEESU, École des Ponts ParisTech
-[erdem.onal@enpc.fr](mailto:erdem.onal@enpc.fr)
+LEESU, ENPC, Institut Polytechnique de Paris
+erdem.onal [at] enpc.fr
