@@ -80,6 +80,7 @@ python analysis/run_resource_analysis.py \
   docs/data/hydrodynamic-observations.jsonld \
   docs/data/shower-observations.jsonld \
   queries
+```
 
 ## Citation
 
