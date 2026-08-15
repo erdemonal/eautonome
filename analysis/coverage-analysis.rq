@@ -1,0 +1,13 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+SELECT ?mp ?room ?waterKind
+       (COUNT(DISTINCT ?sensor) AS ?sensorCount)
+       (SUM(IF(?status = "active", 1, 0)) AS ?activeSensorCount)
+WHERE {
+  ?mp a eau:MeasurementPoint ;
+      eau:locatedIn ?room ;
+      eau:measuresWaterKind ?waterKind .
+  ?sensor eau:monitors ?mp ;
+          eau:hasOperationalStatus ?status .
+}
+GROUP BY ?mp ?room ?waterKind
+ORDER BY ?mp

@@ -1,0 +1,5 @@
+collection,configuration,n,duration_s,mean_l_min,median_l_min,min_l_min,max_l_min
+expColHydrodynamicCurved_s2,pipeConfigurationCurved,6,10.0,1.6166666666666667,1.58,1.52,1.8
+expColHydrodynamicCurved_s3,pipeConfigurationCurved,6,10.0,1.4816666666666667,1.49,1.42,1.53
+expColHydrodynamicStraight_s0,pipeConfigurationStraight,5,28.0,1.278,0.06,0.03,3.52
+expColHydrodynamicStraight_s1,pipeConfigurationStraight,6,10.0,3.5366666666666666,3.525,3.46,3.63

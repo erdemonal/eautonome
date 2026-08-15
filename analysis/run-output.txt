@@ -1,0 +1,50 @@
+Ablation results
+  Queries with unchanged result counts: 5 of 13
+  Queries with no results after ablation: 7 of 13
+  Q10 deployment sensors: 14 to 1
+
+Query results
+   Q1: 742 to 742 (100.0%)
+   Q2:   3 to   3 (100.0%)
+   Q3:  10 to   0 (0.0%)
+   Q4: 742 to 742 (100.0%)
+   Q5: 742 to 742 (100.0%)
+   Q6:  18 to   0 (0.0%)
+   Q7:   7 to   0 (0.0%)
+   Q8: 742 to 742 (100.0%)
+   Q9:   6 to   0 (0.0%)
+  Q10:  14 to   1 (7.1%)
+  Q11: 742 to   0 (0.0%)
+  Q12:   4 to   0 (0.0%)
+  Q13: 740 to   0 (0.0%)
+
+Sensor coverage
+  Measurement points: 10
+  Measurement points without an active sensor: 4
+  Measurement points with more than one active sensor: 3
+  Treated graywater measurement points: 1
+  Treated graywater measurement points without an active sensor: 1
+
+  mpBasementCold: 0 of 1 sensors active, DrinkingWater
+  mpBathroomCold: 0 of 1 sensors active, DrinkingWater
+  mpBathroomHot: 3 of 3 sensors active, DrinkingWater
+  mpHeaterOutput: 2 of 2 sensors active, DrinkingWater
+  mpKitchenCold: 1 of 1 sensors active, DrinkingWater
+  mpKitchenHot: 1 of 1 sensors active, DrinkingWater
+  mpMainInlet: 2 of 2 sensors active, DrinkingWater
+  mpToiletCold: 0 of 1 sensors active, TreatedGreywater
+  mpToiletSink: 1 of 1 sensors active, DrinkingWater
+  mpWashingMachine: 0 of 1 sensors active, DrinkingWater
+
+Hydrodynamic collection statistics
+  expColHydrodynamicCurved_s2 [pipeConfigurationCurved]:
+    n=6, duration=10 s, mean=1.617, median=1.580, range=1.52 to 1.80 L/min
+
+  expColHydrodynamicCurved_s3 [pipeConfigurationCurved]:
+    n=6, duration=10 s, mean=1.482, median=1.490, range=1.42 to 1.53 L/min
+
+  expColHydrodynamicStraight_s0 [pipeConfigurationStraight]:
+    n=5, duration=28 s, mean=1.278, median=0.060, range=0.03 to 3.52 L/min
+
+  expColHydrodynamicStraight_s1 [pipeConfigurationStraight]:
+    n=6, duration=10 s, mean=3.537, median=3.525, range=3.46 to 3.63 L/min

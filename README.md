@@ -24,6 +24,7 @@ The repository contains:
 * Two example observation datasets in JSON-LD
 * SHACL shapes for data validation (`eautonome-shapes.ttl`)
 * Thirteen SPARQL queries used in the ontology evaluation, together with their expected result counts
+* Additional analyses used in the paper, provided in the `analysis/` directory
 
 ## Reused vocabularies
 
@@ -66,6 +67,19 @@ python run_queries.py \
 ```
 
 The script reports the result count for each query and returns a nonzero exit status if a result differs from the expected value.
+
+### Additional analysis
+
+The `analysis/` directory contains the additional analyses reported in the paper. These analyses examine the contribution of Eautonome to the evaluation queries and the sensor coverage of the published monitoring installation.
+
+The analysis can be reproduced from the repository root with:
+
+```bash
+python analysis/run_resource_analysis.py \
+  docs/ontology/eautonome.ttl \
+  docs/data/hydrodynamic-observations.jsonld \
+  docs/data/shower-observations.jsonld \
+  queries
 
 ## Citation
 

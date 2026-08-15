@@ -1,0 +1,11 @@
+measurement_point,room,water_kind,sensor_count,active_sensor_count
+mpBasementCold,roomBasement,DrinkingWater,1,0
+mpBathroomCold,roomBathroom,DrinkingWater,1,0
+mpBathroomHot,roomBathroom,DrinkingWater,3,3
+mpHeaterOutput,roomBathroom,DrinkingWater,2,2
+mpKitchenCold,roomKitchen,DrinkingWater,1,1
+mpKitchenHot,roomKitchen,DrinkingWater,1,1
+mpMainInlet,roomBasement,DrinkingWater,2,2
+mpToiletCold,roomToilet,TreatedGreywater,1,0
+mpToiletSink,roomToilet,DrinkingWater,1,1
+mpWashingMachine,roomBathroom,DrinkingWater,1,0
