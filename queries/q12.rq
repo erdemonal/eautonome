@@ -1,0 +1,7 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+SELECT DISTINCT ?mp WHERE {
+  ?sensor eau:monitors ?mp ;
+          eau:hasOperationalStatus ?status .
+  FILTER(?status IN ("inactive", "planned"))
+}
+ORDER BY ?mp

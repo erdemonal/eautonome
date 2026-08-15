@@ -348,7 +348,7 @@ code{
                         title="Further information resources related to this resource. Defined in RDF Schema">See also</a></dt>
                 <dd>
                     <a href="https://www.leesu.fr/eautonome">Eautonome project homepage (LEESU)</a><br />
-                    <a href="https://raw.githack.com/w3c/sdw-sosa-ssn/usage-report/ssn/usage/index.html">W3C SOSA/SSN Usage Report</a>
+                    <a href="https://w3c.github.io/sdw-sosa-ssn/ssn/usage/">W3C SOSA/SSN Usage Report</a>
                 </dd>
             </div>
             <div>
@@ -392,207 +392,87 @@ code{
     </section>
     
     <section id="overview">
-        <h2>Overview</h2>
-        <p>The Eautonome Ontology describes physical water infrastructure and monitoring devices forming an IoT
-            observation system. These components generate observations related to domestic water usage and water quality.</p>
-        <p>The ontology describes the greywater recycling infrastructure, the sensor network, and the resulting
-            observations. It supports the identification of domestic water usage events, the assessment of sensor
-            status, and the optimization of greywater reuse.</p>
-            <h3>Competency Questions</h3>
-            <h4>Queries</h4>
-            <table>
-            <thead>
-             <tr>
-              <th>ID</th>
-              <th>Natural language question</th>
-              <th>Example</th>
-             </tr>
-            </thead>
-            <tbody>
-             <tr>
-              <td>Q1</td>
-              <td>Which sensor made the observation?</td>
-              <td>The physical device that generated the data. For example, the observation
-               <code>&lt;eau:obsFlowHeaterOutput20260627T034633&gt;</code>
-               is made by <code>&lt;eau:flowmeterHeaterOutput&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>Q2</td>
-              <td>What physical property is measured?</td>
-              <td>The water quality or flow parameter targeted by the sensor. For example, the property is
-               <code>&lt;s4watr:FlowRate&gt;</code> or <code>&lt;s4watr:Conductivity&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>Q3</td>
-              <td>Where is the measurement point located and which asset does it measure?</td>
-              <td>The room and water asset targeted by the measurement. For example,
-               <code>&lt;eau:mpBathroomHot&gt;</code> is located in <code>&lt;eau:roomBathroom&gt;</code>
-               and measures <code>&lt;eau:pipeBathroomHot&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>Q4</td>
-              <td>What is the result of the observation?</td>
-              <td>A numeric value combined with a standardized unit. For example, the result is
-               <code>3.8</code> expressed in <code>&lt;unit:L-PER-MIN&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>Q5</td>
-              <td>What is the timestamp of the observation?</td>
-              <td>The exact moment the observation was produced. For example, recorded at
-               <code>"2026-06-27T03:46:33+02:00"^^xsd:dateTime</code>.</td>
-             </tr>
-             <tr>
-              <td>Q6</td>
-              <td>What is the operational status of each device?</td>
-              <td>The current operational state of a hardware component. For example,
-               <code>&lt;eau:flowmeterBathroomCold&gt;</code> is inactive.</td>
-             </tr>
-             <tr>
-              <td>Q7</td>
-              <td>Which temporal extent and which usage activity characterise an observation collection?</td>
-              <td>The temporal extent is described using <code>sosa:phenomenonTime</code> with OWL-Time.
-               The associated activity is specified using <code>eau:hasConsumptionEvent</code> linking to an
-               <code>eau:ConsumptionEvent</code>. For example,
-               <code>&lt;eau:obsColEveningShower20260627&gt;</code> has a <code>time:Interval</code>
-               from 16:52 to 17:02 and links to <code>&lt;eau:eventEveningShower20260627&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>Q8</td>
-              <td>Which procedure is used to acquire the observation?</td>
-              <td>The automated routine executed by the hardware. ADC sensors apply
-               <code>&lt;eau:eautonomeObservingProcedure&gt;</code>; the HANSA Activejet Digital applies
-               <code>&lt;eau:showerObservingProcedure&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>Q9</td>
-              <td>What are the calibration parameters of the sensor?</td>
-              <td>The mathematical coefficients used to convert raw signals. For example,
-               <code>&lt;eau:flowmeterHeaterOutput&gt;</code> uses a slope of <code>0.957</code>.</td>
-             </tr>
-            </tbody>
-            </table>
-            <h4>Inference</h4>
-            <table>
-            <thead>
-             <tr>
-              <th>ID</th>
-              <th>Natural language question</th>
-              <th>Example</th>
-             </tr>
-            </thead>
-            <tbody>
-             <tr>
-              <td>R1</td>
-              <td>Which sensors are attached to the system?</td>
-              <td>Sensors are inferred from the deployment. For example,
-               <code>&lt;eau:flowmeterHeaterOutput&gt;</code> is deployed on
-               <code>&lt;eau:eautonomeDeployment&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>R2</td>
-              <td>Which room is concerned by an observation?</td>
-              <td>The room is inferred from the location of the measurement point. For example, the observation targets
-               <code>&lt;eau:roomBathroom&gt;</code>.</td>
-             </tr>
-             <tr>
-              <td>R3</td>
-              <td>Which measurement points are at operational risk?</td>
-              <td>Measurement points are at risk when their monitoring sensor is inactive or planned. For example,
-               <code>&lt;eau:mpBasementCold&gt;</code> is at risk because its flowmeter is inactive.</td>
-             </tr>
-             <tr>
-              <td>R4</td>
-              <td>Which observations belong to the same usage period or activity type?</td>
-              <td>Observations within the same collection share a <code>sosa:phenomenonTime</code>.
-               Collections linked to the same <code>eau:ConsumptionEvent</code> via
-               <code>eau:hasConsumptionEvent</code> correspond to the same domestic water use, such as a shower.</td>
-             </tr>
-            </tbody>
-            </table>
-        <h3>SPARQL Examples</h3>
-        <p>
-            Below is a set of SPARQL queries that implement a subset of the aforementioned competency questions.
-            All queries use the following common prefixes. Each query is followed by its corresponding result.
-        </p>
-
-        <pre><code>PREFIX eau: &lt;https://w3id.org/eautonome/&gt;
-PREFIX sosa: &lt;http://www.w3.org/ns/sosa/&gt;
-PREFIX s4watr: &lt;https://saref.etsi.org/saref4watr/&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
-        <h4>Q3</h4>
-        <pre><code>SELECT ?mp ?room ?asset WHERE {
-  ?mp a eau:MeasurementPoint ;
-      eau:locatedIn ?room ;
-      eau:measuresOnAsset ?asset .
-} ORDER BY ?mp</code></pre>
-        <hr>
-        <pre><code>&lt;https://w3id.org/eautonome/mpBasementCold&gt; &lt;https://w3id.org/eautonome/roomBasement&gt; &lt;https://w3id.org/eautonome/pipeBasementCold&gt; .
-&lt;https://w3id.org/eautonome/mpBathroomCold&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeBathroomCold&gt; .
-&lt;https://w3id.org/eautonome/mpBathroomHot&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeBathroomHot&gt; .
-&lt;https://w3id.org/eautonome/mpHeaterOutput&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeHeaterOutput&gt; .
-&lt;https://w3id.org/eautonome/mpKitchenCold&gt; &lt;https://w3id.org/eautonome/roomKitchen&gt; &lt;https://w3id.org/eautonome/pipeKitchenCold&gt; .
-&lt;https://w3id.org/eautonome/mpKitchenHot&gt; &lt;https://w3id.org/eautonome/roomKitchen&gt; &lt;https://w3id.org/eautonome/pipeKitchenHot&gt; .
-&lt;https://w3id.org/eautonome/mpMainInlet&gt; &lt;https://w3id.org/eautonome/roomBasement&gt; &lt;https://w3id.org/eautonome/pipeColdWaterEntry&gt; .
-&lt;https://w3id.org/eautonome/mpToiletCold&gt; &lt;https://w3id.org/eautonome/roomToilet&gt; &lt;https://w3id.org/eautonome/pipeToiletCold&gt; .
-&lt;https://w3id.org/eautonome/mpToiletSink&gt; &lt;https://w3id.org/eautonome/roomToilet&gt; &lt;https://w3id.org/eautonome/pipeToiletSink&gt; .
-&lt;https://w3id.org/eautonome/mpWashingMachine&gt; &lt;https://w3id.org/eautonome/roomBathroom&gt; &lt;https://w3id.org/eautonome/pipeWashingMachine&gt; .</code></pre>
-        <hr>
-        <h4>Q9</h4>
-        <pre><code>SELECT ?sensor ?slope ?intercept ?r2 WHERE {
-  ?sensor a/rdfs:subClassOf* sosa:Sensor .
-  OPTIONAL { ?sensor eau:hasCalibrationSlope ?slope . }
-  OPTIONAL { ?sensor eau:hasCalibrationIntercept ?intercept . }
-  OPTIONAL { ?sensor eau:hasCalibrationR2 ?r2 . }
-} ORDER BY ?sensor</code></pre>
-        <hr>
-        <pre><code>&lt;https://w3id.org/eautonome/flowmeterBasementCold&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/flowmeterBathroomCold&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/flowmeterBathroomHot&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/flowmeterHeaterOutput&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/flowmeterKitchenCold&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/flowmeterKitchenHot&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/flowmeterMainInlet&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/flowmeterToiletCold&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/flowmeterToiletSink&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt; 0.957 UNDEF 0.9988 .
-&lt;https://w3id.org/eautonome/hansaActivejetDigital&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/jumoDigiLineBoiler&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/jumoDigiLineShower&gt; UNDEF UNDEF UNDEF .
-&lt;https://w3id.org/eautonome/tempSensorMainInlet&gt; UNDEF UNDEF UNDEF .</code></pre>
-        <hr>
-        <h4>R1</h4>
-        <pre><code>SELECT DISTINCT ?sensor WHERE {
-  eau:eautonomeDeployment sosa:deployedSystem ?sensor .
-  ?sensor a/rdfs:subClassOf* sosa:Sensor .
-} ORDER BY ?sensor</code></pre>
-        <hr>
-        <pre><code>&lt;https://w3id.org/eautonome/flowmeterBasementCold&gt;
-&lt;https://w3id.org/eautonome/flowmeterBathroomCold&gt;
-&lt;https://w3id.org/eautonome/flowmeterBathroomHot&gt;
-&lt;https://w3id.org/eautonome/flowmeterHeaterOutput&gt;
-&lt;https://w3id.org/eautonome/flowmeterKitchenCold&gt;
-&lt;https://w3id.org/eautonome/flowmeterKitchenHot&gt;
-&lt;https://w3id.org/eautonome/flowmeterMainInlet&gt;
-&lt;https://w3id.org/eautonome/flowmeterToiletCold&gt;
-&lt;https://w3id.org/eautonome/flowmeterToiletSink&gt;
-&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt;
-&lt;https://w3id.org/eautonome/hansaActivejetDigital&gt;
-&lt;https://w3id.org/eautonome/jumoDigiLineBoiler&gt;
-&lt;https://w3id.org/eautonome/jumoDigiLineShower&gt;
-&lt;https://w3id.org/eautonome/tempSensorMainInlet&gt;</code></pre>
-        <hr>
-        <h4>R3</h4>
-        <pre><code>SELECT ?sensor ?mp ?status WHERE {
-  ?sensor eau:monitors ?mp ;
-          eau:hasOperationalStatus ?status .
-  FILTER(?status IN ("inactive", "planned"))
-} ORDER BY ?sensor</code></pre>
-        <hr>
-        <pre><code>&lt;https://w3id.org/eautonome/flowmeterBasementCold&gt; &lt;https://w3id.org/eautonome/mpBasementCold&gt; "inactive" .
-&lt;https://w3id.org/eautonome/flowmeterBathroomCold&gt; &lt;https://w3id.org/eautonome/mpBathroomCold&gt; "inactive" .
-&lt;https://w3id.org/eautonome/flowmeterToiletCold&gt; &lt;https://w3id.org/eautonome/mpToiletCold&gt; "inactive" .
-&lt;https://w3id.org/eautonome/flowmeterWashingMachine&gt; &lt;https://w3id.org/eautonome/mpWashingMachine&gt; "inactive" .</code></pre>
-        <hr>    </section>
+      <h2>Overview</h2>
+      <p>The Eautonome Ontology describes physical water infrastructure and monitoring devices in a residential observation system. These components generate observations related to domestic water use and water quality.</p>
+      <p>The ontology represents the greywater recycling infrastructure, the sensor network, and the resulting observations. It supports queries over domestic water use events, sensor status, measurement locations, pipe configurations, and greywater reuse data.</p>
+    
+      <h3>Competency Questions</h3>
+      <h4>Queries</h4>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Natural language question</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Q1</td><td>Which sensor made the observation?</td><td>The physical device that generated the data. For example, <code>&lt;eau:obsFlowHeaterOutput20260627T034633&gt;</code> is made by <code>&lt;eau:flowmeterHeaterOutput&gt;</code>.</td></tr>
+          <tr><td>Q2</td><td>What physical property is measured?</td><td>For example, <code>&lt;s4watr:FlowRate&gt;</code> or <code>&lt;s4watr:Conductivity&gt;</code>.</td></tr>
+          <tr><td>Q3</td><td>Where is the measurement point located and which asset does it measure?</td><td>For example, <code>&lt;eau:mpBathroomHot&gt;</code> is located in <code>&lt;eau:roomBathroom&gt;</code> and measures <code>&lt;eau:pipeBathroomHot&gt;</code>.</td></tr>
+          <tr><td>Q4</td><td>What is the result of the observation?</td><td>For example, a flow result may be expressed in <code>&lt;unit:L-PER-MIN&gt;</code>.</td></tr>
+          <tr><td>Q5</td><td>What is the timestamp of the observation?</td><td>For example, <code>"2026-06-27T03:46:33+02:00"^^xsd:dateTime</code>.</td></tr>
+          <tr><td>Q6</td><td>What is the operational status of each device?</td><td>For example, <code>&lt;eau:flowmeterBathroomCold&gt;</code> is inactive.</td></tr>
+          <tr><td>Q7</td><td>Which temporal extent and usage activity characterize an observation collection?</td><td>The temporal extent is represented with <code>sosa:phenomenonTime</code> and OWL-Time, and the activity is linked through <code>eau:hasConsumptionEvent</code>.</td></tr>
+          <tr><td>Q8</td><td>Which procedure is used to acquire the observation?</td><td>ADC sensors use <code>&lt;eau:eautonomeObservingProcedure&gt;</code>; the connected shower sensor uses <code>&lt;eau:showerObservingProcedure&gt;</code>.</td></tr>
+          <tr><td>Q9</td><td>Which sensors have recorded calibration parameters, and what are they?</td><td>For example, <code>&lt;eau:flowmeterHeaterOutput&gt;</code> has a calibration slope of <code>0.957</code> and an <i>R</i><sup>2</sup> value of <code>0.9988</code>.</td></tr>
+        </tbody>
+      </table>
+    
+      <h4>Additional Queries</h4>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Natural language question</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Q10</td><td>Which sensors are included in the deployment?</td><td>The query follows <code>sosa:deployedSystem</code> from <code>&lt;eau:eautonomeDeployment&gt;</code> and returns 14 sensors.</td></tr>
+          <tr><td>Q11</td><td>Which room is associated with an observation?</td><td>The room is obtained from the observation's measurement point through <code>eau:locatedIn</code>.</td></tr>
+          <tr><td>Q12</td><td>Which measurement points are at operational risk?</td><td>Four measurement points are monitored by a sensor whose status is inactive or planned.</td></tr>
+          <tr><td>Q13</td><td>Which observations belong to the same collection and consumption event?</td><td><code>sosa:hasMember</code> links observations to a collection, while <code>eau:hasConsumptionEvent</code> links the collection to the corresponding water use event.</td></tr>
+        </tbody>
+      </table>
+    
+      <h3>SPARQL Examples</h3>
+      <p>The following SPARQL queries are examples from the evaluation. All counts below were obtained over the published ontology and the two example observation datasets.</p>
+    
+      <pre><code>PREFIX eau: &lt;https://w3id.org/eautonome/&gt;
+    PREFIX sosa: &lt;http://www.w3.org/ns/sosa/&gt;
+    PREFIX s4watr: &lt;https://saref.etsi.org/saref4watr/&gt;
+    PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;</code></pre>
+    
+      <h4>Q3</h4>
+      <pre><code>SELECT ?mp ?room ?asset WHERE {
+      ?mp a eau:MeasurementPoint ;
+          eau:locatedIn ?room ;
+          eau:measuresOnAsset ?asset .
+    }
+    ORDER BY ?mp</code></pre>
+      <p>Result: 10 measurement points.</p>
+    
+      <h4>Q9</h4>
+      <pre><code>SELECT ?sensor ?slope ?r2 WHERE {
+      ?sensor a ?sensorClass .
+      ?sensorClass rdfs:subClassOf* sosa:Sensor .
+      ?sensor eau:hasCalibrationSlope ?slope ;
+              eau:hasCalibrationR2 ?r2 .
+    }
+    ORDER BY ?sensor</code></pre>
+      <p>Result: 6 sensors with recorded calibration slope and <i>R</i><sup>2</sup>.</p>
+    
+      <h4>Q10</h4>
+      <pre><code>SELECT DISTINCT ?sensor WHERE {
+      eau:eautonomeDeployment sosa:deployedSystem ?sensor .
+      ?sensor a ?sensorClass .
+      ?sensorClass rdfs:subClassOf* sosa:Sensor .
+    }
+    ORDER BY ?sensor</code></pre>
+      <p>Result: 14 sensors.</p>
+    
+      <h4>Q12</h4>
+      <pre><code>SELECT DISTINCT ?mp WHERE {
+      ?sensor eau:monitors ?mp ;
+              eau:hasOperationalStatus ?status .
+      FILTER(?status IN ("inactive", "planned"))
+    }
+    ORDER BY ?mp</code></pre>
+      <p>Result: 4 measurement points.</p>
+    </section>
     <section id="classes">
         <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
         <ul class="hlist">

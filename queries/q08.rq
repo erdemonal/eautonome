@@ -1,0 +1,6 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?observation ?procedure WHERE {
+  ?observation a sosa:Observation ;
+               sosa:usedProcedure ?procedure .
+}
+ORDER BY ?observation

@@ -1,0 +1,8 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?collection ?event ?observation WHERE {
+  ?collection a sosa:ObservationCollection ;
+              eau:hasConsumptionEvent ?event ;
+              sosa:hasMember ?observation .
+}
+ORDER BY ?collection ?observation

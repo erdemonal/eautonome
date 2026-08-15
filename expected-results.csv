@@ -1,0 +1,14 @@
+query,expected_rows,uses_eautonome_schema_term
+Q1,742,no
+Q2,3,no
+Q3,10,yes
+Q4,742,no
+Q5,742,no
+Q6,18,yes
+Q7,7,yes
+Q8,742,no
+Q9,6,yes
+Q10,14,no
+Q11,742,yes
+Q12,4,yes
+Q13,740,yes

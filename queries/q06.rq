@@ -1,0 +1,5 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+SELECT ?device ?status WHERE {
+  ?device eau:hasOperationalStatus ?status .
+}
+ORDER BY ?device

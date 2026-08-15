@@ -1,10 +1,10 @@
 # The Eautonome Ontology
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21894601.svg)](https://doi.org/10.5281/zenodo.21894601)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21894602.svg)](https://doi.org/10.5281/zenodo.21894602)
 
-The Eautonome Ontology is an OWL ontology for residential water end-use monitoring. It was developed within the Eautonome greywater monitoring system of the OPUR programme at LEESU, ENPC, Institut Polytechnique de Paris.
+The Eautonome Ontology is an OWL ontology for residential water end-use monitoring. It was developed within the Eautonome graywater monitoring system of the OPUR research program at LEESU, ENPC, Institut Polytechnique de Paris.
 
-The ontology reuses SOSA/SSN for the representation of observations and ETSI SAREF4WATR for water-domain terminology. It aligns the two vocabularies at the class level and extends them with concepts for household end-use attribution, including measurement points, rooms, pipe configurations, and consumption events.
+The ontology reuses SOSA/SSN for the representation of observations and ETSI SAREF4WATR for water terminology. It aligns the two vocabularies at the class level and extends them with concepts for household water use. These concepts cover measurement points, rooms, pipe configurations, and consumption events.
 
 ## Persistent identifiers
 
@@ -15,22 +15,22 @@ The ontology is published under the persistent `w3id.org` namespace with HTTP co
 * RDF/XML: https://w3id.org/eautonome/eautonome.rdf
 * JSON-LD: https://w3id.org/eautonome/eautonome.jsonld
 * N-Triples: https://w3id.org/eautonome/eautonome.nt
-* DOI (Zenodo): https://doi.org/10.5281/zenodo.21894601
 
 ## Contents
 
 The repository contains:
 
-* The ontology schema (T-box) in Turtle, RDF/XML, JSON-LD, and N-Triples
-* Two example observation datasets (A-box) in JSON-LD, covering a shower experiment and a hydrodynamic experiment
+* The ontology in Turtle, RDF/XML, JSON-LD, and N-Triples
+* Two example observation datasets in JSON-LD
 * SHACL shapes for data validation (`eautonome-shapes.ttl`)
+* Thirteen SPARQL queries used in the ontology evaluation, together with their expected result counts
 
 ## Reused vocabularies
 
 The ontology reuses or references the following vocabularies:
 
 * W3C SOSA/SSN
-* ETSI SAREF4WATR 
+* ETSI SAREF4WATR
 * OWL-Time
 * QUDT
 * schema.org
@@ -39,31 +39,44 @@ The ontology reuses or references the following vocabularies:
 
 The ontology is defined in OWL 2 DL and was validated using ROBOT. Its consistency was checked with the HermiT reasoner.
 
-The example datasets were validated against seven SHACL shapes and conform to the published SHACL constraints.
+The published ontology and example datasets were validated against seven SHACL shapes and conform to the published SHACL constraints.
 
 The SHACL validation can be reproduced using pySHACL:
 
 ```bash
 pip install pyshacl
-pyshacl -s eautonome-shapes.ttl -d eautonome.ttl -df turtle
+pyshacl -s docs/ontology/eautonome-shapes.ttl \
+  docs/ontology/eautonome.ttl \
+  docs/data/hydrodynamic-observations.jsonld \
+  docs/data/shower-observations.jsonld
 ```
 
-## Publication
+## Reproducibility
 
-The ontology is published through a GitHub Pages deployment using the persistent `w3id.org/eautonome/` namespace. HTTP content negotiation provides access to the ontology in the requested RDF serialization based on the HTTP `Accept` header.
+The thirteen SPARQL queries used in the evaluation are provided in the `queries/` directory. Their expected row counts are listed in `expected-results.csv`.
 
-The ontology was also included in the implementation report associated with the 2023 edition of the W3C SSN/SOSA recommendation.
+The query evaluation can be reproduced using RDFLib:
+
+```bash
+pip install rdflib
+python run_queries.py \
+  docs/ontology/eautonome.ttl \
+  docs/data/hydrodynamic-observations.jsonld \
+  docs/data/shower-observations.jsonld
+```
+
+The script reports the result count for each query and returns a nonzero exit status if a result differs from the expected value.
 
 ## Citation
 
-Önal, E. (2026). *The Eautonome Ontology* (Version 1.0.0). Zenodo. https://doi.org/10.5281/zenodo.21894601
+Önal, E. (2026). *The Eautonome Ontology* (Version v1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.21894602
 
 ## License
 
-This ontology is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+The ontology is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 ## Contact
 
-Erdem Önal
-LEESU, ENPC, Institut Polytechnique de Paris
+Erdem Önal  
+LEESU, ENPC, Institut Polytechnique de Paris  
 erdem.onal [at] enpc.fr

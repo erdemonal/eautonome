@@ -1,0 +1,8 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?observation ?room WHERE {
+  ?observation a sosa:Observation ;
+               sosa:hasFeatureOfInterest ?mp .
+  ?mp eau:locatedIn ?room .
+}
+ORDER BY ?observation

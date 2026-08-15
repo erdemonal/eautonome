@@ -1,0 +1,7 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+SELECT ?mp ?room ?asset WHERE {
+  ?mp a eau:MeasurementPoint ;
+      eau:locatedIn ?room ;
+      eau:measuresOnAsset ?asset .
+}
+ORDER BY ?mp

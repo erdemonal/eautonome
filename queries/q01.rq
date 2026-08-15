@@ -1,0 +1,6 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?observation ?sensor WHERE {
+  ?observation a sosa:Observation ;
+               sosa:madeBySensor ?sensor .
+}
+ORDER BY ?observation

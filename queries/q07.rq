@@ -1,0 +1,11 @@
+PREFIX eau: <https://w3id.org/eautonome/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX time: <http://www.w3.org/2006/time#>
+SELECT ?collection ?begin ?end ?event WHERE {
+  ?collection a sosa:ObservationCollection ;
+              sosa:phenomenonTime ?interval ;
+              eau:hasConsumptionEvent ?event .
+  ?interval time:hasBeginning/time:inXSDDateTime ?begin ;
+            time:hasEnd/time:inXSDDateTime ?end .
+}
+ORDER BY ?collection

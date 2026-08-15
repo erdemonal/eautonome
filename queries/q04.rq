@@ -1,0 +1,6 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?observation ?result WHERE {
+  ?observation a sosa:Observation ;
+               sosa:hasSimpleResult ?result .
+}
+ORDER BY ?observation

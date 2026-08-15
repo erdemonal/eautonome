@@ -1,0 +1,6 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT DISTINCT ?property WHERE {
+  ?observation a sosa:Observation ;
+               sosa:observedProperty ?property .
+}
+ORDER BY ?property

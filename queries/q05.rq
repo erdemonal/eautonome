@@ -1,0 +1,6 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+SELECT ?observation ?time WHERE {
+  ?observation a sosa:Observation ;
+               sosa:resultTime ?time .
+}
+ORDER BY ?observation
