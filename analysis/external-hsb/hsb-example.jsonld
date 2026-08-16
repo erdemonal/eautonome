@@ -1,0 +1,849 @@
+{
+  "@context": {
+    "brick": "https://brickschema.org/schema/Brick#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "eau": "https://w3id.org/eautonome/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "s4watr": "https://saref.etsi.org/saref4watr/",
+    "schema": "https://schema.org/",
+    "schema1": "http://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "eau:hsbAssetS0164",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0164: cold water consumption, Washbasin, R046"
+    },
+    {
+      "@id": "eau:hsbSensorS0105",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0105"
+      },
+      "rdfs:label": "HSB water meter S0105",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0162",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0162"
+      },
+      "rdfs:label": "HSB water meter S0162",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbAssetS0161",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0161: hot water consumption, Kitchen tap, R046"
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0105",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR030"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0105"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbColdWater"
+      },
+      "rdfs:label": "HSB measurement point S0105",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbObservation000330",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0205"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N0dba600fde3d45878e95ee16db47ad83"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.003"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0205"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T15:40:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N0dba600fde3d45878e95ee16db47ad83",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.003"
+      }
+    },
+    {
+      "@id": "eau:hsbObservation000001",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0161"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N602e557641694621a3ab50e3da7cc578"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.006"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0161"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T00:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N602e557641694621a3ab50e3da7cc578",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.006"
+      }
+    },
+    {
+      "@id": "eau:hsbObservation000085",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0105"
+      },
+      "sosa:hasResult": {
+        "@id": "_:Nfc144791eb1047188a5ae3d2ffc4ebec"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.001"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0105"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T09:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:Nfc144791eb1047188a5ae3d2ffc4ebec",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.001"
+      }
+    },
+    {
+      "@id": "eau:hsbApartmentAPT_005",
+      "@type": "schema1:Place",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbClusterCL_A"
+      },
+      "rdfs:label": "APT_005"
+    },
+    {
+      "@id": "eau:hsbClusterCL_H",
+      "@type": "schema1:Place",
+      "rdfs:label": "CL_H"
+    },
+    {
+      "@id": "eau:hsbRoomR046",
+      "@type": "eau:DomesticRoom",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbApartmentAPT_020"
+      },
+      "rdfs:comment": "HSB source room type: Living room.",
+      "rdfs:label": "R046 (Living room)"
+    },
+    {
+      "@id": "eau:hsbObservation000000",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0101"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N49fa4719bba1471f8a526fe3cb562469"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.01"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0101"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T00:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N49fa4719bba1471f8a526fe3cb562469",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.01"
+      }
+    },
+    {
+      "@id": "eau:hsbAssetS0162",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0162: cold water consumption, Kitchen tap, R046"
+    },
+    {
+      "@id": "eau:hsbApartmentAPT_020",
+      "@type": "schema1:Place",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbClusterCL_G"
+      },
+      "rdfs:label": "APT_020"
+    },
+    {
+      "@id": "eau:hsbSensorS0161",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0161"
+      },
+      "rdfs:label": "HSB water meter S0161",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbAssetS0104",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0104: hot water consumption, Shower, R030"
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0205",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR001"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0205"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbHotWater"
+      },
+      "rdfs:label": "HSB measurement point S0205",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0205",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0205"
+      },
+      "rdfs:label": "HSB water meter S0205",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbAssetS0202",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0202: cold water consumption, Washing machine, R001"
+    },
+    {
+      "@id": "eau:hsbRoomR008",
+      "@type": "eau:DomesticRoom",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbApartmentAPT_009"
+      },
+      "rdfs:comment": "HSB source room type: Living room.",
+      "rdfs:label": "R008 (Living room)"
+    },
+    {
+      "@id": "eau:hsbApartmentAPT_017",
+      "@type": "schema1:Place",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbClusterCL_E"
+      },
+      "rdfs:label": "APT_017"
+    },
+    {
+      "@id": "eau:hsbObservation000002",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0162"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N59a2df503ea441069684487b43617027"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.003"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0162"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T00:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N59a2df503ea441069684487b43617027",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.003"
+      }
+    },
+    {
+      "@id": "eau:hsbRoomR030",
+      "@type": "eau:DomesticRoom",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbApartmentAPT_017"
+      },
+      "rdfs:comment": "HSB source room type: Bathroom.",
+      "rdfs:label": "R030 (Bathroom)"
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0164",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR046"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0164"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbColdWater"
+      },
+      "rdfs:label": "HSB measurement point S0164",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbHotWater",
+      "@type": "s4watr:WaterKind",
+      "rdfs:label": "Hot water consumption"
+    },
+    {
+      "@id": "eau:hsbRoomR001",
+      "@type": "eau:DomesticRoom",
+      "rdfs:comment": "HSB source room type: Laundry studio.",
+      "rdfs:label": "R001 (Laundry studio)"
+    },
+    {
+      "@id": "eau:hsbDeployment",
+      "@type": "sosa:Deployment",
+      "rdfs:label": "HSB Living Lab deployment",
+      "sosa:deployedSystem": [
+        {
+          "@id": "eau:hsbSensorS0012"
+        },
+        {
+          "@id": "eau:hsbSensorS0101"
+        },
+        {
+          "@id": "eau:hsbSensorS0104"
+        },
+        {
+          "@id": "eau:hsbSensorS0105"
+        },
+        {
+          "@id": "eau:hsbSensorS0161"
+        },
+        {
+          "@id": "eau:hsbSensorS0162"
+        },
+        {
+          "@id": "eau:hsbSensorS0164"
+        },
+        {
+          "@id": "eau:hsbSensorS0202"
+        },
+        {
+          "@id": "eau:hsbSensorS0205"
+        }
+      ]
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0012",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR008"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0012"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbHotWater"
+      },
+      "rdfs:label": "HSB measurement point S0012",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0101",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR025"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0101"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbColdWater"
+      },
+      "rdfs:label": "HSB measurement point S0101",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0164",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0164"
+      },
+      "rdfs:label": "HSB water meter S0164",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0012",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0012"
+      },
+      "rdfs:label": "HSB water meter S0012",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0162",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR046"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0162"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbColdWater"
+      },
+      "rdfs:label": "HSB measurement point S0162",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0104",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0104"
+      },
+      "rdfs:label": "HSB water meter S0104",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbObservation000185",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0202"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N46ad0a8d434b4a4f91f754e3ec7544af"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.032"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0202"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T11:30:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N46ad0a8d434b4a4f91f754e3ec7544af",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.032"
+      }
+    },
+    {
+      "@id": "eau:hsbRoomR025",
+      "@type": "eau:DomesticRoom",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbApartmentAPT_005"
+      },
+      "rdfs:comment": "HSB source room type: Bathroom.",
+      "rdfs:label": "R025 (Bathroom)"
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0202",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR001"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0202"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbColdWater"
+      },
+      "rdfs:label": "HSB measurement point S0202",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0101",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0101"
+      },
+      "rdfs:label": "HSB water meter S0101",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbClusterCL_A",
+      "@type": "schema1:Place",
+      "rdfs:label": "CL_A"
+    },
+    {
+      "@id": "eau:hsbObservingProcedure",
+      "@type": "sosa:ObservingProcedure",
+      "rdfs:comment": "Pulse-counting water meters with 1 L resolution and 10-minute reporting intervals, as documented by the HSB Living Lab dataset.",
+      "rdfs:label": "HSB pulse-counting water meter procedure"
+    },
+    {
+      "@id": "eau:hsbClusterCL_E",
+      "@type": "schema1:Place",
+      "rdfs:label": "CL_E"
+    },
+    {
+      "@id": "eau:hsbClusterCL_G",
+      "@type": "schema1:Place",
+      "rdfs:label": "CL_G"
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0161",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR046"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0161"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbHotWater"
+      },
+      "rdfs:label": "HSB measurement point S0161",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbApartmentAPT_009",
+      "@type": "schema1:Place",
+      "dcterms:isPartOf": {
+        "@id": "eau:hsbClusterCL_H"
+      },
+      "rdfs:label": "APT_009"
+    },
+    {
+      "@id": "eau:hsbColdWater",
+      "@type": "s4watr:WaterKind",
+      "rdfs:label": "Cold water consumption"
+    },
+    {
+      "@id": "eau:hsbObservation000005",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0164"
+      },
+      "sosa:hasResult": {
+        "@id": "_:Nbaf22c416a6b4ef998a2c7f06b1095ae"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.001"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0164"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T00:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:Nbaf22c416a6b4ef998a2c7f06b1095ae",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.001"
+      }
+    },
+    {
+      "@id": "eau:hsbSensorS0202",
+      "@type": [
+        "sosa:Sensor",
+        "s4watr:WaterMeter"
+      ],
+      "eau:monitors": {
+        "@id": "eau:hsbMeasurementPointS0202"
+      },
+      "rdfs:label": "HSB water meter S0202",
+      "sosa:observes": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbAssetS0012",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0012: hot water consumption, Washbasin, R008"
+    },
+    {
+      "@id": "eau:hsbObservation000003",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0012"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N354aab85f063499497533dd2bb0571b3"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.004"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0012"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T00:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N354aab85f063499497533dd2bb0571b3",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.004"
+      }
+    },
+    {
+      "@id": "eau:hsbMeasurementPointS0104",
+      "@type": "eau:MeasurementPoint",
+      "eau:locatedIn": {
+        "@id": "eau:hsbRoomR030"
+      },
+      "eau:measuresOnAsset": {
+        "@id": "eau:hsbAssetS0104"
+      },
+      "eau:measuresWaterKind": {
+        "@id": "eau:hsbHotWater"
+      },
+      "rdfs:label": "HSB measurement point S0104",
+      "sosa:hasProperty": {
+        "@id": "s4watr:FlowVolume"
+      }
+    },
+    {
+      "@id": "eau:hsbAssetS0205",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0205: hot water consumption, Washing machine, R001"
+    },
+    {
+      "@id": "eau:hsbAssetS0105",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0105: cold water consumption, Shower, R030"
+    },
+    {
+      "@id": "eau:hsbAssetS0101",
+      "@type": "s4watr:WaterAsset",
+      "rdfs:label": "HSB water asset at meter S0101: cold water consumption, Toilet, R025"
+    },
+    {
+      "@id": "eau:hsbObservation000084",
+      "@type": "sosa:Observation",
+      "sosa:hasFeatureOfInterest": {
+        "@id": "eau:hsbMeasurementPointS0104"
+      },
+      "sosa:hasResult": {
+        "@id": "_:N01aaa952b0894fe5b08d75a26e0dc620"
+      },
+      "sosa:hasSimpleResult": {
+        "@type": "xsd:decimal",
+        "@value": "0.003"
+      },
+      "sosa:madeBySensor": {
+        "@id": "eau:hsbSensorS0104"
+      },
+      "sosa:observedProperty": {
+        "@id": "s4watr:FlowVolume"
+      },
+      "sosa:resultTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2019-12-31T09:00:00+00:00"
+      },
+      "sosa:usedProcedure": {
+        "@id": "eau:hsbObservingProcedure"
+      }
+    },
+    {
+      "@id": "_:N01aaa952b0894fe5b08d75a26e0dc620",
+      "@type": "qudt:QuantityValue",
+      "qudt:hasUnit": {
+        "@id": "unit:M3"
+      },
+      "qudt:value": {
+        "@type": "xsd:decimal",
+        "@value": "0.003"
+      }
+    }
+  ]
+}

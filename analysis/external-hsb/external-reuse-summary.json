@@ -1,0 +1,72 @@
+{
+  "records": 652315,
+  "sensors": 214,
+  "apartments": 28,
+  "clusters": 9,
+  "rooms": 49,
+  "measurement_points": 214,
+  "water_assets": 214,
+  "fixture_types": [
+    "Kitchen tap",
+    "Shower",
+    "Toilet",
+    "Washbasin",
+    "Washing machine"
+  ],
+  "water_types": [
+    "cold water consumption",
+    "hot water consumption"
+  ],
+  "room_types": [
+    "Bathroom",
+    "Cleaning",
+    "Kitchen",
+    "Laundry studio",
+    "Living room",
+    "Shared bathroom",
+    "Shared space"
+  ],
+  "valid_days": 946,
+  "total_value_m3": 3270.789,
+  "min_timestamp_utc": "2019-12-31T00:00:00Z",
+  "max_timestamp_utc": "2023-01-31T14:10:00Z",
+  "invalid_timestamps": 0,
+  "nonpositive_values": 0,
+  "values_above_0_3_m3": 0,
+  "missing_apartment_rows": 154269,
+  "missing_cluster_rows": 41798,
+  "exact_duplicate_rows": 140,
+  "rows_in_duplicate_sensor_timestamp_groups": 1406,
+  "sensor_static_mappings": 214,
+  "fixture_by_water_type_counts": {
+    "Kitchen tap": {
+      "cold water consumption": 154526,
+      "hot water consumption": 79782
+    },
+    "Shower": {
+      "cold water consumption": 30649,
+      "hot water consumption": 28402
+    },
+    "Toilet": {
+      "cold water consumption": 155777,
+      "hot water consumption": 0
+    },
+    "Washbasin": {
+      "cold water consumption": 97171,
+      "hot water consumption": 79264
+    },
+    "Washing machine": {
+      "cold water consumption": 22109,
+      "hot water consumption": 4635
+    }
+  },
+  "ontology_schema_changed": false,
+  "released_queries_supported_unchanged": 7,
+  "deployment_query_supported_after_iri_substitution": true,
+  "queries_not_answerable_from_source_metadata": 5,
+  "applicable_shacl_shape_violations": 0,
+  "example_fixture_water_pairs": 9,
+  "value_unit_used_in_mapping": "http://qudt.org/vocab/unit/M3",
+  "aggregated_value_mapped": false,
+  "query_projection_wall_seconds_across_four_runs": 56.343
+}

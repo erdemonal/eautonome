@@ -1,0 +1,9 @@
+docs/ontology/** linguist-documentation=false
+docs/data/** linguist-documentation=false
+queries/** linguist-documentation=false
+
+*.ttl linguist-language=Turtle linguist-detectable
+*.rq linguist-language=SPARQL linguist-detectable
+*.jsonld linguist-language=JSON-LD linguist-detectable
+*.nt linguist-language=N-Triples linguist-detectable
+*.rdf linguist-language=XML linguist-detectable

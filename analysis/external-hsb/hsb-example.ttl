@@ -1,0 +1,327 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eau: <https://w3id.org/eautonome/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix s4watr: <https://saref.etsi.org/saref4watr/> .
+@prefix schema1: <http://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+eau:hsbDeployment a sosa:Deployment ;
+    rdfs:label "HSB Living Lab deployment" ;
+    sosa:deployedSystem eau:hsbSensorS0012,
+        eau:hsbSensorS0101,
+        eau:hsbSensorS0104,
+        eau:hsbSensorS0105,
+        eau:hsbSensorS0161,
+        eau:hsbSensorS0162,
+        eau:hsbSensorS0164,
+        eau:hsbSensorS0202,
+        eau:hsbSensorS0205 .
+
+eau:hsbObservation000000 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0101 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.01 ] ;
+    sosa:hasSimpleResult 0.01 ;
+    sosa:madeBySensor eau:hsbSensorS0101 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T00:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000001 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0161 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.006 ] ;
+    sosa:hasSimpleResult 0.006 ;
+    sosa:madeBySensor eau:hsbSensorS0161 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T00:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000002 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0162 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.003 ] ;
+    sosa:hasSimpleResult 0.003 ;
+    sosa:madeBySensor eau:hsbSensorS0162 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T00:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000003 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0012 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.004 ] ;
+    sosa:hasSimpleResult 0.004 ;
+    sosa:madeBySensor eau:hsbSensorS0012 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T00:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000005 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0164 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.001 ] ;
+    sosa:hasSimpleResult 0.001 ;
+    sosa:madeBySensor eau:hsbSensorS0164 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T00:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000084 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0104 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.003 ] ;
+    sosa:hasSimpleResult 0.003 ;
+    sosa:madeBySensor eau:hsbSensorS0104 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T09:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000085 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0105 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.001 ] ;
+    sosa:hasSimpleResult 0.001 ;
+    sosa:madeBySensor eau:hsbSensorS0105 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T09:00:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000185 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0202 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.032 ] ;
+    sosa:hasSimpleResult 0.032 ;
+    sosa:madeBySensor eau:hsbSensorS0202 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T11:30:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbObservation000330 a sosa:Observation ;
+    sosa:hasFeatureOfInterest eau:hsbMeasurementPointS0205 ;
+    sosa:hasResult [ a qudt:QuantityValue ;
+            qudt:hasUnit unit:M3 ;
+            qudt:value 0.003 ] ;
+    sosa:hasSimpleResult 0.003 ;
+    sosa:madeBySensor eau:hsbSensorS0205 ;
+    sosa:observedProperty s4watr:FlowVolume ;
+    sosa:resultTime "2019-12-31T15:40:00+00:00"^^xsd:dateTime ;
+    sosa:usedProcedure eau:hsbObservingProcedure .
+
+eau:hsbApartmentAPT_005 a schema1:Place ;
+    rdfs:label "APT_005" ;
+    dcterms:isPartOf eau:hsbClusterCL_A .
+
+eau:hsbApartmentAPT_009 a schema1:Place ;
+    rdfs:label "APT_009" ;
+    dcterms:isPartOf eau:hsbClusterCL_H .
+
+eau:hsbApartmentAPT_017 a schema1:Place ;
+    rdfs:label "APT_017" ;
+    dcterms:isPartOf eau:hsbClusterCL_E .
+
+eau:hsbApartmentAPT_020 a schema1:Place ;
+    rdfs:label "APT_020" ;
+    dcterms:isPartOf eau:hsbClusterCL_G .
+
+eau:hsbAssetS0012 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0012: hot water consumption, Washbasin, R008" .
+
+eau:hsbAssetS0101 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0101: cold water consumption, Toilet, R025" .
+
+eau:hsbAssetS0104 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0104: hot water consumption, Shower, R030" .
+
+eau:hsbAssetS0105 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0105: cold water consumption, Shower, R030" .
+
+eau:hsbAssetS0161 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0161: hot water consumption, Kitchen tap, R046" .
+
+eau:hsbAssetS0162 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0162: cold water consumption, Kitchen tap, R046" .
+
+eau:hsbAssetS0164 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0164: cold water consumption, Washbasin, R046" .
+
+eau:hsbAssetS0202 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0202: cold water consumption, Washing machine, R001" .
+
+eau:hsbAssetS0205 a s4watr:WaterAsset ;
+    rdfs:label "HSB water asset at meter S0205: hot water consumption, Washing machine, R001" .
+
+eau:hsbClusterCL_A a schema1:Place ;
+    rdfs:label "CL_A" .
+
+eau:hsbClusterCL_E a schema1:Place ;
+    rdfs:label "CL_E" .
+
+eau:hsbClusterCL_G a schema1:Place ;
+    rdfs:label "CL_G" .
+
+eau:hsbClusterCL_H a schema1:Place ;
+    rdfs:label "CL_H" .
+
+eau:hsbRoomR008 a eau:DomesticRoom ;
+    rdfs:label "R008 (Living room)" ;
+    dcterms:isPartOf eau:hsbApartmentAPT_009 ;
+    rdfs:comment "HSB source room type: Living room." .
+
+eau:hsbRoomR025 a eau:DomesticRoom ;
+    rdfs:label "R025 (Bathroom)" ;
+    dcterms:isPartOf eau:hsbApartmentAPT_005 ;
+    rdfs:comment "HSB source room type: Bathroom." .
+
+eau:hsbMeasurementPointS0012 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0012" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR008 ;
+    eau:measuresOnAsset eau:hsbAssetS0012 ;
+    eau:measuresWaterKind eau:hsbHotWater .
+
+eau:hsbMeasurementPointS0101 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0101" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR025 ;
+    eau:measuresOnAsset eau:hsbAssetS0101 ;
+    eau:measuresWaterKind eau:hsbColdWater .
+
+eau:hsbMeasurementPointS0104 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0104" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR030 ;
+    eau:measuresOnAsset eau:hsbAssetS0104 ;
+    eau:measuresWaterKind eau:hsbHotWater .
+
+eau:hsbMeasurementPointS0105 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0105" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR030 ;
+    eau:measuresOnAsset eau:hsbAssetS0105 ;
+    eau:measuresWaterKind eau:hsbColdWater .
+
+eau:hsbMeasurementPointS0161 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0161" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR046 ;
+    eau:measuresOnAsset eau:hsbAssetS0161 ;
+    eau:measuresWaterKind eau:hsbHotWater .
+
+eau:hsbMeasurementPointS0162 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0162" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR046 ;
+    eau:measuresOnAsset eau:hsbAssetS0162 ;
+    eau:measuresWaterKind eau:hsbColdWater .
+
+eau:hsbMeasurementPointS0164 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0164" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR046 ;
+    eau:measuresOnAsset eau:hsbAssetS0164 ;
+    eau:measuresWaterKind eau:hsbColdWater .
+
+eau:hsbMeasurementPointS0202 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0202" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR001 ;
+    eau:measuresOnAsset eau:hsbAssetS0202 ;
+    eau:measuresWaterKind eau:hsbColdWater .
+
+eau:hsbMeasurementPointS0205 a eau:MeasurementPoint ;
+    rdfs:label "HSB measurement point S0205" ;
+    sosa:hasProperty s4watr:FlowVolume ;
+    eau:locatedIn eau:hsbRoomR001 ;
+    eau:measuresOnAsset eau:hsbAssetS0205 ;
+    eau:measuresWaterKind eau:hsbHotWater .
+
+eau:hsbRoomR001 a eau:DomesticRoom ;
+    rdfs:label "R001 (Laundry studio)" ;
+    rdfs:comment "HSB source room type: Laundry studio." .
+
+eau:hsbRoomR030 a eau:DomesticRoom ;
+    rdfs:label "R030 (Bathroom)" ;
+    dcterms:isPartOf eau:hsbApartmentAPT_017 ;
+    rdfs:comment "HSB source room type: Bathroom." .
+
+eau:hsbSensorS0012 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0012" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0012 .
+
+eau:hsbSensorS0101 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0101" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0101 .
+
+eau:hsbSensorS0104 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0104" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0104 .
+
+eau:hsbSensorS0105 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0105" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0105 .
+
+eau:hsbSensorS0161 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0161" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0161 .
+
+eau:hsbSensorS0162 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0162" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0162 .
+
+eau:hsbSensorS0164 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0164" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0164 .
+
+eau:hsbSensorS0202 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0202" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0202 .
+
+eau:hsbSensorS0205 a sosa:Sensor,
+        s4watr:WaterMeter ;
+    rdfs:label "HSB water meter S0205" ;
+    sosa:observes s4watr:FlowVolume ;
+    eau:monitors eau:hsbMeasurementPointS0205 .
+
+eau:hsbRoomR046 a eau:DomesticRoom ;
+    rdfs:label "R046 (Living room)" ;
+    dcterms:isPartOf eau:hsbApartmentAPT_020 ;
+    rdfs:comment "HSB source room type: Living room." .
+
+eau:hsbHotWater a s4watr:WaterKind ;
+    rdfs:label "Hot water consumption" .
+
+eau:hsbColdWater a s4watr:WaterKind ;
+    rdfs:label "Cold water consumption" .
+
+eau:hsbObservingProcedure a sosa:ObservingProcedure ;
+    rdfs:label "HSB pulse-counting water meter procedure" ;
+    rdfs:comment "Pulse-counting water meters with 1 L resolution and 10 minute reporting intervals, as documented by the HSB Living Lab dataset." .
+

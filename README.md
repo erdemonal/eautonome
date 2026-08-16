@@ -24,7 +24,7 @@ The repository contains:
 * Two example observation datasets in JSON-LD
 * SHACL shapes for data validation (`eautonome-shapes.ttl`)
 * Thirteen SPARQL queries used in the ontology evaluation, together with their expected result counts
-* Additional analyses used in the paper, provided in the `analysis/` directory
+* Additional analyses provided in the analysis/ directory
 
 ## Reused vocabularies
 
@@ -70,7 +70,7 @@ The script reports the result count for each query and returns a nonzero exit st
 
 ### Additional analysis
 
-The `analysis/` directory contains the additional analyses reported in the paper. These analyses examine the contribution of Eautonome to the evaluation queries and the sensor coverage of the published monitoring installation.
+The `analysis/` directory contains the ablation and sensor coverage analyses.
 
 The analysis can be reproduced from the repository root with:
 
@@ -80,6 +80,21 @@ python analysis/run_resource_analysis.py \
   docs/data/hydrodynamic-observations.jsonld \
   docs/data/shower-observations.jsonld \
   queries
+```
+
+### External reuse evaluation
+
+The `analysis/external-hsb/` directory contains an external reuse evaluation using the independently published HSB Living Lab residential water dataset (DOI: https://doi.org/10.5281/zenodo.18971107). The HSB source data are not redistributed in this repository.
+
+After downloading the HSB dataset, run from the repository root:
+
+```bash
+python analysis/external-hsb/run_hsb_external_reuse.py \
+  /path/to/HSB_Living_Lab_Water_Consumption_Anonymized.csv \
+  --output-dir analysis/external-hsb/results
+```
+
+The directory contains a small RDF example, query results, and the applicable constraint checks.
 
 ## Citation
 

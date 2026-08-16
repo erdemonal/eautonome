@@ -1,0 +1,3 @@
+shape,target_class,target_count,checked_requirements,violations
+eau:ObservationShape,sosa:Observation,652315,madeBySensor; observedProperty; hasSimpleResult; resultTime xsd:dateTime,0
+eau:MeasurementPointShape,eau:MeasurementPoint,214,locatedIn; measuresOnAsset; measuresWaterKind; sosa:hasProperty,0
