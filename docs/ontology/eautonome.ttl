@@ -8,6 +8,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix schema: <http://schema.org/> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
@@ -23,7 +24,8 @@
 #
 # Eautonome Ontology
 #
-<https://w3id.org/eautonome/> rdf:type owl:Ontology ;
+<https://w3id.org/eautonome/> rdf:type owl:Ontology , voaf:Vocabulary ;
+    rdfs:label "The Eautonome Ontology"@en , "L'ontologie Eautonome"@fr ;
     dcterms:title "The Eautonome Ontology"@en ;
     dcterms:title "L'ontologie Eautonome"@fr ;
     dcterms:description "The Eautonome Ontology provides an OWL representation of residential water end-use monitoring. It models domestic water uses, quality levels, and greywater reuse processes, specifically describing the monitoring and observations of the system to reduce water consumption."@en ;
@@ -33,7 +35,7 @@
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
     dcterms:created "2026-04-03"^^xsd:date ;
     dcterms:issued "2026-04-04"^^xsd:date ;
-    dcterms:modified "2026-08-15"^^xsd:date ;
+    dcterms:modified "2026-08-18"^^xsd:date ;
     dcterms:source <https://www.leesu.fr/eautonome> ;
     dcterms:identifier <https://doi.org/10.5281/zenodo.21894602> ;
     dcterms:isVersionOf <https://doi.org/10.5281/zenodo.21894601> ;
@@ -55,76 +57,91 @@
 eau:GreywaterRecyclingSystem a owl:Class ;
     rdfs:subClassOf s4watr:WaterInfrastructure , sosa:Platform ;
     rdfs:label "Greywater recycling system"@en , "Système de recyclage des eaux grises"@fr ;
-    rdfs:comment "A system for collecting, treating, and redistributing domestic greywater."@en .
+    rdfs:comment "A system for collecting, treating, and redistributing domestic greywater."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:DomesticRoom a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest ;
     rdfs:label "Domestic room"@en , "Pièce domestique"@fr ;
-    rdfs:comment "A room in a dwelling in which water consumption or collection occurs."@en .
+    rdfs:comment "A room in a dwelling in which water consumption or collection occurs."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:MeasurementPoint a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest , s4watr:WaterAsset ;
     rdfs:label "Measurement point"@en , "Point de mesure"@fr ;
-    rdfs:comment "A location within the water infrastructure at which observations are made."@en .
+    rdfs:comment "A location within the water infrastructure at which observations are made."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:VortexFlowmeter a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterMeter ;
     rdfs:label "Vortex flowmeter"@en , "Débitmètre à effet vortex"@fr ;
-    rdfs:comment "A sensor measuring water flow rate."@en .
+    rdfs:comment "A sensor measuring water flow rate."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:ConductivityTemperatureSensor a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterDevice ;
     rdfs:label "Conductivity and temperature sensor"@en , "Capteur de conductivité et de température"@fr ;
-    rdfs:comment "A sensor measuring both the electrical conductivity and temperature of water."@en .
+    rdfs:comment "A sensor measuring both the electrical conductivity and temperature of water."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:ADConverter a owl:Class ;
     rdfs:subClassOf sosa:System , sosa:Platform ;
     rdfs:label "Analog to digital converter"@en , "Carte ADC"@fr ;
-    rdfs:comment "A component for converting analog sensor signals into digital data."@en .
+    rdfs:comment "A component for converting analog sensor signals into digital data."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:EautonomeObservingProcedure a owl:Class ;
     rdfs:subClassOf sosa:ObservingProcedure ;
     rdfs:label "Eautonome observing procedure"@en , "Procédure d'observation Eautonome"@fr ;
-    rdfs:comment "Data acquisition via ADC on the Raspberry Pi."@en .
+    rdfs:comment "Data acquisition via ADC on the Raspberry Pi."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:ShowerObservingProcedure a owl:Class ;
     rdfs:subClassOf eau:EautonomeObservingProcedure ;
     rdfs:label "Shower observing procedure"@en , "Procédure d'observation douche"@fr ;
-    rdfs:comment "Data acquisition for shower via Bluetooth."@en .
+    rdfs:comment "Data acquisition for shower via Bluetooth."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:ShowerSensor a owl:Class ;
     rdfs:subClassOf sosa:Sensor , s4watr:WaterDevice ;
     rdfs:label "Shower sensor"@en , "Capteur de douche"@fr ;
-    rdfs:comment "A sensor attached to a shower head that measures flow rate, volume, temperature, and duration."@en .
+    rdfs:comment "A sensor attached to a shower head that measures flow rate, volume, temperature, and duration."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:PipeConfiguration a owl:Class ;
     rdfs:subClassOf sosa:FeatureOfInterest ;
     rdfs:label "Pipe configuration"@en , "Configuration de tuyauterie"@fr ;
-    rdfs:comment "A pipe configuration, where geometry affects flow measurements."@en .
+    rdfs:comment "A pipe configuration, where geometry affects flow measurements."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:ConsumptionEvent a owl:Class ;
     rdfs:subClassOf schema:Event ;
     rdfs:label "Consumption event"@en , "Événement de consommation"@fr ;
-    rdfs:comment "A domestic water use activity. It complements sosa:phenomenonTime on observation collections."@en .
+    rdfs:comment "A domestic water use activity. It complements sosa:phenomenonTime on observation collections."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 #
 # Properties
 #
 eau:hasFlowEquation a owl:DatatypeProperty ; rdfs:domain eau:VortexFlowmeter ; rdfs:range xsd:string ;
     rdfs:label "has flow equation"@en ;
-    rdfs:comment "Equation relating sensor current to measured flow rate."@en .
+    rdfs:comment "Equation relating sensor current to measured flow rate."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasTemperatureEquation a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:string ;
     rdfs:label "has temperature equation"@en ;
-    rdfs:comment "Equation relating sensor current to measured temperature."@en .
+    rdfs:comment "Equation relating sensor current to measured temperature."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasConductivityEquation a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:string ;
     rdfs:label "has conductivity equation"@en ;
-    rdfs:comment "Equation relating sensor current to measured conductivity."@en .
+    rdfs:comment "Equation relating sensor current to measured conductivity."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasCalibrationSlope a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:decimal ;
     rdfs:label "has calibration slope"@en ;
-    rdfs:comment "Numeric slope used to convert sensor readings to flow values."@en .
+    rdfs:comment "Numeric slope used to convert sensor readings to flow values."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasCalibrationR2 a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ;
     rdfs:range [ a rdfs:Datatype ;
@@ -135,135 +152,157 @@ eau:hasCalibrationR2 a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ;
         )
     ] ;
     rdfs:label "has calibration R2"@en ;
-    rdfs:comment "Coefficient of determination for the calibration."@en .
+    rdfs:comment "Coefficient of determination for the calibration."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasCalibrationIntercept a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:decimal ;
     rdfs:label "has calibration intercept"@en ;
-    rdfs:comment "Intercept for converting sensor readings to flow values."@en .
+    rdfs:comment "Intercept for converting sensor readings to flow values."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasTriggerThreshold a owl:DatatypeProperty ; rdfs:domain eau:EautonomeObservingProcedure ; rdfs:range xsd:decimal ;
     rdfs:label "has trigger threshold"@en ;
-    rdfs:comment "Minimum change in the measured quantity that triggers an observation."@en .
+    rdfs:comment "Minimum change in the measured quantity that triggers an observation."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasSamplingPeriod a owl:DatatypeProperty ; rdfs:domain eau:EautonomeObservingProcedure ; rdfs:range xsd:decimal ;
     rdfs:label "has sampling period"@en ;
-    rdfs:comment "Interval between sensor samples, in seconds."@en .
+    rdfs:comment "Interval between sensor samples, in seconds."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasTransmissionInterval a owl:DatatypeProperty ; rdfs:domain eau:EautonomeObservingProcedure ; rdfs:range xsd:decimal ;
     rdfs:label "has transmission interval"@en ;
-    rdfs:comment "Time interval between consecutive observation recordings, in seconds."@en .
+    rdfs:comment "Time interval between consecutive observation recordings, in seconds."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasDurationSeconds a owl:DatatypeProperty ; rdfs:domain sosa:Observation ; rdfs:range xsd:decimal ;
     rdfs:label "has duration in seconds"@en ;
-    rdfs:comment "Duration of the observation in seconds."@en .
+    rdfs:comment "Duration of the observation in seconds."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasAnalogInput a owl:DatatypeProperty ; rdfs:domain sosa:Sensor ; rdfs:range xsd:string ;
     rdfs:label "has analog input"@en ;
-    rdfs:comment "Identifier of the analog input channel used on the ADC."@en .
+    rdfs:comment "Identifier of the analog input channel used on the ADC."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasOperationalStatus a owl:DatatypeProperty ;
     rdfs:domain sosa:System ;
     rdfs:range xsd:string ;
     rdfs:label "has operational status"@en ;
-    rdfs:comment "Current status of the system, can be active, inactive, or planned."@en .
+    rdfs:comment "Current status of the system, can be active, inactive, or planned."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:servesEndpoint a owl:ObjectProperty ;
     rdfs:domain eau:MeasurementPoint ;
     rdfs:range eau:DomesticRoom ;
     owl:inverseOf eau:isServedBy ;
     rdfs:label "serves endpoint"@en ;
-    rdfs:comment "Connects a measurement point to the room where the water is used."@en .
+    rdfs:comment "Connects a measurement point to the room where the water is used."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:isServedBy a owl:ObjectProperty ;
     rdfs:domain eau:DomesticRoom ;
     rdfs:range eau:MeasurementPoint ;
     owl:inverseOf eau:servesEndpoint ;
     rdfs:label "is served by"@en ;
-    rdfs:comment "Links a domestic room to a measurement point that serves it as water use endpoint."@en .
+    rdfs:comment "Links a domestic room to a measurement point that serves it as water use endpoint."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:measuresWaterKind a owl:ObjectProperty ;
     rdfs:domain eau:MeasurementPoint ;
     rdfs:range s4watr:WaterKind ;
     owl:inverseOf eau:waterKindMeasuredAt ;
     rdfs:label "measures water kind"@en ;
-    rdfs:comment "Specifies the type of water measured."@en .
+    rdfs:comment "Specifies the type of water measured."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:waterKindMeasuredAt a owl:ObjectProperty ;
     rdfs:domain s4watr:WaterKind ;
     rdfs:range eau:MeasurementPoint ;
     owl:inverseOf eau:measuresWaterKind ;
     rdfs:label "water kind measured at"@en ;
-    rdfs:comment "Links a water kind to a measurement point where that kind of water is measured."@en .
+    rdfs:comment "Links a water kind to a measurement point where that kind of water is measured."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasConsumptionEvent a owl:ObjectProperty ;
     rdfs:domain sosa:ObservationCollection ;
     rdfs:range eau:ConsumptionEvent ;
     owl:inverseOf eau:isConsumptionEventOf ;
     rdfs:label "has consumption event"@en ;
-    rdfs:comment "Links an observation collection to the domestic usage activity it represents."@en .
+    rdfs:comment "Links an observation collection to the domestic usage activity it represents."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:isConsumptionEventOf a owl:ObjectProperty ;
     rdfs:domain eau:ConsumptionEvent ;
     rdfs:range sosa:ObservationCollection ;
     owl:inverseOf eau:hasConsumptionEvent ;
     rdfs:label "is consumption event of"@en ;
-    rdfs:comment "Links a consumption event to the observation collection that represents it."@en .
+    rdfs:comment "Links a consumption event to the observation collection that represents it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:locatedIn a owl:ObjectProperty ;
     rdfs:domain eau:MeasurementPoint ;
     rdfs:range eau:DomesticRoom ;
     owl:inverseOf eau:isLocationOf ;
     rdfs:label "located in"@en ;
-    rdfs:comment "The room where the measurement point is located."@en .
+    rdfs:comment "The room where the measurement point is located."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:isLocationOf a owl:ObjectProperty ;
     rdfs:domain eau:DomesticRoom ;
     rdfs:range eau:MeasurementPoint ;
     owl:inverseOf eau:locatedIn ;
     rdfs:label "is location of"@en ;
-    rdfs:comment "Links a domestic room to a measurement point located in that room."@en .
+    rdfs:comment "Links a domestic room to a measurement point located in that room."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:measuresOnAsset a owl:ObjectProperty ;
     rdfs:domain eau:MeasurementPoint ;
     rdfs:range s4watr:WaterAsset ;
     owl:inverseOf eau:isMeasuredAt ;
     rdfs:label "measures on asset"@en ;
-    rdfs:comment "The pipe or water asset instrumented at this measurement point."@en .
+    rdfs:comment "The pipe or water asset instrumented at this measurement point."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:isMeasuredAt a owl:ObjectProperty ;
     rdfs:domain s4watr:WaterAsset ;
     rdfs:range eau:MeasurementPoint ;
     owl:inverseOf eau:measuresOnAsset ;
     rdfs:label "is measured at"@en ;
-    rdfs:comment "Links a water asset to the measurement point that instruments it."@en .
+    rdfs:comment "Links a water asset to the measurement point that instruments it."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:monitors a owl:ObjectProperty ;
     rdfs:domain sosa:Sensor ;
     rdfs:range eau:MeasurementPoint ;
     owl:inverseOf eau:isMonitoredBy ;
     rdfs:label "monitors"@en , "surveille"@fr ;
-    rdfs:comment "Static topology link from a sensor to the measurement point it monitors, independent of any observation."@en .
+    rdfs:comment "Static topology link from a sensor to the measurement point it monitors, independent of any observation."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:isMonitoredBy a owl:ObjectProperty ;
     rdfs:domain eau:MeasurementPoint ;
     rdfs:range sosa:Sensor ;
     owl:inverseOf eau:monitors ;
     rdfs:label "is monitored by"@en , "est surveillé par"@fr ;
-    rdfs:comment "Static topology link from a measurement point to the sensor that monitors it, independent of any observation."@en .
+    rdfs:comment "Static topology link from a measurement point to the sensor that monitors it, independent of any observation."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:hasPipeConfiguration a owl:ObjectProperty ;
     rdfs:domain [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure sosa:ObservationCollection ) ] ;
     rdfs:range eau:PipeConfiguration ;
     owl:inverseOf eau:isPipeConfigurationOf ;
     rdfs:label "has pipe configuration"@en , "a pour configuration de tuyauterie"@fr ;
-    rdfs:comment "Relates a deployment, observing procedure, or observation collection to the pipe configuration."@en .
+    rdfs:comment "Relates a deployment, observing procedure, or observation collection to the pipe configuration."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 eau:isPipeConfigurationOf a owl:ObjectProperty ;
     rdfs:domain eau:PipeConfiguration ;
     rdfs:range [ a owl:Class ; owl:unionOf ( sosa:Deployment sosa:ObservingProcedure sosa:ObservationCollection ) ] ;
     owl:inverseOf eau:hasPipeConfiguration ;
     rdfs:label "is pipe configuration of"@en , "est la configuration de tuyauterie de"@fr ;
-    rdfs:comment "Relates a pipe configuration to a deployment, observing procedure, or observation collection."@en .
+    rdfs:comment "Relates a pipe configuration to a deployment, observing procedure, or observation collection."@en ;
+    rdfs:isDefinedBy <https://w3id.org/eautonome/> .
 
 #
 # Axioms
